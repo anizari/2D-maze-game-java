@@ -1,0 +1,7 @@
+#Don't track content of these folders
+Chris/
+
+
+#Ignore the following types of files
+*.txt
+*.md
