@@ -1,12 +1,23 @@
 import java.util.*;
+import javax.swing.*;
 
 public class Main {
-public static void main(String[] args) {
+
+static JLabel mapLabel;
+
+public static void main(String[] args) {    
+    // JFrame frame = new JFrame("MyGame");
+    // frame.setSize(1000,1000);
+    // mapLabel = new JLabel("hhhhhh");
+    // frame.getContentPane().add(mapLabel); // Adds Button to content pane of frame
+    // frame.setVisible(true);
+
     Scanner playerInput = new Scanner( System.in );
     Board board = makeBoard();
     initBoard(board);
+
     drawBoard(board);
-    System.out.println();
+    
     Move(playerInput, board);
 }
 
@@ -31,21 +42,25 @@ private static void initBoard(Board board){
           gameBoard[x][y] = 0;
         }
     }
+    int px = board.getPx();
+    int py = board.getPy();
+    gameBoard[px][py] = 1;
 }
 
 private static void drawBoard(Board board){
     int height = board.getHeight();
     int width = board.getWidth();
     int[][] gameBoard = board.getBoard();
-    int px = board.getPx();
-    int py = board.getPy();
-    gameBoard[px][py] = 1;
+
+
     for(int i = 0; i < height; i++){
         for (int j = 0; j < width; j++){
             System.out.print( gameBoard[i][j] );
         }
             System.out.println( "" );
     }
+
+    // mapLabel.setText(text);
 }
 
 
@@ -63,53 +78,26 @@ private static void Move(Scanner playerInput, Board board){
       case 'W':
       gameBoard[px][py] = 0;
       gameBoard[--px][py] = 1;
-      updateBoard(board, playerMove);
       break;
       case 'a':
       case 'A':
       gameBoard[px][py] = 0;
       gameBoard[px][--py] = 1;
-      updateBoard(board, playerMove);
       break;
       case 's':
       case 'S':
       gameBoard[px][py] = 0;
       gameBoard[++px][py] = 1;
-      updateBoard(board, playerMove);
       break;
       case 'd':
       case 'D':
       gameBoard[px][py] = 0;
       gameBoard[px][++py] = 1;
-      updateBoard(board, playerMove);
       break;
     }
+    drawBoard(board);
   }
-//  updateBoard(board, steppedTile);
 }
-
-//Updates the board after each player turn
-private static void updateBoard( Board board, char playerMove ){
-  int height = board.getHeight();
-  int width = board.getWidth();
-  int[][] gameBoard = board.getBoard();
-    for ( int i = 0; i < height; i++ ){
-        for ( int j = 0; j < width; j++ ){
-          System.out.print(gameBoard[i][j]);
-        }
-            System.out.println( "" );
-   }
-}
-
-/*
-private static void print(int[][] grid){
-  for(int i = 0; i < grid.length; i++){
-    for(int j = 0; j < grid[0].length; j++){
-      System.out.print(grid[i][j]);
-    }
-    System.out.println();
-  }
-}*/
 
 }
 
