@@ -5,3 +5,4 @@ Chris/
 #Ignore the following types of files
 *.txt
 *.md
+*.class
