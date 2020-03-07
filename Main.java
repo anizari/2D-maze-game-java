@@ -6,11 +6,11 @@ public class Main {
 static JLabel mapLabel;
 
 public static void main(String[] args) {    
-    // JFrame frame = new JFrame("MyGame");
-    // frame.setSize(1000,1000);
-    // mapLabel = new JLabel("hhhhhh");
-    // frame.getContentPane().add(mapLabel); // Adds Button to content pane of frame
-    // frame.setVisible(true);
+    JFrame frame = new JFrame("MyGame");
+    frame.setSize(1000,1000);
+    mapLabel = new JLabel("hhhhhh");
+    frame.getContentPane().add(mapLabel); // Adds Button to content pane of frame
+    frame.setVisible(true);
 
     Scanner playerInput = new Scanner( System.in );
     Board board = makeBoard();
@@ -52,15 +52,18 @@ private static void drawBoard(Board board){
     int width = board.getWidth();
     int[][] gameBoard = board.getBoard();
 
-
+    StringBuffer sb = new StringBuffer();
+    sb.append("<html><p>");
     for(int i = 0; i < height; i++){
         for (int j = 0; j < width; j++){
-            System.out.print( gameBoard[i][j] );
+            sb.append( gameBoard[i][j] );
+            sb.append(" ");
         }
-            System.out.println( "" );
+        sb.append("<br />");
     }
+    sb.append("</p></html>");
 
-    // mapLabel.setText(text);
+    mapLabel.setText(sb.toString());
 }
 
 
