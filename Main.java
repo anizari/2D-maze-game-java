@@ -79,30 +79,47 @@ private static void Move(Scanner playerInput, Board board){
       //Need to check if not out of bounds
       case 'w':
       case 'W':
-      gameBoard[px][py] = 0;
-      gameBoard[--px][py] = 1;
+      if (CheckMove(px - 1, py, gameBoard, board)){
+        gameBoard[px][py] = 0;
+        gameBoard[--px][py] = 1;
+      }
       break;
       case 'a':
       case 'A':
-      gameBoard[px][py] = 0;
-      gameBoard[px][--py] = 1;
+      if (CheckMove(px, py - 1, gameBoard, board)){
+        gameBoard[px][py] = 0;
+        gameBoard[px][--py] = 1;
+      }
       break;
       case 's':
       case 'S':
-      gameBoard[px][py] = 0;
-      gameBoard[++px][py] = 1;
+      if (CheckMove(px + 1, py, gameBoard, board)){
+        gameBoard[px][py] = 0;
+        gameBoard[++px][py] = 1;
+      }
       break;
       case 'd':
       case 'D':
-      gameBoard[px][py] = 0;
-      gameBoard[px][++py] = 1;
+      if (CheckMove(px, py + 1, gameBoard, board)){
+        gameBoard[px][py] = 0;
+        gameBoard[px][++py] = 1;
+      }
       break;
     }
     drawBoard(board);
   }
 }
 
+//Check for out of bounds + walls
+private static boolean CheckMove(int newX, int newY, int[][] gameBoard, Board board){
+  //out of bounds check
+  if ((newX < 0) | (newY < 0) | (newX >= board.getWidth()) | (newY >= board.getHeight())){
+    return false;
+  }
+  else if (gameBoard[newX][newY] == 9){
+    return false;
+  }
+  else return true;
 }
 
-
-
+}
