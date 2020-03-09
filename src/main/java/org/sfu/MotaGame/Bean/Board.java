@@ -35,6 +35,8 @@ public class Board{
     this.px = px;
     this.py = py;
   }
+  
+  
   //Take out and leave in Cell class?
   public Cell[][] getCells(){
     return cells;
