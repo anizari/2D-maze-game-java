@@ -26,6 +26,48 @@ public class Board{
     return py;
   }
 
+  //Check for out of bounds + walls
+  private boolean CheckMove(int newX, int newY){
+    //out of bounds check
+    if ((newX < 0) || (newY < 0) || (newX >= width) || (newY >= height)) {
+      return false;
+    }
+    else if (gameBoard[newX][newY] == 9){
+      return false;
+    }
+    else return true;
+  }
+
+  public void movePlayer(char direction){
+    switch (direction){
+      case 'w':
+        if (CheckMove(px - 1, py)){
+          gameBoard[px][py] = 0;
+          gameBoard[--px][py] = 1;
+        }
+        break;
+      case 'a':
+        if (CheckMove(px, py - 1)){
+          gameBoard[px][py] = 0;
+          gameBoard[px][--py] = 1;
+        }
+        break;
+      case 's':
+        if (CheckMove(px + 1, py)){
+          gameBoard[px][py] = 0;
+          gameBoard[++px][py] = 1;
+        }
+        break;
+      case 'd':
+        if (CheckMove(px, py + 1)){
+          gameBoard[px][py] = 0;
+          gameBoard[px][++py] = 1;
+        };
+    }
+
+  }
+
+
   
 
   public Board(int height, int width, int[][] gameBoard, int px, int py){

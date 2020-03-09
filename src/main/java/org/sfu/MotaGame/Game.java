@@ -33,7 +33,7 @@ public class Game {
 	
 	private Board makeBoard(){
 	    int height = 32;
-	    int width = 32;
+	    int width = 20;
 	    int[][] gameBoard = new int[height][width];
 	    int px = 0;
 	    int py = 0;
@@ -78,59 +78,14 @@ public class Game {
 	}
 	
 	private void Move(Scanner playerInput){
-		  char playerMove = '\0';
-		  boolean isTurnDone = false;
-		  int[][] gameBoard = board.getBoard();
-		  int px = board.getPx();
-		  int py = board.getPy();
-		  while(!isTurnDone){
-		    playerMove = playerInput.next().charAt(0);
-		    switch(playerMove){
-		      //Need to check if not out of bounds
-		      case 'w':
-		      case 'W':
-		      if (CheckMove(px - 1, py, gameBoard, board)){
-		        gameBoard[px][py] = 0;
-		        gameBoard[--px][py] = 1;
-		      }
-		      break;
-		      case 'a':
-		      case 'A':
-		      if (CheckMove(px, py - 1, gameBoard, board)){
-		        gameBoard[px][py] = 0;
-		        gameBoard[px][--py] = 1;
-		      }
-		      break;
-		      case 's':
-		      case 'S':
-		      if (CheckMove(px + 1, py, gameBoard, board)){
-		        gameBoard[px][py] = 0;
-		        gameBoard[++px][py] = 1;
-		      }
-		      break;
-		      case 'd':
-		      case 'D':
-		      if (CheckMove(px, py + 1, gameBoard, board)){
-		        gameBoard[px][py] = 0;
-		        gameBoard[px][++py] = 1;
-		      }
-		      break;
-		    }
+		  while(true){
+		    char playerMove = playerInput.next().charAt(0);
+		    board.movePlayer(playerMove);
 		    drawBoard();
 		}
 	}
 	
-	//Check for out of bounds + walls
-	private static boolean CheckMove(int newX, int newY, int[][] gameBoard, Board board){
-	  //out of bounds check
-	  if ((newX < 0) | (newY < 0) | (newX >= board.getWidth()) | (newY >= board.getHeight())){
-	    return false;
-	  }
-	  else if (gameBoard[newX][newY] == 9){
-	    return false;
-	  }
-	  else return true;
-	}
+
 	
 	private class KeyBoardListener implements KeyListener {
 		public void keyPressed(KeyEvent e) {
