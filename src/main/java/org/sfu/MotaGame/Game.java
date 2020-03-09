@@ -29,7 +29,7 @@ public class Game {
 	
 	private Board makeBoard(){
 	    int height = 32;
-	    int width = 20;
+	    int width = 32;
 	    int[][] gameBoard = new int[height][width];
 	    int px = 0;
 	    int py = 0;
