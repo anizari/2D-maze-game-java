@@ -1,5 +1,7 @@
 package org.sfu.MotaGame.Bean;
 
+import java.awt.event.KeyEvent;
+
 public class Board{
   private int height;
   private int width;
@@ -38,27 +40,27 @@ public class Board{
     else return true;
   }
 
-  public void movePlayer(char direction){
+  public void movePlayer(int direction){
     switch (direction){
-      case 'w':
+      case KeyEvent.VK_UP:
         if (CheckMove(px - 1, py)){
           gameBoard[px][py] = 0;
           gameBoard[--px][py] = 1;
         }
         break;
-      case 'a':
+      case KeyEvent.VK_LEFT:
         if (CheckMove(px, py - 1)){
           gameBoard[px][py] = 0;
           gameBoard[px][--py] = 1;
         }
         break;
-      case 's':
+      case KeyEvent.VK_DOWN:
         if (CheckMove(px + 1, py)){
           gameBoard[px][py] = 0;
           gameBoard[++px][py] = 1;
         }
         break;
-      case 'd':
+      case KeyEvent.VK_RIGHT:
         if (CheckMove(px, py + 1)){
           gameBoard[px][py] = 0;
           gameBoard[px][++py] = 1;

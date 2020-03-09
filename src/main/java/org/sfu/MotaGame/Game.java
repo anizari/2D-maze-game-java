@@ -2,7 +2,6 @@ package org.sfu.MotaGame;
 
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import java.util.*;
 import javax.swing.*;
 
 import org.sfu.MotaGame.Bean.Board;
@@ -24,9 +23,6 @@ public class Game {
 	    drawBoard();
 	    
 	    frame.addKeyListener(new KeyBoardListener());
-	    
-	    Scanner playerInput = new Scanner( System.in );
-	    Move(playerInput);
 	    
 	}
 	
@@ -76,20 +72,14 @@ public class Game {
 
 		mapLabel.setText(sb.toString());
 	}
-	
-	private void Move(Scanner playerInput){
-		  while(true){
-		    char playerMove = playerInput.next().charAt(0);
-		    board.movePlayer(playerMove);
-		    drawBoard();
-		}
-	}
-	
 
 	
 	private class KeyBoardListener implements KeyListener {
 		public void keyPressed(KeyEvent e) {
-    		System.out.println("we got some shit");
+    		int keyCode = e.getKeyCode();
+    		board.movePlayer(keyCode);
+
+    		drawBoard();
     	}
     	public void keyReleased(KeyEvent e) {
     		
