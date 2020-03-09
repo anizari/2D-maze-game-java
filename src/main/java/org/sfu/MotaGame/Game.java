@@ -45,7 +45,12 @@ public class Game {
 	    int[][] gameBoard = board.getBoard();
 	    for (int x = 0; x < height; x++ ){
 	        for (int y = 0; y < width; y++ ){
-	          gameBoard[x][y] = 0;
+				if(x == 0 || x==(height-1)){
+					gameBoard[x][y] = 9;
+				}
+				else {
+					gameBoard[x][y] = 0;
+				}
 	        }
 	    }
 	    int px = board.getPx();
