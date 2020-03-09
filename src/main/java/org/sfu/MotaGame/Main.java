@@ -1,5 +1,11 @@
+package org.sfu.MotaGame;
+
+import org.sfu.MotaGame.Bean.Board;
+
 import java.util.*;
 import javax.swing.*;
+
+
 
 public class Main {
 
@@ -19,7 +25,9 @@ public static void main(String[] args) {
     drawBoard(board);
     
     Move(playerInput, board);
-}
+
+  
+  }
 
 private static Board makeBoard(){
     int height = 32;
@@ -122,4 +130,7 @@ private static boolean CheckMove(int newX, int newY, int[][] gameBoard, Board bo
   else return true;
 }
 
+
+
 }
+

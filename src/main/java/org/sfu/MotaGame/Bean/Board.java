@@ -1,3 +1,5 @@
+package org.sfu.MotaGame.Bean;
+
 public class Board{
   private int height;
   private int width;
@@ -24,6 +26,7 @@ public class Board{
     return py;
   }
 
+  
 
   public Board(int height, int width, int[][] gameBoard, int px, int py){
     this.height = height;
