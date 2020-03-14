@@ -6,24 +6,22 @@ import javax.swing.*;
 
 import org.sfu.MotaGame.Bean.Board;
 
-public class Game {
+public class Game extends JPanel{
 	
 	private JLabel mapLabel;
 	private Board board;
 	
-	public void Run() {
-	    JFrame frame = new JFrame("MyGame");
-	    frame.setSize(1000,1000);
-	    mapLabel = new JLabel("hhhhhh");
-	    frame.getContentPane().add(mapLabel); // Adds Button to content pane of frame
-	    frame.setVisible(true);
+	public Game() {		
+	    mapLabel = new JLabel();
+	    this.add(mapLabel); // Adds Button to content pane of frame
 	    
 	    board = makeBoard();
 	    initBoard();
 	    drawBoard();
 	    
-	    frame.addKeyListener(new KeyBoardListener());
-	    
+	    this.setFocusable(true);
+	    this.requestFocusInWindow();
+	    this.addKeyListener(new KeyBoardListener());
 	}
 	
 	
@@ -93,4 +91,5 @@ public class Game {
     		
     	}
 	}
+
 }

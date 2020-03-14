@@ -5,10 +5,14 @@ package org.sfu.MotaGame;
 import javax.swing.*;
 
 public class Main {
-
-static JLabel mapLabel;
 	public static void main(String[] args) {    
-		Game game = new Game();
-		game.Run();
+		
+	    JFrame frame = new JFrame("MyGame");
+	    frame.setSize(800,500);
+	    	    
+		JPanel game = new Game();
+		frame.setContentPane(game);
+		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 }
