@@ -1,7 +1,12 @@
 package org.sfu.MotaGame;
 
+import java.awt.*;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.awt.event.KeyEvent;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import org.sfu.MotaGame.Bean.Board;
@@ -10,14 +15,14 @@ public class Game extends JPanel{
 	
 	private JLabel mapLabel;
 	private Board board;
-	
+
 	public Game() {		
 	    mapLabel = new JLabel();
 	    this.add(mapLabel); // Adds Button to content pane of frame
 	    
 	    board = makeBoard();
 	    initBoard();
-	    drawBoard();
+
 	    
 	    this.setFocusable(true);
 	    this.requestFocusInWindow();
@@ -56,8 +61,20 @@ public class Game extends JPanel{
 	    gameBoard[px][py] = 1;
 	}
 	
-
-	private void drawBoard(){
+	@Override
+	public void paintComponent(Graphics g){
+		BufferedImage gameBgImg;
+		try {
+			gameBgImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/store.png"));
+		} catch(Exception e) {
+			gameBgImg = null;
+		}
+		
+		Graphics2D g2 = (Graphics2D) g;
+		
+		g2.drawImage(gameBgImg, null, 0, 0);
+		
+		
 		int height = board.getHeight();
 		int width = board.getWidth();
 		int[][] gameBoard = board.getBoard();
@@ -82,7 +99,7 @@ public class Game extends JPanel{
     		int keyCode = e.getKeyCode();
     		board.movePlayer(keyCode);
 
-    		drawBoard();
+    		repaint();
     	}
     	public void keyReleased(KeyEvent e) {
     		

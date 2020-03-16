@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {    
 		
 	    JFrame frame = new JFrame("MyGame");
-	    frame.setSize(800,500);
+	    frame.setSize(1000,1000);
 	    	    
 		JPanel game = new Game();
 		frame.setContentPane(game);
