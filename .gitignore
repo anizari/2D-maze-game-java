@@ -3,7 +3,6 @@ Chris/
 
 
 #Ignore the following types of files
-*.txt
 *.md
 .DS_Store
 /target/
