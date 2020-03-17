@@ -27,7 +27,6 @@ public class Board{
   
   public Board(){
 	  initBoard();
-
 	}
   
   public void initBoard() {
@@ -152,12 +151,6 @@ public class Board{
 
   }
 
-  public Board(int height, int width, int[][] gameBoard, int px, int py){
-    this.height = height;
-    this.width = width;
-    this.gameBoard = gameBoard;
-    this.px = px;
-    this.py = py;
-  }
+ 
   
 }
