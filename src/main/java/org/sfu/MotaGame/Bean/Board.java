@@ -21,7 +21,10 @@ public class Board{
   
   private dir playerFacing;
   
-
+  long startTime = System.nanoTime()/1000;
+//  long startTime = System.currentTimeMillis()/1000;
+//  long endTime = System.currentTimeMillis()/1000 - startTime;
+  
   public Board(){
 	  
 	  // read map from file
@@ -46,6 +49,7 @@ public class Board{
 	  } catch (Exception e) {
 		  e.printStackTrace();
 	  }
+
 
 	}
   
@@ -86,12 +90,23 @@ public class Board{
     }
     else if (gameBoard[newX][newY] == 7) {
     	score = score + 100;
-    	System.out.print(score);
+    	System.out.println(score);
+    	long estimatedTime = System.nanoTime()/1000 - startTime;
+    	System.out.println(estimatedTime/1000000 + " seconds");
+   // 	System.out.println("Took : " + startTime);
     	return true;
     }
     else if (gameBoard[newX][newY] == 8) {
     	score = score - 100;
+    	System.out.println(score);    	
+    	long estimatedTime = System.nanoTime()/1000 - startTime;
+    	System.out.println(estimatedTime/1000000 + " seconds");
+    	return true;
+    }
+    else if (gameBoard[newX][newY] == 4) {
+    	score = score + 200;
     	System.out.print(score);
+ //      	System.out.println("Took : " + startTime);
     	return true;
     }
     else{
@@ -108,6 +123,7 @@ public class Board{
           gameBoard[px][py] = 0;
           gameBoard[--px][py] = 1;
           this.playerFacing = dir.UP;
+//          System.out.println(endTime);
         }
         break;
       case KeyEvent.VK_LEFT:
