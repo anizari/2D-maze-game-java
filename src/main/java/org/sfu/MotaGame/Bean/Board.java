@@ -1,19 +1,23 @@
+
 package org.sfu.MotaGame.Bean;
 
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Scanner;
 
+
 enum dir {UP, DOWN, LEFT, RIGHT}
 
 public class Board{
-
-private int height;
+  private int height;
   private int width;
   private int[][] gameBoard;
 
   private int px;
   private int py;
+  
+  //Testing score
+  private int score = 100;
   
   private dir playerFacing;
   
@@ -29,6 +33,7 @@ private int height;
 		  this.px = scanner.nextInt();
 		  this.py = scanner.nextInt();
 		  this.playerFacing = dir.DOWN;
+		  //this.score = score;
 		  
 		  this.gameBoard = new int[height][width];
 		  for (int x = 0; x < height; x++ ){
@@ -36,9 +41,7 @@ private int height;
 		    	  gameBoard[x][y] = scanner.nextInt();
 		      }
 		  }
-		  
-	      gameBoard[px][py] = 1;	
-	      
+	      gameBoard[px][py] = 1;
 	      scanner.close();
 	  } catch (Exception e) {
 		  e.printStackTrace();
@@ -62,12 +65,18 @@ private int height;
     return py;
   }
   
+  //Testing score
+  public int getScore() {
+	  return score;
+  }
+  
   public dir getDirection() {
 	  return this.playerFacing;
   }
 
   //Check for out of bounds + walls
   private boolean CheckMove(int newX, int newY){
+	  while(score > 0) {
     //out of bounds check
     if ((newX < 0) || (newY < 0) || (newX >= width) || (newY >= height)) {
       return false;
@@ -75,7 +84,21 @@ private int height;
     else if (gameBoard[newX][newY] == 9){
       return false;
     }
-    else return true;
+    else if (gameBoard[newX][newY] == 7) {
+    	score = score + 100;
+    	System.out.print(score);
+    	return true;
+    }
+    else if (gameBoard[newX][newY] == 8) {
+    	score = score - 100;
+    	System.out.print(score);
+    	return true;
+    }
+    else{
+    	return true;
+    }
+	  }
+	  return false;
   }
 
   public void movePlayer(int direction){
@@ -111,7 +134,6 @@ private int height;
 
   }
 
-
   public Board(int height, int width, int[][] gameBoard, int px, int py){
     this.height = height;
     this.width = width;
@@ -119,4 +141,5 @@ private int height;
     this.px = px;
     this.py = py;
   }
+  
 }
