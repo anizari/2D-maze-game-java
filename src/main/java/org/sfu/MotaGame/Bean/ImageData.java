@@ -44,7 +44,7 @@ public class ImageData {
 			imageMap.put(FLOOR, floorImg);
 			imageMap.put(WALL, wallImg);
 			imageMap.put(REWARD, ItemImg.getSubimage(width, height, width, height));
-			imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, height, width, height));
+	//		imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, height, width, height));
 			imageMap.put(REWARD, ItemImg.getSubimage(32, 32, 32, 32));
 			imageMap.put(PUNISHMENT, punishmentImg.getSubimage(0, 32, 32, 32));
 			imageMap.put(ENEMY, enemyImg1.getSubimage(0, 32, 32, 32));
