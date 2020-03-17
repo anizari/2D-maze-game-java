@@ -20,6 +20,10 @@ public class ImageData {
 	private static final int WALL = 9;
 	private static final int REWARD = 7;
 	private static final int PUNISHMENT = 8; 
+	private static final int DOOR = 2;
+	
+	//Dimensions for the sprite crops
+	private static final int width = 32, height = 32;
 	
 	public ImageData() {
 		imageMap = new HashMap<Integer, BufferedImage>();
@@ -33,15 +37,15 @@ public class ImageData {
 			BufferedImage EnemyImag1 = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/enemy09.png"));
 			imageMap.put(FLOOR, floorImg);
 			imageMap.put(WALL, wallImg);
-			imageMap.put(REWARD, ItemImg.getSubimage(32, 32, 32, 32));
-			imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, 32, 32, 32));
+			imageMap.put(REWARD, ItemImg.getSubimage(width, height, width, height));
+			imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, height, width, height));
 			
 			
 			BufferedImage heroImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/hero.png"));
-			heroImageMap.put(dir.UP, heroImg.getSubimage(0, 0, 32, 32));
-			heroImageMap.put(dir.DOWN, heroImg.getSubimage(0, 32, 32, 32));
-			heroImageMap.put(dir.LEFT, heroImg.getSubimage(0, 64, 32, 32));
-			heroImageMap.put(dir.RIGHT, heroImg.getSubimage(0, 96, 32, 32));
+			heroImageMap.put(dir.UP, heroImg.getSubimage(0, 0, width, height));
+			heroImageMap.put(dir.DOWN, heroImg.getSubimage(0, height, width, height));
+			heroImageMap.put(dir.LEFT, heroImg.getSubimage(0, height*2, width, height));
+			heroImageMap.put(dir.RIGHT, heroImg.getSubimage(0, height*3, width, height));
 
 		} catch (Exception e) {
 			e.printStackTrace();

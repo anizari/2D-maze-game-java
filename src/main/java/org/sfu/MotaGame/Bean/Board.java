@@ -27,16 +27,16 @@ public class Board{
 		  this.height = scanner.nextInt();
 		  this.width = scanner.nextInt();
 		  
-		  this.gameBoard = new int[height][width];
-		  for (int x = 0; x < height; x++ ){
-		      for (int y = 0; y < width; y++ ){
-		    	  gameBoard[y][x] = scanner.nextInt();
-		      }
-		  }
-		  
 		  this.px = scanner.nextInt();
 		  this.py = scanner.nextInt();
 		  this.playerFacing = dir.DOWN;
+		  
+		  this.gameBoard = new int[height][width];
+		  for (int x = 0; x < height; x++ ){
+		      for (int y = 0; y < width; y++ ){
+		    	  gameBoard[x][y] = scanner.nextInt();
+		      }
+		  }
     
 	      gameBoard[px][py] = 1;	
 	      
