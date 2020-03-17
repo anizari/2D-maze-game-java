@@ -2,6 +2,8 @@ package org.sfu.MotaGame.Bean;
 
 import java.awt.event.KeyEvent;
 
+enum dir {UP, DOWN, LEFT, RIGHT}
+
 public class Board{
   private int height;
   private int width;
@@ -11,7 +13,34 @@ public class Board{
 
   private int px;
   private int py;
+  
+  private dir playerFacing;
+  
 
+  public Board(){
+	    this.height = 32;
+	    this.width = 32;
+	    this.gameBoard = new int[height][width];
+
+	    
+	    for (int x = 0; x < height; x++ ){
+	        for (int y = 0; y < width; y++ ){
+				if(x == 0 || x==(height-1)){
+					gameBoard[x][y] = 9;
+				}
+				else {
+					gameBoard[x][y] = 0;
+				}
+	        }
+	    }
+	    
+	    this.px = 0;
+	    this.py = 0;
+	    this.playerFacing = dir.DOWN;
+	    
+	    gameBoard[px][py] = 1;
+	}
+  
   public int getHeight(){
     return height;
   }
@@ -26,6 +55,10 @@ public class Board{
   }
   public int getPy(){
     return py;
+  }
+  
+  public dir getDirection() {
+	  return this.playerFacing;
   }
 
   //Check for out of bounds + walls
@@ -46,24 +79,28 @@ public class Board{
         if (CheckMove(px - 1, py)){
           gameBoard[px][py] = 0;
           gameBoard[--px][py] = 1;
+          this.playerFacing = dir.UP;
         }
         break;
       case KeyEvent.VK_LEFT:
         if (CheckMove(px, py - 1)){
           gameBoard[px][py] = 0;
           gameBoard[px][--py] = 1;
+          this.playerFacing = dir.LEFT;
         }
         break;
       case KeyEvent.VK_DOWN:
         if (CheckMove(px + 1, py)){
           gameBoard[px][py] = 0;
           gameBoard[++px][py] = 1;
+          this.playerFacing = dir.DOWN;
         }
         break;
       case KeyEvent.VK_RIGHT:
         if (CheckMove(px, py + 1)){
           gameBoard[px][py] = 0;
           gameBoard[px][++py] = 1;
+          this.playerFacing = dir.RIGHT;
         };
     }
 
