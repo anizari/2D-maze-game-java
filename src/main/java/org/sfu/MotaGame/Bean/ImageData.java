@@ -20,25 +20,36 @@ public class ImageData {
 	private static final int WALL = 9;
 	private static final int REWARD = 7;
 	private static final int PUNISHMENT = 8; 
+
 	private static final int DOOR = 2;
 	
 	//Dimensions for the sprite crops
 	private static final int width = 32, height = 32;
+
+	private static final int ENEMY = 3;
+	private static final int EXIT = 2;
 	
 	public ImageData() {
 		imageMap = new HashMap<Integer, BufferedImage>();
 		heroImageMap = new HashMap<dir, BufferedImage>();
 
-		
 		try {
 			BufferedImage floorImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/floor.png"));
 			BufferedImage wallImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/wall.png"));
 			BufferedImage ItemImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/item1.png"));
-			BufferedImage EnemyImag1 = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/enemy09.png"));
+			BufferedImage punishmentImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/trap.png"));
+	//		BufferedImage EnemyImag1 = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/enemy09.png"));
+			BufferedImage enemyImg1 = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/enemy02.png"));
+			BufferedImage exitImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/door.png"));
 			imageMap.put(FLOOR, floorImg);
 			imageMap.put(WALL, wallImg);
 			imageMap.put(REWARD, ItemImg.getSubimage(width, height, width, height));
 			imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, height, width, height));
+			imageMap.put(REWARD, ItemImg.getSubimage(32, 32, 32, 32));
+			imageMap.put(PUNISHMENT, punishmentImg.getSubimage(0, 32, 32, 32));
+			imageMap.put(ENEMY, enemyImg1.getSubimage(0, 32, 32, 32));
+			imageMap.put(EXIT, exitImg.getSubimage(0, 32, 32, 32));
+	//		imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, 32, 32, 32));
 			
 			
 			BufferedImage heroImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/hero.png"));

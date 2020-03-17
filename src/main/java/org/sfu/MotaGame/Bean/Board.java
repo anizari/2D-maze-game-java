@@ -37,7 +37,7 @@ public class Board{
 		    	  gameBoard[x][y] = scanner.nextInt();
 		      }
 		  }
-    
+		  
 	      gameBoard[px][py] = 1;	
 	      
 	      scanner.close();
@@ -151,3 +151,4 @@ public class Board{
   }
 
 }
+
