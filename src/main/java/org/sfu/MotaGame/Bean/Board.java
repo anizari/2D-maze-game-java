@@ -1,6 +1,8 @@
 package org.sfu.MotaGame.Bean;
 
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.Scanner;
 
 enum dir {UP, DOWN, LEFT, RIGHT}
 
@@ -18,27 +20,31 @@ public class Board{
   
 
   public Board(){
-	    this.height = 32;
-	    this.width = 32;
-	    this.gameBoard = new int[height][width];
+	  
+	  // read map from file
+	  try {
+		  Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/sprite/world1.txt"));
+		  this.height = scanner.nextInt();
+		  this.width = scanner.nextInt();
+		  
+		  this.gameBoard = new int[height][width];
+		  for (int x = 0; x < height; x++ ){
+		      for (int y = 0; y < width; y++ ){
+		    	  gameBoard[y][x] = scanner.nextInt();
+		      }
+		  }
+		  
+		  this.px = scanner.nextInt();
+		  this.py = scanner.nextInt();
+		  this.playerFacing = dir.DOWN;
+    
+	      gameBoard[px][py] = 1;	
+	      
+	      scanner.close();
+	  } catch (Exception e) {
+		  e.printStackTrace();
+	  }
 
-	    
-	    for (int x = 0; x < height; x++ ){
-	        for (int y = 0; y < width; y++ ){
-				if(x == 0 || x==(height-1)){
-					gameBoard[x][y] = 9;
-				}
-				else {
-					gameBoard[x][y] = 0;
-				}
-	        }
-	    }
-	    
-	    this.px = 0;
-	    this.py = 0;
-	    this.playerFacing = dir.DOWN;
-	    
-	    gameBoard[px][py] = 1;
 	}
   
   public int getHeight(){

@@ -30,8 +30,16 @@ public class Game extends JPanel{
 	
 	@Override
 	public void paintComponent(Graphics g){
+		BufferedImage gameBgImg;
+		try {
+			gameBgImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/store.png"));
+		} catch(Exception e) {
+			gameBgImg = null;
+		}
+		
 		Graphics2D g2 = (Graphics2D) g;
-
+				
+		
 		int height = board.getHeight();
 		int width = board.getWidth();
 		int[][] gameBoard = board.getBoard();

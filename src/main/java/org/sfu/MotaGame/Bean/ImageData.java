@@ -18,6 +18,8 @@ public class ImageData {
 	
 	private static final int FLOOR = 0;
 	private static final int WALL = 9;
+	private static final int REWARD = 7;
+	private static final int PUNISHMENT = 8; 
 	
 	public ImageData() {
 		imageMap = new HashMap<Integer, BufferedImage>();
@@ -27,8 +29,12 @@ public class ImageData {
 		try {
 			BufferedImage floorImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/floor.png"));
 			BufferedImage wallImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/wall.png"));
+			BufferedImage ItemImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/item1.png"));
+			BufferedImage EnemyImag1 = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/enemy09.png"));
 			imageMap.put(FLOOR, floorImg);
 			imageMap.put(WALL, wallImg);
+			imageMap.put(REWARD, ItemImg.getSubimage(32, 32, 32, 32));
+			imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, 32, 32, 32));
 			
 			
 			BufferedImage heroImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/hero.png"));
