@@ -26,32 +26,34 @@ public class Board{
 //  long endTime = System.currentTimeMillis()/1000 - startTime;
   
   public Board(){
-	  
-	  // read map from file
-	  try {
-		  Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/sprite/world1.txt"));
-		  this.height = scanner.nextInt();
-		  this.width = scanner.nextInt();
-		  
-		  this.px = scanner.nextInt();
-		  this.py = scanner.nextInt();
-		  this.playerFacing = dir.DOWN;
-		  //this.score = score;
-		  
-		  this.gameBoard = new int[height][width];
-		  for (int x = 0; x < height; x++ ){
-		      for (int y = 0; y < width; y++ ){
-		    	  gameBoard[x][y] = scanner.nextInt();
-		      }
-		  }
-	      gameBoard[px][py] = 1;
-	      scanner.close();
-	  } catch (Exception e) {
-		  e.printStackTrace();
-	  }
-
+	  initBoard();
 
 	}
+  
+  public void initBoard() {
+	// read map from file
+		  try {
+			  Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/sprite/world1.txt"));
+			  this.height = scanner.nextInt();
+			  this.width = scanner.nextInt();
+			  
+			  this.px = scanner.nextInt();
+			  this.py = scanner.nextInt();
+			  this.playerFacing = dir.DOWN;
+			  //this.score = score;
+			  
+			  this.gameBoard = new int[height][width];
+			  for (int x = 0; x < height; x++ ){
+			      for (int y = 0; y < width; y++ ){
+			    	  gameBoard[x][y] = scanner.nextInt();
+			      }
+			  }
+		      gameBoard[px][py] = 1;
+		      scanner.close();
+		  } catch (Exception e) {
+			  e.printStackTrace();
+		  }
+  }
   
   public int getHeight(){
     return height;
