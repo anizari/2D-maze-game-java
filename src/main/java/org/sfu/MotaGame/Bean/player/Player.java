@@ -2,40 +2,41 @@ package org.sfu.MotaGame.Bean.player;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import org.sfu.MotaGame.Bean.ImageData;
 
-public class Player{
+public class Player extends Rectangle{
 
-	private int x, y;
+	//private int x, y;
 	private ImageData imgData;
-	private boolean up, down, left, right;
-	private static final int speed = 2;
+	public boolean moveUp, moveDown, moveLeft, moveRight;
+	private int speed = 2;
 	
 	public Player(int x, int y) {
-		this.x = x;
-		this.y = y;
+		setBounds(x, y, 32, 32);
 	}
 	
-	public void move() {
-		if(up)
+	public void tick() {
+		if(moveUp)
 			y -= speed;
-		if(down)
+		if(moveDown)
 			y += speed;
-		if(left)
+		if(moveLeft)
 			x -= speed;
-		if(right)
+		if(moveRight)
 			x += speed;
 	}
 	
 	public void render(Graphics g) {
-		
+		g.setColor(Color.green);
+		g.fillRect(x, y, width, height);
 	}
 	
-	public int getX() {
+	public double getX() {
 		return x;
 	}
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	public void setX(int x) {

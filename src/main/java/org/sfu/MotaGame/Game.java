@@ -13,24 +13,26 @@ import javax.swing.*;
 import org.sfu.MotaGame.Bean.*;
 import org.sfu.MotaGame.Bean.player.Player;
 
-public class Game extends Canvas implements Runnable{
-	private int width, height;
+public class Game extends Canvas implements Runnable, KeyListener{
+	private int width = 1024, height = 1024;
 	
 	private Board board;
 	private ImageData imgData;
-	private Player player;
+	public static Player player;
 	
 	private boolean isRunning = false;
 	
 	private Thread thread;
 
 	public Game() {	
-		setPreferredSize(new Dimension(1024, 1024));
-		setMinimumSize(new Dimension(1024, 1024));
-		setMaximumSize(new Dimension(1024, 1024));
+		setPreferredSize(new Dimension(width, height));
+		setMinimumSize(new Dimension(width, height));
+		setMaximumSize(new Dimension(width, height));
 
-		this.addKeyListener(new KeyBoardListener());
-	    board = new Board();
+		//this.addKeyListener(new KeyBoardListener());
+		addKeyListener(this);
+		player = new Player(width / 2, height / 2);
+	    //board = new Board();
  
 	}
 	
@@ -131,6 +133,7 @@ private void drawGameOver(Graphics2D g2) {
 			int ticks = 0;
 			
 			while(isRunning) {	
+				requestFocus();
 				now = System.nanoTime();
 				delta += (now - lastTime) / timePerTick;
 				timer += now - lastTime;
@@ -179,7 +182,7 @@ private void drawGameOver(Graphics2D g2) {
 		}
 		
 		private void tick() {
-			
+			player.tick();
 		}
 		
 		
@@ -191,12 +194,45 @@ private void drawGameOver(Graphics2D g2) {
 			}
 			
 			Graphics g = b.getDrawGraphics();
-			g.clearRect(0, 0, width, height);
+			g.clearRect(0, 0, height, height);
 			
-			board.render(g);
+			player.render(g);
+			//board.render(g);
 			
 			g.dispose();
 			b.show();
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getKeyCode() == KeyEvent.VK_W)
+				player.moveUp = true;
+			if(e.getKeyCode() == KeyEvent.VK_S)
+				player.moveDown = true;
+			if(e.getKeyCode() == KeyEvent.VK_A)
+				player.moveLeft = true;
+			if(e.getKeyCode() == KeyEvent.VK_D)
+				player.moveRight = true;
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getKeyCode() == KeyEvent.VK_W)
+				player.moveUp = false;
+			if(e.getKeyCode() == KeyEvent.VK_S)
+				player.moveDown = false;
+			if(e.getKeyCode() == KeyEvent.VK_A)
+				player.moveLeft = false;
+			if(e.getKeyCode() == KeyEvent.VK_D)
+				player.moveRight = false;
 		}
 
 }

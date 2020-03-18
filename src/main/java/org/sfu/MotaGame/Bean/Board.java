@@ -73,8 +73,8 @@ public class Board{
 			    	  }
 			      }
 			  }
-		      int startX = p.getX();
-		      int startY = p.getY();
+		      int startX = (int) p.getX();
+		      int startY = (int) p.getY();
 		      gameBoard[startX][startY] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
