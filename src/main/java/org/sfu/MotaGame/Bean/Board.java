@@ -22,7 +22,7 @@ public class Board{
   private dir playerFacing;
   
   long startTime = System.nanoTime()/1000;
-  //long estimatedTime;
+//  long estimatedTime;
 //  long startTime = System.currentTimeMillis()/1000;
 //  long endTime = System.currentTimeMillis()/1000 - startTime;
   

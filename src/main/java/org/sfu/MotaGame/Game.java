@@ -2,6 +2,7 @@ package org.sfu.MotaGame;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.awt.event.KeyEvent;
@@ -11,10 +12,14 @@ import javax.swing.*;
 
 import org.sfu.MotaGame.Bean.*;
 
-public class Game extends JPanel{
+public class Game extends JPanel implements Runnable{
 	
 	private Board board;
 	private ImageData imgData;
+	
+	private boolean isRunning = false;
+	
+	private Thread thread;
 
 	public Game() {		
 		imgData = new ImageData();
@@ -25,7 +30,46 @@ public class Game extends JPanel{
 	    this.addKeyListener(new KeyBoardListener());
 	}
 	
+	public void run() {
+		while(isRunning) {
+			tick();
+			update();
+		}
+		
+		stop();
+	}
 	
+	public synchronized void start() {
+		if(isRunning) {
+			return;
+		}
+		
+		isRunning = true;
+		thread = new Thread(this);
+		thread.start();
+	}
+	
+	public synchronized void stop() {
+		if(!isRunning) {
+			return;
+		}
+		
+		isRunning = false;
+		try {
+			thread.join();
+		}
+		catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void tick() {
+		
+	}
+	
+	private void update() {
+		
+	}
 	
 	
 	@Override
