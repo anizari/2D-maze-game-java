@@ -6,6 +6,9 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Scanner;
 
+import org.sfu.MotaGame.Bean.player.Enemy;
+import org.sfu.MotaGame.Bean.player.Player;
+
 
 enum dir {UP, DOWN, LEFT, RIGHT}
 
@@ -16,6 +19,10 @@ public class Board{
 
   private int px;
   private int py;
+  
+  private Player p;
+  private Enemy[] e;
+  
   
   //Testing score
   private int score = 100;
@@ -41,22 +48,29 @@ public class Board{
 			  this.height = scanner.nextInt();
 			  this.width = scanner.nextInt();
 			  
-			  this.px = scanner.nextInt();
 			  this.py = scanner.nextInt();
+			  this.px = scanner.nextInt();
+			  this.p = new Player(px, py);
 			  this.playerFacing = dir.DOWN;
+			  
+			  this.e = new Enemy[scanner.nextInt()];
+			  int eCounter = 0;
 			  //this.score = score;
 			  
 			  this.gameBoard = new int[height][width];
-			  for (int x = 0; x < height; x++ ){
-			      for (int y = 0; y < width; y++ ){
-			    	  gameBoard[x][y] = scanner.nextInt();
+			  for (int y = 0; y < height; y++ ){
+			      for (int x = 0; x < width; x++ ){
+			    	  gameBoard[y][x] = scanner.nextInt();
 			    	  //counts keys in world1.txt file
-			    	  if (gameBoard[x][y] == 7) {
+			    	  if (gameBoard[y][x] == 7) {
 			    		  this.keyCounter++;
+			    	  }
+			    	  else if (gameBoard[y][x] == 3) {
+			    		  e[eCounter++] = new Enemy(x, y);
 			    	  }
 			      }
 			  }
-		      gameBoard[px][py] = 1;
+		      gameBoard[py][px] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
 			  e.printStackTrace();

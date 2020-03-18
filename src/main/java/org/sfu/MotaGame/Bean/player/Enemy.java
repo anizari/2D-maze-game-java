@@ -1,6 +1,6 @@
 package org.sfu.MotaGame.Bean.player;
 
-public class Player{
+public class Enemy{
 
 	private int x, y;
 	
@@ -17,7 +17,7 @@ public class Player{
 		this.y = y;
 	}
 	
-	public Player(int x, int y) {
+	public Enemy(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
