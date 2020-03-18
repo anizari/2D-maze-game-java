@@ -102,8 +102,9 @@ private void drawGameOver(Graphics2D g2) {
 		public void keyPressed(KeyEvent e) {
     		int keyCode = e.getKeyCode();
     		board.movePlayer(keyCode);
-
     		repaint();
+    		
+    		
     	}
     	public void keyReleased(KeyEvent e) {
     		

@@ -17,7 +17,7 @@ public class Player{
 		this.y = y;
 	}
 	
-	public void tick() {
+	public void move() {
 		if(up)
 			y -= speed;
 		if(down)

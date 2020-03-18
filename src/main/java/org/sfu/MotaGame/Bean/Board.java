@@ -53,7 +53,7 @@ public class Board{
 			  
 			  this.py = scanner.nextInt();
 			  this.px = scanner.nextInt();
-			  this.p = new Player(px, py);
+			  this.p = new Player(px*width, py*height);
 			  this.playerFacing = dir.DOWN;
 			  
 			  this.e = new Enemy[scanner.nextInt()];
@@ -73,9 +73,9 @@ public class Board{
 			    	  }
 			      }
 			  }
-		      int startX = p.getX();
-		      int startY = p.getY();
-		      gameBoard[startX][startY] = 1;
+//		      int startX = p.getX();
+//		      int startY = p.getY();
+//		      gameBoard[startX][startY] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
 			  e.printStackTrace();
@@ -90,6 +90,7 @@ public class Board{
 				g.drawImage(imgData.get(gameBoard[i][j]), 32*j, 32*i, 32, 32, null);
 			}
 		}
+		p.render(g);
   }
   
   public int getHeight(){
