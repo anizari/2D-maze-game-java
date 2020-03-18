@@ -9,7 +9,7 @@ public class Main {
 		
 	public static void main(String[] args) {    
 		Game game = new Game();
-	    JFrame frame = new JFrame("MyGame");
+	    JFrame frame = new JFrame("Game");
 	    frame.add(game);
 	    frame.setSize(1040,1063);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
