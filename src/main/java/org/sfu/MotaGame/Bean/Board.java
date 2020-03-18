@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.sfu.MotaGame.Bean.player.Enemy;
@@ -26,12 +27,12 @@ public class Board{
   private Player p;
   private Enemy[] e;
   
+  private ArrayList<Key> keys;
   
   //Testing score
   private int score = 100;
   //counts the number of key fragments left
   private int keyCounter = 0;
-  
   private dir playerFacing;
   
   long startTime = System.nanoTime()/1000;
@@ -47,6 +48,7 @@ public class Board{
   public void initBoard() {
 	// read map from file
 		  try {
+			  keys = new ArrayList<>();
 			  Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/sprite/world1.txt"));
 			  this.height = scanner.nextInt();
 			  this.width = scanner.nextInt();
@@ -67,6 +69,7 @@ public class Board{
 			    	  //counts keys in world1.txt file
 			    	  if (gameBoard[y][x] == 7) {
 			    		  this.keyCounter++;
+			    		  keys.add(new Key(x*32, y*32));
 			    	  }
 			    	  else if (gameBoard[y][x] == 3) {
 			    		  e[eCounter++] = new Enemy(x, y);
@@ -90,7 +93,11 @@ public class Board{
 				g.drawImage(imgData.get(gameBoard[i][j]), 32*j, 32*i, 32, 32, null);
 			}
 		}
-		//p.render(g);
+		
+		for(int i = 0; i < keys.size(); i++) {
+			keys.get(i).render(g);
+		}
+		
   }
   
   public int getHeight(){
