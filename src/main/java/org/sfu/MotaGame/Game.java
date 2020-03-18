@@ -32,7 +32,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		//this.addKeyListener(new KeyBoardListener());
 		addKeyListener(this);
 		player = new Player(width / 2, height / 2);
-	    //board = new Board();
+	    board = new Board();
  
 	}
 	
@@ -196,8 +196,10 @@ private void drawGameOver(Graphics2D g2) {
 			Graphics g = b.getDrawGraphics();
 			g.clearRect(0, 0, height, height);
 			
+			
+			board.render(g);
 			player.render(g);
-			//board.render(g);
+			
 			
 			g.dispose();
 			b.show();

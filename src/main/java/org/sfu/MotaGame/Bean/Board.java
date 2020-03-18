@@ -90,7 +90,7 @@ public class Board{
 				g.drawImage(imgData.get(gameBoard[i][j]), 32*j, 32*i, 32, 32, null);
 			}
 		}
-		p.render(g);
+		//p.render(g);
   }
   
   public int getHeight(){
