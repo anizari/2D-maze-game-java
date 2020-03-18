@@ -52,6 +52,15 @@ public class Game extends JPanel{
 		
 		// draw hero
 		g2.drawImage(imgData.getHeroImg(board.getDirection()), 32*board.getPy(), 32*board.getPx(), 32, 32, null);
+		
+		drawScore(g2);
+	}
+	
+	private void drawScore(Graphics2D g2) {
+		Font font = new Font("Helvetica", Font.BOLD, 20);
+		g2.setFont(font);
+		g2.setColor(Color.yellow);
+		g2.drawString("Score: " + board.getScore(), board.getWidth()*board.getWidth()/2 - 400, board.getHeight() - 10);
 	}
 
 	
