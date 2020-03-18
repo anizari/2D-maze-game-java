@@ -30,58 +30,14 @@ public class Game extends JPanel implements Runnable{
 	    this.addKeyListener(new KeyBoardListener());
 	}
 	
-	//Game Loop
-	public void run() {
-		while(isRunning) {
-			tick();
-			render();
-		}
-		
-		stop();
-	}
-	
-	public synchronized void start() {
-		if(isRunning) {
-			return;
-		}
-		
-		isRunning = true;
-		thread = new Thread(this);
-		thread.start();
-	}
-	
-	public synchronized void stop() {
-		if(!isRunning) {
-			return;
-		}
-		
-		isRunning = false;
-		try {
-			thread.join();
-		}
-		catch(InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void tick() {
-		
-	}
-	
-	
-	private void render() {
-		
-	}
-	
-	
 	@Override
 	public void paintComponent(Graphics g){
-		BufferedImage gameBgImg;
+		/*BufferedImage gameBgImg;
 		try {
 			gameBgImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/store.png"));
 		} catch(Exception e) {
 			gameBgImg = null;
-		}
+		}*/
 		
 		Graphics2D g2 = (Graphics2D) g;
 				
@@ -144,5 +100,48 @@ public class Game extends JPanel implements Runnable{
     		
     	}
 	}
+	
+	// Game loop using thread
+		public void run() {
+			while(isRunning) {
+				tick();
+				render();
+			}
+			
+			stop();
+		}
+		
+		public synchronized void start() {
+			if(isRunning) {
+				return;
+			}
+			
+			isRunning = true;
+			thread = new Thread(this);
+			thread.start();
+		}
+		
+		public synchronized void stop() {
+			if(!isRunning) {
+				return;
+			}
+			
+			isRunning = false;
+			try {
+				thread.join();
+			}
+			catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		private void tick() {
+			
+		}
+		
+		
+		private void render() {
+			
+		}
 
 }
