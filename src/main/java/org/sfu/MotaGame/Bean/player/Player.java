@@ -1,5 +1,7 @@
 package org.sfu.MotaGame.Bean.player;
 
+import java.awt.Graphics;
+
 public class Player{
 
 	private int x, y;
@@ -20,6 +22,10 @@ public class Player{
 	public Player(int x, int y) {
 		this.x = x;
 		this.y = y;
+	}
+	
+	public void render(Graphics g) {
+		
 	}
 	
 }
