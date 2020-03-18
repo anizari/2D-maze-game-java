@@ -30,10 +30,11 @@ public class Game extends JPanel implements Runnable{
 	    this.addKeyListener(new KeyBoardListener());
 	}
 	
+	//Game Loop
 	public void run() {
 		while(isRunning) {
 			tick();
-			update();
+			render();
 		}
 		
 		stop();
@@ -67,7 +68,8 @@ public class Game extends JPanel implements Runnable{
 		
 	}
 	
-	private void update() {
+	
+	private void render() {
 		
 	}
 	
