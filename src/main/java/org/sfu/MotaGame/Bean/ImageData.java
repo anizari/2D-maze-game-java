@@ -39,7 +39,7 @@ public class ImageData {
 			BufferedImage bonusrewardImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/item2.png"));
 			imageMap.put(FLOOR, floorImg);
 			imageMap.put(WALL, wallImg);
-			imageMap.put(REWARD, ItemImg.getSubimage(32, 32, 32, 32));
+			imageMap.put(REWARD, ItemImg.getSubimage(0, 0, 32, 32));
 			imageMap.put(PUNISHMENT, punishmentImg.getSubimage(0, 32, 32, 32));
 			imageMap.put(ENEMY, enemyImg1.getSubimage(0, 32, 32, 32));
 			imageMap.put(EXIT, exitImg.getSubimage(0, 0, 32, 32));

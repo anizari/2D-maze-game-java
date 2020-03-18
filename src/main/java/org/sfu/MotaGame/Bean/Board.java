@@ -25,7 +25,7 @@ public class Board{
   private dir playerFacing;
   
   long startTime = System.nanoTime()/1000;
-//  long estimatedTime;
+  long estimatedTime;
 //  long startTime = System.currentTimeMillis()/1000;
 //  long endTime = System.currentTimeMillis()/1000 - startTime;
   
@@ -52,7 +52,7 @@ public class Board{
 			    	  gameBoard[x][y] = scanner.nextInt();
 			      }
 			  }
-		      //gameBoard[px][py] = 1;
+		      gameBoard[px][py] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
 			  e.printStackTrace();
@@ -80,53 +80,9 @@ public class Board{
 	  return score;
   }
   
-  public dir getDirection() {
-	  return this.playerFacing;
-  }
+  
 
-  //Check for out of bounds + walls
-  private boolean CheckMove(int newX, int newY){
-	  while(score > 0) {
-    //out of bounds check
-    if ((newX < 0) || (newY < 0) || (newX >= width) || (newY >= height)) {
-      return false;
-    }
-    //wall check
-    else if (gameBoard[newX][newY] == 9){
-      return false;
-    }
-    //key fragment check
-    else if (gameBoard[newX][newY] == 7) {
-    	score = score + 100;
-    	System.out.println(score);
-    	keyCounter--;
-    	System.out.print(keyCounter);
-//    	long estimatedTime = System.nanoTime()/1000 - startTime;
- //   	System.out.println(estimatedTime/1000000 + " seconds");
-   // 	System.out.println("Took : " + startTime);
-    	return true;
-    }
-    else if (gameBoard[newX][newY] == 8) {
-    	score = score - 100;
-    	System.out.println(score);    	
-  //  	long estimatedTime = System.nanoTime()/1000 - startTime;
-  //  	System.out.println(estimatedTime/1000000 + " seconds");
-    	return true;
-    }
-    else if (gameBoard[newX][newY] == 4) {
-    	score = score + 200;
-    	System.out.print(score);
- //      	System.out.println("Took : " + startTime);
-    	return true;
-    }
-    else{
-    	return true;
-    }
-	  }
-	  return false;
-  }
-
-  /*
+  
   public long getEstimatedTime() {
 	return estimatedTime;
 }
@@ -134,7 +90,65 @@ public class Board{
 public void setEstimatedTime(long estimatedTime) {
 	this.estimatedTime = estimatedTime;
 }
-*/
+
+
+public int getKeyCounter() {
+	return keyCounter;
+}
+
+public void setKeyCounter(int keyCounter) {
+	this.keyCounter = keyCounter;
+}
+
+public void setScore(int score) {
+	this.score = score;
+}
+
+public dir getDirection() {
+	  return this.playerFacing;
+}
+
+//Check for out of bounds + walls
+private boolean CheckMove(int newX, int newY){
+	  while(score > 0) {
+  //out of bounds check
+  if ((newX < 0) || (newY < 0) || (newX >= width) || (newY >= height)) {
+    return false;
+  }
+  //wall check
+  else if (gameBoard[newX][newY] == 9){
+    return false;
+  }
+  //key fragment check
+  else if (gameBoard[newX][newY] == 7) {
+  	score = score + 100;
+  	System.out.println(score);
+  	keyCounter--;
+  	System.out.println(keyCounter);
+  	estimatedTime = System.nanoTime()/1000 - startTime;
+//   	System.out.println(estimatedTime/1000000 + " seconds");
+ // 	System.out.println("Took : " + startTime);
+  	return true;
+  }
+  else if (gameBoard[newX][newY] == 8) {
+  	score = score - 100;
+  	System.out.println(score);    	
+  	estimatedTime = System.nanoTime()/1000 - startTime;
+//  	System.out.println(estimatedTime/1000000 + " seconds");
+  	return true;
+  }
+  else if (gameBoard[newX][newY] == 4) {
+  	score = score + 200;
+  	System.out.print(score);
+//      	System.out.println("Took : " + startTime);
+  	return true;
+  }
+  else{
+  	return true;
+  }
+	  }
+	  return false;
+}
 
 public void movePlayer(int direction){
     switch (direction){
