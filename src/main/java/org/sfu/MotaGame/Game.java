@@ -106,22 +106,6 @@ private void drawGameOver(Graphics2D g2) {
 	}
 	*/
 	
-	private class KeyBoardListener implements KeyListener {
-		public void keyPressed(KeyEvent e) {
-    		int keyCode = e.getKeyCode();
-    		board.movePlayer(keyCode);
-    		repaint();
-    		
-    		
-    	}
-    	public void keyReleased(KeyEvent e) {
-    		
-    	}
-    	public void keyTyped(KeyEvent e) {
-    		
-    	}
-	}
-	
 	// Game loop using thread
 		public void run() {
 			int fps = 60;
