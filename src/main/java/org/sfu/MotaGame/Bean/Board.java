@@ -22,6 +22,7 @@ public class Board{
   private dir playerFacing;
   
   long startTime = System.nanoTime()/1000;
+  //long estimatedTime;
 //  long startTime = System.currentTimeMillis()/1000;
 //  long endTime = System.currentTimeMillis()/1000 - startTime;
   
@@ -117,7 +118,17 @@ public class Board{
 	  return false;
   }
 
-  public void movePlayer(int direction){
+  /*
+  public long getEstimatedTime() {
+	return estimatedTime;
+}
+
+public void setEstimatedTime(long estimatedTime) {
+	this.estimatedTime = estimatedTime;
+}
+*/
+
+public void movePlayer(int direction){
     switch (direction){
       case KeyEvent.VK_UP:
         if (CheckMove(px - 1, py)){

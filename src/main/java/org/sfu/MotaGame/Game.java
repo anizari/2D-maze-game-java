@@ -53,7 +53,10 @@ public class Game extends JPanel{
 		// draw hero
 		g2.drawImage(imgData.getHeroImg(board.getDirection()), 32*board.getPy(), 32*board.getPx(), 32, 32, null);
 		
+		// draw score
 		drawScore(g2);
+		
+		//drawTimer(g2);
 	}
 	
 	private void drawScore(Graphics2D g2) {
@@ -63,6 +66,12 @@ public class Game extends JPanel{
 		g2.drawString("Score: " + board.getScore(), board.getWidth()*board.getWidth()/2 - 400, board.getHeight() - 10);
 	}
 
+	/*private void drawTimer(Graphics2D g2) {
+		Font font = new Font("Helvetica", Font.BOLD, 20);
+		g2.setFont(font);
+		g2.setColor(Color.green);
+		g2.drawString("Time: " + board.getEstimatedTime(), board.getWidth()*board.getWidth()/2 - 500, board.getHeight() - 10);
+	}*/
 	
 	private class KeyBoardListener implements KeyListener {
 		public void keyPressed(KeyEvent e) {
