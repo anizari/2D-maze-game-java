@@ -2,6 +2,8 @@
 
 package org.sfu.MotaGame.Bean;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Scanner;
@@ -16,6 +18,7 @@ public class Board{
   private int height;
   private int width;
   private int[][] gameBoard;
+  private ImageData imgData;
 
   private int px;
   private int py;
@@ -77,6 +80,17 @@ public class Board{
 		  } catch (Exception e) {
 			  e.printStackTrace();
 		  }
+  }
+  
+  public void render(Graphics g) {
+	  imgData = new ImageData();
+	  Graphics2D g2 = (Graphics2D) g;
+
+		for(int i = 0; i < height; i++){
+			for (int j = 0; j < width; j++){
+				g2.drawImage(imgData.get(gameBoard[i][j]), 32*j, 32*i, 32, 32, null);
+			}
+		}
   }
   
   public int getHeight(){

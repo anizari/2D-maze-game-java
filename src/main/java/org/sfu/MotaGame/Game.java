@@ -12,7 +12,8 @@ import javax.swing.*;
 
 import org.sfu.MotaGame.Bean.*;
 
-public class Game extends JPanel implements Runnable{
+public class Game extends Canvas implements Runnable{
+	private int width, height;
 	
 	private Board board;
 	private ImageData imgData;
@@ -21,23 +22,20 @@ public class Game extends JPanel implements Runnable{
 	
 	private Thread thread;
 
-	public Game() {		
-		imgData = new ImageData();
+	public Game() {	
+		Dimension d = new Dimension(1024,1024);
+		setPreferredSize(d);
+		setMinimumSize(d);
+		setMaximumSize(d);
+		setFocusable(false);
+		
+		this.addKeyListener(new KeyBoardListener());
 	    board = new Board();
-
-	    this.setFocusable(true);
-	    this.requestFocusInWindow();
-	    this.addKeyListener(new KeyBoardListener());
+ 
 	}
 	
-	@Override
+	/*@Override
 	public void paintComponent(Graphics g){
-		/*BufferedImage gameBgImg;
-		try {
-			gameBgImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/store.png"));
-		} catch(Exception e) {
-			gameBgImg = null;
-		}*/
 		
 		Graphics2D g2 = (Graphics2D) g;
 				
@@ -63,7 +61,7 @@ public class Game extends JPanel implements Runnable{
 		
 		// draw timer
 		drawTimer(g2);
-	}
+	}*/
 
 private void drawGameOver(Graphics2D g2) {
 Font font = new Font("Helvetica", Font.BOLD, 20);
@@ -83,7 +81,7 @@ private void drawGameOver(Graphics2D g2) {
 }
 */
 
-
+/*
 	private void drawScore(Graphics2D g2) {
 		Font font = new Font("Helvetica", Font.BOLD, 20);
 		g2.setFont(font);
@@ -104,6 +102,7 @@ private void drawGameOver(Graphics2D g2) {
 		g2.setColor(Color.green);
 		g2.drawString("Time: " + board.getEstimatedTime()/1000000, board.getWidth()*board.getWidth()/2 + 100, board.getHeight() - 10);
 	}
+	*/
 	
 	private class KeyBoardListener implements KeyListener {
 		public void keyPressed(KeyEvent e) {
@@ -130,7 +129,7 @@ private void drawGameOver(Graphics2D g2) {
 			long timer = 0;
 			int ticks = 0;
 			
-			while(isRunning) {
+			while(isRunning) {				
 				now = System.nanoTime();
 				delta += (now - lastTime) / timePerTick;
 				timer += now - lastTime;
@@ -184,7 +183,17 @@ private void drawGameOver(Graphics2D g2) {
 		
 		
 		private void render() {
+			BufferStrategy b = getBufferStrategy();
+			if(b == null) {
+				createBufferStrategy(3);
+				return;
+			}
 			
+			Graphics g = b.getDrawGraphics();
+			g.clearRect(0, 0, width, height);
+			board.render(g);
+			g.dispose();
+			b.show();
 		}
 
 }
