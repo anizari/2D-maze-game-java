@@ -64,7 +64,26 @@ public class Game extends JPanel implements Runnable{
 		// draw timer
 		drawTimer(g2);
 	}
-	
+
+private void drawGameOver(Graphics2D g2) {
+Font font = new Font("Helvetica", Font.BOLD, 20);
+//g2.setFont(font);
+g2.setColor(Color.BLACK);
+g2.fillRect(0, 0, getHeight(), getWidth());
+g2.setFont(font);
+g2.setColor(Color.RED);
+g2.drawString("Game Over! Score: " + board.getScore(), board.getWidth()/2, board.getHeight()/2);	
+}
+
+/*
+private void drawGameOver(Graphics2D g2) {
+	g2.setColor(Color.RED);
+    g2.fillRect(0, 0, getHeight(), getWidth());
+	g2.drawString("GAME OVER!", 1040 / 2 - ("GAME OVER!").length() - 26, 1063 / 2);
+}
+*/
+
+
 	private void drawScore(Graphics2D g2) {
 		Font font = new Font("Helvetica", Font.BOLD, 20);
 		g2.setFont(font);
