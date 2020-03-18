@@ -53,7 +53,7 @@ public class Board{
 			  
 			  this.py = scanner.nextInt();
 			  this.px = scanner.nextInt();
-			  this.p = new Player(px*width, py*height);
+			  this.p = new Player(px, py);
 			  this.playerFacing = dir.DOWN;
 			  
 			  this.e = new Enemy[scanner.nextInt()];
@@ -73,9 +73,9 @@ public class Board{
 			    	  }
 			      }
 			  }
-//		      int startX = p.getX();
-//		      int startY = p.getY();
-//		      gameBoard[startX][startY] = 1;
+		      int startX = p.getX();
+		      int startY = p.getY();
+		      gameBoard[startX][startY] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
 			  e.printStackTrace();

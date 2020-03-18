@@ -29,9 +29,7 @@ public class Player{
 	}
 	
 	public void render(Graphics g) {
-		//Temp player
-		g.setColor(Color.red);
-		g.fillRect(x, y, 32, 32);
+		
 	}
 	
 	public int getX() {

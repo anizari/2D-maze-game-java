@@ -11,12 +11,14 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import org.sfu.MotaGame.Bean.*;
+import org.sfu.MotaGame.Bean.player.Player;
 
 public class Game extends Canvas implements Runnable{
 	private int width, height;
 	
 	private Board board;
 	private ImageData imgData;
+	private Player player;
 	
 	private boolean isRunning = false;
 	
