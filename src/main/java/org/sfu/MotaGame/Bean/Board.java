@@ -20,7 +20,7 @@ public class Board{
   //Testing score
   private int score = 100;
   //counts the number of key fragments left
-  private int keyCounter = 10;
+  private int keyCounter = 0;
   
   private dir playerFacing;
   
@@ -50,6 +50,10 @@ public class Board{
 			  for (int x = 0; x < height; x++ ){
 			      for (int y = 0; y < width; y++ ){
 			    	  gameBoard[x][y] = scanner.nextInt();
+			    	  //counts keys in world1.txt file
+			    	  if (gameBoard[x][y] == 7) {
+			    		  this.keyCounter++;
+			    	  }
 			      }
 			  }
 		      gameBoard[px][py] = 1;
@@ -142,6 +146,14 @@ private boolean CheckMove(int newX, int newY){
   	System.out.print(score);
 //      	System.out.println("Took : " + startTime);
   	return true;
+  }
+  else if (gameBoard[newX][newY] == 2) {
+	  if (keyCounter == 0) {
+		  return true;
+	  }
+	  else {
+		  return false;
+	  }
   }
   else{
   	return true;
