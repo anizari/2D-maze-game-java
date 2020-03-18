@@ -53,7 +53,7 @@ public class Game extends JPanel implements Runnable{
 		}
 		
 		// draw hero
-		g2.drawImage(imgData.getHeroImg(board.getDirection()), 32*board.getPy(), 32*board.getPx(), 32, 32, null);
+		g2.drawImage(imgData.getHeroImg(board.getDirection()), 32*board.getPx(), 32*board.getPy(), 32, 32, null);
 		
 		// draw score
 		drawScore(g2);
