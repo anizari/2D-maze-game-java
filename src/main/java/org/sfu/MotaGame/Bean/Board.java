@@ -1,4 +1,5 @@
 
+
 package org.sfu.MotaGame.Bean;
 
 import java.awt.event.KeyEvent;
@@ -18,6 +19,8 @@ public class Board{
   
   //Testing score
   private int score = 100;
+  //counts the number of key fragments left
+  private int keyCounter = 10;
   
   private dir playerFacing;
   
@@ -30,6 +33,7 @@ public class Board{
 	  initBoard();
 	}
   
+  //initializes our gameboard
   public void initBoard() {
 	// read map from file
 		  try {
@@ -87,22 +91,26 @@ public class Board{
     if ((newX < 0) || (newY < 0) || (newX >= width) || (newY >= height)) {
       return false;
     }
+    //wall check
     else if (gameBoard[newX][newY] == 9){
       return false;
     }
+    //key fragment check
     else if (gameBoard[newX][newY] == 7) {
     	score = score + 100;
     	System.out.println(score);
-    	long estimatedTime = System.nanoTime()/1000 - startTime;
-    	System.out.println(estimatedTime/1000000 + " seconds");
+    	keyCounter--;
+    	System.out.print(keyCounter);
+//    	long estimatedTime = System.nanoTime()/1000 - startTime;
+ //   	System.out.println(estimatedTime/1000000 + " seconds");
    // 	System.out.println("Took : " + startTime);
     	return true;
     }
     else if (gameBoard[newX][newY] == 8) {
     	score = score - 100;
     	System.out.println(score);    	
-    	long estimatedTime = System.nanoTime()/1000 - startTime;
-    	System.out.println(estimatedTime/1000000 + " seconds");
+  //  	long estimatedTime = System.nanoTime()/1000 - startTime;
+  //  	System.out.println(estimatedTime/1000000 + " seconds");
     	return true;
     }
     else if (gameBoard[newX][newY] == 4) {
@@ -165,3 +173,4 @@ public void movePlayer(int direction){
  
   
 }
+
