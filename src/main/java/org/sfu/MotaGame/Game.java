@@ -23,12 +23,6 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread;
 
 	public Game() {	
-		Dimension d = new Dimension(1024,1024);
-		setPreferredSize(d);
-		setMinimumSize(d);
-		setMaximumSize(d);
-		setFocusable(false);
-		
 		this.addKeyListener(new KeyBoardListener());
 	    board = new Board();
  
