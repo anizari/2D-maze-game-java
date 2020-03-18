@@ -70,7 +70,12 @@ public class Board{
 			    	  }
 			      }
 			  }
-		      gameBoard[py][px] = 1;
+		      //gameBoard[py][px] = 1;
+		      int startX = p.getX();
+		      int startY = p.getY();
+		      System.out.println(startX);
+		      System.out.println(startY);
+		      //gameBoard[startX][startY] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
 			  e.printStackTrace();
