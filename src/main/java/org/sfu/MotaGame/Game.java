@@ -179,7 +179,7 @@ private void drawGameOver(Graphics2D g2) {
 		private void render() {
 			BufferStrategy b = getBufferStrategy();
 			if(b == null) {
-				createBufferStrategy(3);
+				createBufferStrategy(2);
 				return;
 			}
 			
