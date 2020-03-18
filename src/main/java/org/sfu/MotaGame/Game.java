@@ -18,7 +18,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	
 	private Board board;
 	private ImageData imgData;
-	public static Player player;
+	private Player player;
 	
 	private boolean isRunning = false;
 	
@@ -31,8 +31,8 @@ public class Game extends Canvas implements Runnable, KeyListener{
 
 		//this.addKeyListener(new KeyBoardListener());
 		addKeyListener(this);
-		player = new Player(width / 2, height / 2);
 	    board = new Board();
+	    player = new Player(board.getPx()*board.getWidth(), board.getPy()*board.getHeight());
  
 	}
 	
