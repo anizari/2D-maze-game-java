@@ -122,9 +122,33 @@ private void drawGameOver(Graphics2D g2) {
 	
 	// Game loop using thread
 		public void run() {
+			int fps = 60;
+			double timePerTick = 1000000000 / fps;
+			long lastTime = System.nanoTime();
+			double delta = 0;
+			long now;
+			long timer = 0;
+			int ticks = 0;
+			
 			while(isRunning) {
-				tick();
-				render();
+				now = System.nanoTime();
+				delta += (now - lastTime) / timePerTick;
+				timer += now - lastTime;
+				lastTime = now;
+				
+				if(delta >= 1) {
+					tick();
+					render();
+					ticks++;
+					delta--;
+				}
+				
+				
+				if(timer >= 1000000000) {
+					System.out.println("FPS: " + ticks);
+					ticks = 0;
+					timer = 0;
+				}
 			}
 			
 			stop();
