@@ -47,7 +47,7 @@ public class Board{
 			    	  gameBoard[x][y] = scanner.nextInt();
 			      }
 			  }
-		      gameBoard[px][py] = 1;
+		      //gameBoard[px][py] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
 			  e.printStackTrace();

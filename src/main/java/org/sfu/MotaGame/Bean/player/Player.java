@@ -1,11 +1,14 @@
 package org.sfu.MotaGame.Bean.player;
 
-public class Player{
+import org.sfu.MotaGame.Bean.Board;
 
-	private int px, py;
+public class Player extends Board{
+
+	private int x, y;
 	
-	public Player() {
-		
+	public Player(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 	
 }

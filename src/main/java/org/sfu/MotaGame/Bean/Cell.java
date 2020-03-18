@@ -1,6 +1,6 @@
 package org.sfu.MotaGame.Bean;
 
-public class Cell{
+public class Cell extends Board{
     private int x;
     private int y;
 
