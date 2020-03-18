@@ -102,6 +102,7 @@ public class Game extends JPanel implements Runnable{
 		// draw score
 		drawScore(g2);
 		
+		// draw timer
 		//drawTimer(g2);
 	}
 	
