@@ -25,6 +25,10 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread;
 
 	public Game() {	
+		setPreferredSize(new Dimension(1024, 1024));
+		setMinimumSize(new Dimension(1024, 1024));
+		setMaximumSize(new Dimension(1024, 1024));
+
 		this.addKeyListener(new KeyBoardListener());
 	    board = new Board();
  
@@ -126,7 +130,7 @@ private void drawGameOver(Graphics2D g2) {
 			long timer = 0;
 			int ticks = 0;
 			
-			while(isRunning) {				
+			while(isRunning) {	
 				now = System.nanoTime();
 				delta += (now - lastTime) / timePerTick;
 				timer += now - lastTime;
@@ -188,7 +192,9 @@ private void drawGameOver(Graphics2D g2) {
 			
 			Graphics g = b.getDrawGraphics();
 			g.clearRect(0, 0, width, height);
+			
 			board.render(g);
+			
 			g.dispose();
 			b.show();
 		}

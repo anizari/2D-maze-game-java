@@ -11,11 +11,12 @@ public class Main {
 		Game game = new Game();
 	    JFrame frame = new JFrame("Game");
 	    frame.add(game);
-	    frame.setSize(1040,1063);
+	    //frame.setSize(1040,1063);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
+		frame.pack();
 		
 		game.start();
 		
