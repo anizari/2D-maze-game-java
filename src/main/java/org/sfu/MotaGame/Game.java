@@ -33,6 +33,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	
 	private int bonusX;
 	private int bonusY;
+	private boolean bonusFound;
 	private int tickCount = 0;
 
 	/*
@@ -209,6 +210,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					tmp.setDistance(Math.sqrt((tmp.getX() - player.getX()) * (tmp.getX() - player.getX()) + (tmp.getY() - player.getY()) * (tmp.getY() - player.getY())));
 					tmp.setVelX((-1 / tmp.getDistance()) * tmp.getDistX());
 					tmp.setVelY((-1 / tmp.getDistance()) * tmp.getDistY());
+
 					tmp.tick();
 				}
 				player.tick();
@@ -228,9 +230,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					}
 					board.gameBoard[bonusY][bonusX] = 4;
 					board.bonus.add(new Bonus(bonusX*32, bonusY*32));
-					if(board.bonus.size() > 1) {
-						board.bonus.remove(0);
-					}
 				}
 			}
 		}
@@ -261,18 +260,42 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				}
 			}
 			for(int i = 0; i < board.enemies.size(); i++) {
-				Enemy tmp = board.enemies.get(i);
-				if (player.getBoundsTop().intersects(tmp.getBounds())) {
+				Enemy e = board.enemies.get(i);
+
+				// enemy player collision
+				if (player.getBoundsTop().intersects(e.getBounds())) {
 					STATE = GAMEOVER_STATE;
 				}
-				if (player.getBoundsBottom().intersects(tmp.getBounds())) {
+				if (player.getBoundsBottom().intersects(e.getBounds())) {
 					STATE = GAMEOVER_STATE;
 				}
-				if (player.getBoundsLeft().intersects(tmp.getBounds())) {
+				if (player.getBoundsLeft().intersects(e.getBounds())) {
 					STATE = GAMEOVER_STATE;
 				}
-				if (player.getBoundsRight().intersects(tmp.getBounds())) {
+				if (player.getBoundsRight().intersects(e.getBounds())) {
 					STATE = GAMEOVER_STATE;
+				}
+
+				// enemy wall collision
+				for(int j = 0; j < board.walls.size(); j++) {
+					Wall w = board.walls.get(j);
+
+					if (e.getBoundsTop().intersects(w.getBounds())) {
+						e.setY(w.getY() + w.getHeight());
+						e.setVelY(0);
+					}
+					if (e.getBoundsBottom().intersects(w.getBounds())) {
+						e.setY(w.getY() - w.getHeight());
+						e.setVelY(0);
+					}
+					if (e.getBoundsLeft().intersects(w.getBounds())) {
+						e.setX(w.getX() + w.getWidth());
+						e.setVelX(0);
+					}
+					if (e.getBoundsRight().intersects(w.getBounds())) {
+						e.setX(w.getX() - w.getWidth());
+						e.setVelX(0);
+					}
 				}
 			}
 			if (player.getBoundsTop().intersects(board.exit.getBounds())) {
@@ -307,28 +330,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					board.keys.remove(i);
 					board.setScore(board.getScore() + 100);
 					board.setKeyCounter(board.getKeyCounter() - 1);
-					break;
-				}	
-			}
-			for(int i = 0; i < board.bonus.size(); i++) {
-				if (player.getBoundsTop().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-				if (player.getBoundsBottom().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-				if (player.getBoundsLeft().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-				if (player.getBoundsRight().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
 					break;
 				}	
 			}
