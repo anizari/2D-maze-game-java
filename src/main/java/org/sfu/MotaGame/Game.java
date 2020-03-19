@@ -24,6 +24,10 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private boolean isRunning = false;
 	
 	private Thread thread;
+	
+	private int STATE = 0;
+	private int MENU_STATE = 1;
+	private int GAME_STATE = 2;
 
 	public Game() {	
 		setPreferredSize(new Dimension(width, height));
@@ -32,19 +36,31 @@ public class Game extends Canvas implements Runnable, KeyListener{
 
 		//this.addKeyListener(new KeyBoardListener());
 		addKeyListener(this);
+		
+		STATE = MENU_STATE;
 	    board = new Board();
 	    player = new Player(board.getPx()*board.getWidth(), board.getPy()*board.getHeight());
  
 	}
-
-	private void drawGameOver(Graphics2D g2) {
-		Font font = new Font("Helvetica", Font.BOLD, 20);
+	
+	private void drawMenu(Graphics g) {
+		Font font = new Font("Helvetica", Font.BOLD, 40);
 		//g2.setFont(font);
-		g2.setColor(Color.BLACK);
-		g2.fillRect(0, 0, getHeight(), getWidth());
-		g2.setFont(font);
-		g2.setColor(Color.RED);
-		g2.drawString("Game Over! Score: " + board.getScore(), board.getWidth()/2, board.getHeight()/2);	
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, width, height);
+		g.setFont(font);
+		g.setColor(Color.WHITE);
+		g.drawString("Press space to start", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
+	}
+
+	private void drawGameOver(Graphics g) {
+		Font font = new Font("Helvetica", Font.BOLD, 40);
+		//g2.setFont(font);
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, width, height);
+		g.setFont(font);
+		g.setColor(Color.RED);
+		g.drawString("Game Over! Score: " + board.getScore(), board.getWidth()/2, board.getHeight()/2);	
 	}
 	
 	// Game loop using thread
@@ -207,9 +223,15 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			Graphics g = b.getDrawGraphics();
 			g.clearRect(0, 0, height, height);
 			
+			if(STATE == MENU_STATE) {
+				drawMenu(g);
+			}
+			else if(STATE == GAME_STATE) {
+				board.render(g);
+				player.render(g);
+			}
 			
-			board.render(g);
-			player.render(g);
+			
 			
 			
 			g.dispose();
@@ -225,14 +247,22 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		@Override
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
-			if(e.getKeyCode() == KeyEvent.VK_W)
-				player.moveUp = true;
-			if(e.getKeyCode() == KeyEvent.VK_S)
-				player.moveDown = true;
-			if(e.getKeyCode() == KeyEvent.VK_A)
-				player.moveLeft = true;
-			if(e.getKeyCode() == KeyEvent.VK_D)
-				player.moveRight = true;
+			
+			if(STATE == MENU_STATE) {
+				if(e.getKeyCode() == KeyEvent.VK_SPACE)
+					STATE = GAME_STATE;
+			}
+			else if(STATE == GAME_STATE) {
+				if(e.getKeyCode() == KeyEvent.VK_W)
+					player.moveUp = true;
+				if(e.getKeyCode() == KeyEvent.VK_S)
+					player.moveDown = true;
+				if(e.getKeyCode() == KeyEvent.VK_A)
+					player.moveLeft = true;
+				if(e.getKeyCode() == KeyEvent.VK_D)
+					player.moveRight = true;
+			}
+			
 		}
 
 		@Override
