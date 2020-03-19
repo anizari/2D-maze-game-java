@@ -29,6 +29,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private int MENU_STATE = 1;
 	private int GAME_STATE = 2;
 	private int GAMEOVER_STATE = 3;
+	private int WIN_STATE = 4;
 
 	public Game() {	
 		setPreferredSize(new Dimension(width, height));
@@ -63,17 +64,29 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.setColor(Color.RED);
 		g.drawString("Game Over!", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 	}
+
+	private void drawWin(Graphics g) {
+		Font font = new Font("Helvetica", Font.BOLD, 40);
+		//g2.setFont(font);
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, width, height);
+		g.setFont(font);
+		g.setColor(Color.YELLOW);
+		g.drawString("You win!", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
+	}
 	
 	//private void isGameOver();
 	
-		//removed Graphics g parameter
 		private boolean isGameOver() {
 //			Graphics2D g2 = (Graphics2D) g;
 			int score = board.getScore();
-			if(score < 0) {
+			int keyCounter = board.getKeyCounter();
+			if(score <= 0) {
 				STATE = GAMEOVER_STATE;
-				//STATE = 
-//				drawGameOver(g);
+				return true;
+			}
+			else if(keyCounter == 0) {
+				STATE = WIN_STATE;
 				return true;
 			}
 			else {
@@ -98,15 +111,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				delta += (now - lastTime) / timePerTick;
 				timer += now - lastTime;
 				lastTime = now;
-				
 				if(delta >= 1) {
 					tick();
 					render();
 					ticks++;
 					delta--;
 				}
-				
-				
 				if(timer >= 1000000000) {
 					System.out.println("FPS: " + ticks);
 					ticks = 0;
@@ -256,8 +266,9 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			else if(STATE == GAMEOVER_STATE) {
 				drawGameOver(g);
 			}
-			
-			
+			else if(STATE == WIN_STATE) {
+				drawWin(g);
+			}
 			g.dispose();
 			b.show();
 		}
@@ -265,7 +276,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
@@ -303,3 +313,5 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		}
 
 }
+
+
