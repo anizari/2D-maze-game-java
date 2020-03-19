@@ -190,6 +190,26 @@ private void drawGameOver(Graphics2D g2) {
 					player.setVelX(0);
 				}
 			}
+			
+			for(int i = 0; i < board.keys.size(); i++) {
+				if (player.getBoundsTop().intersects(board.keys.get(i).getBounds())) {
+					board.keys.remove(i);
+					
+					break;
+				}
+				if (player.getBoundsBottom().intersects(board.keys.get(i).getBounds())) {
+					board.keys.remove(i);
+					break;
+				}
+				if (player.getBoundsLeft().intersects(board.keys.get(i).getBounds())) {
+					board.keys.remove(i);
+					break;
+				}
+				if (player.getBoundsRight().intersects(board.keys.get(i).getBounds())) {
+					board.keys.remove(i);
+					break;
+				}
+			}
 		}
 		
 		

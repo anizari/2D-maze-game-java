@@ -170,9 +170,6 @@ public class Board{
 	  return score;
   }
   
-  
-
-  
   public long getEstimatedTime() {
 	return estimatedTime;
 }
@@ -198,91 +195,5 @@ public dir getDirection() {
 	  return this.playerFacing;
 }
 
-//Check for out of bounds + walls
-private boolean CheckMove(int newY, int newX){
-	  while(score > 0) {
-  //out of bounds check
-  if ((newX < 0) || (newY < 0) || (newX >= width) || (newY >= height)) {
-    return false;
-  }
-  //wall check
-  else if (gameBoard[newY][newX] == 9){
-    return false;
-  }
-  //key fragment check
-  else if (gameBoard[newY][newX] == 7) {
-  	score = score + 100;
-  	System.out.println(score);
-  	keyCounter--;
-  	System.out.println(keyCounter);
-  	estimatedTime = System.nanoTime()/1000 - startTime;
-//   	System.out.println(estimatedTime/1000000 + " seconds");
- // 	System.out.println("Took : " + startTime);
-  	return true;
-  }
-  else if (gameBoard[newY][newX] == 8) {
-  	score = score - 100;
-  	System.out.println(score);    	
-  	estimatedTime = System.nanoTime()/1000 - startTime;
-//  	System.out.println(estimatedTime/1000000 + " seconds");
-  	return true;
-  }
-  else if (gameBoard[newY][newX] == 4) {
-  	score = score + 200;
-  	System.out.print(score);
-//      	System.out.println("Took : " + startTime);
-  	return true;
-  }
-  else if (gameBoard[newY][newX] == 2) {
-	  if (keyCounter == 0) {
-		  return true;
-	  }
-	  else {
-		  return false;
-	  }
-  }
-  else{
-  	return true;
-  }
-	  }
-	  return false;
-}
-
-public void movePlayer(int direction){
-    switch (direction){
-      case KeyEvent.VK_UP:
-        if (CheckMove(py - 1, px)){
-          gameBoard[py][px] = 0;
-          gameBoard[--py][px] = 1;
-          this.playerFacing = dir.UP;
-//          System.out.println(endTime);
-        }
-        break;
-      case KeyEvent.VK_LEFT:
-        if (CheckMove(py, px - 1)){
-          gameBoard[py][px] = 0;
-          gameBoard[py][--px] = 1;
-          this.playerFacing = dir.LEFT;
-        }
-        break;
-      case KeyEvent.VK_DOWN:
-        if (CheckMove(py + 1, px)){
-          gameBoard[py][px] = 0;
-          gameBoard[++py][px] = 1;
-          this.playerFacing = dir.DOWN;
-        }
-        break;
-      case KeyEvent.VK_RIGHT:
-        if (CheckMove(py, px + 1)){
-          gameBoard[py][px] = 0;
-          gameBoard[py][++px] = 1;
-          this.playerFacing = dir.RIGHT;
-        };
-    }
-
-  }
-
- 
-  
 }
 
