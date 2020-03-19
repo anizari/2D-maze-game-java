@@ -43,8 +43,7 @@ public class Board{
   private int keyCounter = 0;
   private dir playerFacing;
   
-  long startTime = System.nanoTime()/1000;
-  long estimatedTime;
+  long startTime;
 //  long startTime = System.currentTimeMillis()/1000;
 //  long endTime = System.currentTimeMillis()/1000 - startTime;
   
@@ -112,7 +111,11 @@ public class Board{
 			  e.printStackTrace();
 		  }
   }
-  
+
+  public void startTimer() {
+	  startTime = System.currentTimeMillis();
+  }
+
   /*
    * This method renders our game's graphics
    * 
@@ -156,6 +159,7 @@ public class Board{
 		
 		drawScore(g);
 		drawKeyCounter(g);
+		drawTimer(g);
 		
 		
   }
@@ -183,8 +187,17 @@ public class Board{
 		g.setFont(font);
 		g.setColor(Color.yellow);
 		g.drawString("Key Fragments: " + keyCounter, width * height / 2 - 300, height - 10);
-	}
-  
+  }
+
+  private void drawTimer(Graphics g2) {
+  	  Font font = new Font("Helvetica", Font.BOLD, 20);
+  	  g2.setFont(font);
+  	  g2.setColor(Color.green);
+  	  long time = (System.currentTimeMillis() - this.startTime) / 1000;
+  	  g2.drawString("Time: " + time, this.getWidth()*this.getWidth()/2 + 100, this.getHeight() - 10);
+  }
+
+
   public int getHeight(){
     return height;
   }
@@ -206,13 +219,13 @@ public class Board{
 	  return score;
   }
   
-  public long getEstimatedTime() {
-	return estimatedTime;
-}
-
-public void setEstimatedTime(long estimatedTime) {
-	this.estimatedTime = estimatedTime;
-}
+//  public long getEstimatedTime() {
+//	return estimatedTime;
+//}
+//
+//public void setEstimatedTime(long estimatedTime) {
+//	this.estimatedTime = estimatedTime;
+//}
 
 
 public int getKeyCounter() {

@@ -133,7 +133,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			long now;
 			long timer = 0;
 			int ticks = 0;
-			
+
 			while(isRunning) {	
 				isGameOver();
 				requestFocus();
@@ -359,8 +359,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			// TODO Auto-generated method stub
 			
 			if(STATE == MENU_STATE) {
-				if(e.getKeyCode() == KeyEvent.VK_SPACE)
+				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 					STATE = GAME_STATE;
+					board.startTimer();
+				}
+
 			}
 			else if(STATE == GAME_STATE) {
 				if(e.getKeyCode() == KeyEvent.VK_W)
