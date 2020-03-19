@@ -7,7 +7,7 @@ import org.sfu.MotaGame.Bean.ImageData;
 
 public class Enemy extends Rectangle{
 
-	private double x, y;
+	private int x, y;
 	private double distX;
 	private double distY;
 	private double distance;
@@ -16,7 +16,6 @@ public class Enemy extends Rectangle{
 	private double velY;
 	
 	public Enemy(int x, int y) {
-		setBounds(x, y, 32, 32);
 		this.x = x;
 		this.y = y;
 	}
@@ -26,8 +25,14 @@ public class Enemy extends Rectangle{
 		y += velY;
 	}
 	
+	/*
+	 * This method draws the enemies
+	 * 
+	 * @param g This parameter allows us to use graphics.
+	 * @return Nothing.
+	 */
 	public void render(Graphics g) {
-		g.drawImage(imgData.get(3), (int)Math.round(x), (int)Math.round(y), 32, 32, null);
+		g.drawImage(imgData.get(3), x, y, 32, 32, null);
 	}
 	
 	public double getX() {
@@ -36,11 +41,11 @@ public class Enemy extends Rectangle{
 	public double getY() {
 		return y;
 	}
-	public void setX(double x) {
-		this.x = (int) x;
+	public void setX(int x) {
+		this.x = x;
 	}
-	public void setY(double y) {
-		this.y = (int) y;
+	public void setY(int y) {
+		this.y = y;
 	}
 	
 	public void setVelX(double x) {
@@ -75,25 +80,5 @@ public class Enemy extends Rectangle{
 		this.distance = d;
 	}
 	
-	@Override
-	public Rectangle getBounds() {
-		return new Rectangle((int) x, (int) y, width, height);
-	}
-	
-	public Rectangle getBoundsTop() {
-		return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y, (int) width / 2, (int) height / 2);
-	}
-	
-	public Rectangle getBoundsBottom() {
-		return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y + (height / 2), (int) width / 2, (int) height / 2);
-	}
-	
-	public Rectangle getBoundsRight() {
-		return new Rectangle((int) x + width - 5, (int) y + 4, (int) 5, (int) height - 8);
-	}
-	
-	public Rectangle getBoundsLeft() {
-		return new Rectangle((int) x, (int) y + 4, 5, height - 8);
-	}
-	
 }
+
