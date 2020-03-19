@@ -84,7 +84,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			if(STATE == WIN_STATE) {
 				return true;
 			}
-			if(score <= 0) {
+			if(score < 0) {
 				STATE = GAMEOVER_STATE;
 				return true;
 			}
