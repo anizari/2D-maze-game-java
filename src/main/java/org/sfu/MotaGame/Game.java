@@ -167,6 +167,29 @@ private void drawGameOver(Graphics2D g2) {
 		
 		private void tick() {
 			player.tick();
+			collision();
+		}
+		
+		private void collision() {
+			for(int i = 0; i < board.walls.size(); i++) {
+				Wall tmp = board.walls.get(i);
+				if (player.getBoundsTop().intersects(tmp.getBounds())) {
+					player.setY(tmp.getY() + tmp.getHeight());
+					player.setVelY(0);
+				}
+				if (player.getBoundsBottom().intersects(tmp.getBounds())) {
+					player.setY(tmp.getY() - tmp.getHeight());
+					player.setVelY(0);
+				}
+				if (player.getBoundsLeft().intersects(tmp.getBounds())) {
+					player.setX(tmp.getX() + tmp.getWidth());
+					player.setVelX(0);
+				}
+				if (player.getBoundsRight().intersects(tmp.getBounds())) {
+					player.setX(tmp.getX() - tmp.getWidth());
+					player.setVelX(0);
+				}
+			}
 		}
 		
 		
