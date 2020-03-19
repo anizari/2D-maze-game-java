@@ -17,6 +17,16 @@ import org.sfu.MotaGame.Bean.player.Player;
 
 enum dir {UP, DOWN, LEFT, RIGHT}
 
+
+/**
+ * <h1>Board</h1>
+ * This class deals with initializing and rendering all necessary game objects,
+ * using an integer array as input for reference.
+ * 
+ * @author Christopher Kassner, Alim Nizari, Thomas Chiu, Yuzhuo Ye
+ * @version 1.0
+ * @since 2020-03-18
+ */
 public class Board{
   private int height;
   private int width;
@@ -48,6 +58,13 @@ public class Board{
 //  long startTime = System.currentTimeMillis()/1000;
 //  long endTime = System.currentTimeMillis()/1000 - startTime;
   
+  
+  /**
+	 * This method initializes a board object by calling
+	 * the initBoard function
+	 * 
+	 * @return Nothing.
+	 */
   public Board(){
 	  initBoard();
 	}
@@ -112,6 +129,12 @@ public class Board{
 			  e.printStackTrace();
 		  }
   }
+  
+  /**
+	 * This method starts the timer for our game
+	 * 
+	 * @return Nothing.
+	 */
 
   public void startTimer() {
 	  startTime = System.currentTimeMillis();
@@ -204,39 +227,92 @@ public class Board{
   	  g2.drawString("Time: " + time, this.getWidth()*this.getWidth()/2 + 100, this.getHeight() - 10);
   }
 
-
+  /**
+	 * This method gets the height of our board
+	 * 
+	 * @return height
+	 */
   public int getHeight(){
     return height;
   }
+  
+  /**
+	 * This method gets the width of our board
+	 * 
+	 * @return width
+	 */
   public int getWidth(){
     return width;
   }
+  
+  /**
+	 * This method gets the 2D integer array
+	 * 
+	 * @return gameBoard
+	 */
   public int[][] getBoard(){
     return gameBoard;
   }
+  
+  /**
+	 * This method gets the x coordinate of our player
+	 * 
+	 * @return px
+	 */
   public int getPx(){
     return px;
   }
+  
+  /**
+	 * This method gets the y coordinate of our player
+	 * 
+	 * @return py
+	 */
   public int getPy(){
     return py;
   }
   
+  /**
+	 * This method gets the score
+	 * 
+	 * @return score
+	 */
   public int getScore() {
 	  return score;
   }
   
+  /**
+	 * This method gets the amount of keys in our board
+	 * 
+	 * @return keyCounter
+	 */
   public int getKeyCounter() {
 	  return keyCounter;
   }
 	
+  /**
+	 * This method sets the amount of keys in our board
+	 * 
+	 * @return Nothing
+	 */
   public void setKeyCounter(int keyCounter) {
 	  this.keyCounter = keyCounter;
   }
 	
+  /**
+	 * This method sets the score in our board
+	 * 
+	 * @return Nothing
+	 */
   public void setScore(int score) {
 	  this.score = score;
   }
 	
+  /**
+	 * This method gets the direction our player is facing
+	 * 
+	 * @return playerFacing
+	 */
   public dir getDirection() {
 	  return this.playerFacing;
   }
