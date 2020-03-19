@@ -5,14 +5,15 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class Key extends Rectangle {
+	private ImageData imgData = new ImageData();
+
 	
 	public Key(int x, int y) {
 		setBounds(x, y, 32, 32);
 	}
 	
 	public void render(Graphics g) {
-		g.setColor(Color.yellow);
-		g.fillRect(x, y, width, height);
+		g.drawImage(imgData.get(7), x, y, 32, 32, null);
 	}
 	
 }
