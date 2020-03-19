@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class Wall extends Rectangle{
-	private ImageData imgData;
+	private ImageData imgData = new ImageData();
 
 	
 	public Wall(int x, int y) {
@@ -13,7 +13,6 @@ public class Wall extends Rectangle{
 	}
 	
 	public void render(Graphics g) {
-		imgData = new ImageData();
 		g.drawImage(imgData.get(9), x, y, 32, 32, null);
 	}
 }
