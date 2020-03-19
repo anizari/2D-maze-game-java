@@ -157,6 +157,10 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					player.setVelX(0);
 				}
 			}
+			if (player.getBoundsTop().intersects(board.exit.getBounds()) && board.getKeyCounter() != 0) {
+				player.setY(board.exit.getY() + board.exit.getHeight());
+				player.setVelY(0);
+			}
 			
 			for(int i = 0; i < board.keys.size(); i++) {
 				if (player.getBoundsTop().intersects(board.keys.get(i).getBounds())) {
