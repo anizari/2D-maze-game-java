@@ -7,9 +7,12 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import org.sfu.MotaGame.Bean.*;
-
-
+/*
+ * <h1>Image Data</h1>
+ * This class gets all of our sprites for the game and places them on the map
+ * 
+ * 
+ */
 public class ImageData {
 
 	private HashMap<Integer, BufferedImage> imageMap;
@@ -25,6 +28,13 @@ public class ImageData {
 	private static final int EXIT_OPEN = 5;
 	private static final int BONUSREWARD = 4;
 	private static BufferedImage[] heroUp, heroDown, heroLeft, heroRight;
+	
+	/*
+	 * This method contains all of the data for our images, 
+	 * it gets the sprites and puts them on the map
+	 * 
+	 * @return Nothing.
+	 */
 	public ImageData() {
 		imageMap = new HashMap<Integer, BufferedImage>();
 		heroImageMap = new HashMap<dir, BufferedImage>();
@@ -83,7 +93,12 @@ public class ImageData {
 		}
 	}
 	
-	
+	/*This method
+	 * 
+	 * 
+	 * @param i This parameter
+	 * @return 
+	 */
 	public BufferedImage get(int i) {
 		if ( i == 1) {
 			// it's the hero, we might still want to render a floor for it...
@@ -92,6 +107,12 @@ public class ImageData {
 		return imageMap.get(i);
 	}
 	
+	/*This method gets the direction of the player
+	 * 
+	 * 
+	 * @param direction This parameter represents the player's direction
+	 * @return 
+	 */
 	public BufferedImage getHeroImg(dir direction) {
 		return heroImageMap.get(direction);
 	}

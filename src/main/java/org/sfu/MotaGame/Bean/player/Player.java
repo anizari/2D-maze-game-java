@@ -31,6 +31,12 @@ public class Player extends Rectangle{
 			x += velX;
 	}
 	
+	/*
+	 * This method draws the player
+	 * 
+	 * @param g This parameter allows us to use graphics.
+	 * @return Nothing.
+	 */
 	public void render(Graphics g) {
 		g.setColor(Color.green);
 		g.fillRect(x, y, width, height);
