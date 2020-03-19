@@ -24,7 +24,7 @@ public class ImageData {
 	private static final int EXIT = 2;
 	private static final int EXIT_OPEN = 5;
 	private static final int BONUSREWARD = 4;
-	
+	private static BufferedImage[] heroUp, heroDown, heroLeft, heroRight;
 	public ImageData() {
 		imageMap = new HashMap<Integer, BufferedImage>();
 		heroImageMap = new HashMap<dir, BufferedImage>();
@@ -34,27 +34,49 @@ public class ImageData {
 			BufferedImage wallImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/wall.png"));
 			BufferedImage ItemImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/item1.png"));
 			BufferedImage punishmentImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/trap.png"));
-	//		BufferedImage EnemyImag1 = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/enemy09.png"));
 			BufferedImage enemyImg1 = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/enemy02.png"));
 			BufferedImage exitImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/door.png"));
 			BufferedImage bonusrewardImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/item2.png"));
+			BufferedImage heroImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/hero.png"));
+			
 			imageMap.put(FLOOR, floorImg);
 			imageMap.put(WALL, wallImg);
 			imageMap.put(REWARD, ItemImg.getSubimage(0, 0, 32, 32));
-			//imageMap.put(REWARD, ItemImg.getSubimage(32, 32, 32, 32));
 			imageMap.put(PUNISHMENT, punishmentImg.getSubimage(0, 32, 32, 32));
 			imageMap.put(ENEMY, enemyImg1.getSubimage(0, 32, 32, 32));
 			imageMap.put(EXIT, exitImg.getSubimage(0, 0, 32, 32));
 			imageMap.put(EXIT_OPEN, exitImg.getSubimage(0, 64, 32, 32));
 			imageMap.put(BONUSREWARD, bonusrewardImg.getSubimage(0, 32, 32, 32));
-//			imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, 32, 32, 32));
 			
+			heroUp = new BufferedImage[4];
+			heroUp[0] = heroImg.getSubimage(0, 0, 32, 32);
+			heroUp[1] = heroImg.getSubimage(32, 0, 32, 32);
+			heroUp[2] = heroImg.getSubimage(64, 0, 32, 32);
+			heroUp[3] = heroImg.getSubimage(96, 0, 32, 32);
 			
-			BufferedImage heroImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/hero.png"));
+			heroDown = new BufferedImage[4];
+			heroDown[0] = heroImg.getSubimage(0, 32, 32, 32);
+			heroDown[1] = heroImg.getSubimage(32, 32, 32, 32);
+			heroDown[2] = heroImg.getSubimage(64, 32, 32, 32);
+			heroDown[3] = heroImg.getSubimage(96, 32, 32, 32);
+			
+			heroLeft = new BufferedImage[4];
+			heroLeft[0] = heroImg.getSubimage(0, 64, 32, 32);
+			heroLeft[1] = heroImg.getSubimage(32, 64, 32, 32);
+			heroLeft[2] = heroImg.getSubimage(64, 64, 32, 32);
+			heroLeft[3] = heroImg.getSubimage(96, 64, 32, 32);
+			
+			heroRight = new BufferedImage[4];
+			heroRight[0] = heroImg.getSubimage(0, 96, 32, 32);
+			heroRight[1] = heroImg.getSubimage(32, 96, 32, 32);
+			heroRight[2] = heroImg.getSubimage(64, 96, 32, 32);
+			heroRight[3] = heroImg.getSubimage(96, 96, 32, 32);
+			
+			/*BufferedImage heroImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/hero.png"));
 			heroImageMap.put(dir.UP, heroImg.getSubimage(0, 0, 32, 32));
 			heroImageMap.put(dir.DOWN, heroImg.getSubimage(0, 32, 32, 32));
 			heroImageMap.put(dir.LEFT, heroImg.getSubimage(0, 64, 32, 32));
-			heroImageMap.put(dir.RIGHT, heroImg.getSubimage(0, 96, 32, 32));
+			heroImageMap.put(dir.RIGHT, heroImg.getSubimage(0, 96, 32, 32));*/
 
 		} catch (Exception e) {
 			e.printStackTrace();
