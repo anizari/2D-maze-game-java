@@ -46,22 +46,22 @@ public class Player extends Rectangle{
 	
 	public void render(Graphics g) {
 		
-			if(moveUp) {
-				g.drawImage(up.getFrame(), x, y, width, height, null);
-			}
-			else if(moveDown) {
-				g.drawImage(down.getFrame(), x, y, width, height, null);
-			}
-			else if(moveLeft) {
-				g.drawImage(left.getFrame(), x, y, width, height, null);
-			}
-			else if(moveRight) {
-				g.drawImage(right.getFrame(), x, y, width, height, null);
-			}else {
-				g.drawImage(ImageData.hero, x, y, width, height, null);
-			}
-		
-	}	
+		if(moveUp) {
+			g.drawImage(up.getFrame(), x, y, width, height, null);
+		}
+		else if(moveDown) {
+			g.drawImage(down.getFrame(), x, y, width, height, null);
+		}
+		else if(moveLeft) {
+			g.drawImage(left.getFrame(), x, y, width, height, null);
+		}
+		else if(moveRight) {
+			g.drawImage(right.getFrame(), x, y, width, height, null);
+		}else {
+			g.drawImage(ImageData.hero, x, y, width, height, null);
+		}
+	
+}	
 	
 	public double getX() {
 		return x;
