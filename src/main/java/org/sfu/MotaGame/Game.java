@@ -70,7 +70,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		private boolean isGameOver() {
 //			Graphics2D g2 = (Graphics2D) g;
 			int score = board.getScore();
-			if(score <= 0) {
+			if(score < 0) {
 				STATE = GAMEOVER_STATE;
 				//STATE = 
 //				drawGameOver(g);
