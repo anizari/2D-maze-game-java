@@ -308,6 +308,28 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					break;
 				}	
 			}
+			for(int i = 0; i < board.bonus.size(); i++) {
+				if (player.getBoundsTop().intersects(board.bonus.get(i).getBounds())) {
+					board.bonus.remove(i);
+					board.setScore(board.getScore() + 200);
+					break;
+				}
+				if (player.getBoundsBottom().intersects(board.bonus.get(i).getBounds())) {
+					board.bonus.remove(i);
+					board.setScore(board.getScore() + 200);
+					break;
+				}
+				if (player.getBoundsLeft().intersects(board.bonus.get(i).getBounds())) {
+					board.bonus.remove(i);
+					board.setScore(board.getScore() + 200);
+					break;
+				}
+				if (player.getBoundsRight().intersects(board.bonus.get(i).getBounds())) {
+					board.bonus.remove(i);
+					board.setScore(board.getScore() + 200);
+					break;
+				}	
+			}
 			for(int i = 0; i < board.punishments.size(); i++) {
 				if (player.getBoundsTop().intersects(board.punishments.get(i).getBounds())) {
 					board.punishments.remove(i);
