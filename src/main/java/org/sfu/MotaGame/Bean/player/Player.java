@@ -46,17 +46,19 @@ public class Player extends Rectangle{
 	
 	public void render(Graphics g) {
 		
-			if(velY < 0) {
+			if(moveUp) {
 				g.drawImage(up.getFrame(), x, y, width, height, null);
 			}
-			else if(velY > 0) {
+			else if(moveDown) {
 				g.drawImage(down.getFrame(), x, y, width, height, null);
 			}
-			else if(velX < 0) {
+			else if(moveLeft) {
 				g.drawImage(left.getFrame(), x, y, width, height, null);
 			}
-			else {
+			else if(moveRight) {
 				g.drawImage(right.getFrame(), x, y, width, height, null);
+			}else {
+				g.drawImage(ImageData.hero, x, y, width, height, null);
 			}
 		
 	}	
