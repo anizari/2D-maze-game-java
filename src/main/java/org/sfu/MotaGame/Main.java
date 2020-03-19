@@ -1,10 +1,17 @@
 package org.sfu.MotaGame;
 
-//import org.junit.Test;
-//import org.junit.jupiter.api.Test;
 import javax.swing.*;
 
-
+/*
+ * <h1>Main</h1>
+ * Main creates a new Game, adds a new frame and then starts the game
+ * 
+ * 
+ * 
+ * @author Christopher Kassner, Alim Nizari, Thomas Chiu, John Ye
+ * @version 1.0
+ * @since 2020-03-18
+ */
 public class Main {
 		
 	public static void main(String[] args) {    
