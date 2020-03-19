@@ -22,6 +22,7 @@ public class ImageData {
 	private static final int PUNISHMENT = 8; 
 	private static final int ENEMY = 3;
 	private static final int EXIT = 2;
+	private static final int EXIT_OPEN = 5;
 	private static final int BONUSREWARD = 4;
 	
 	public ImageData() {
@@ -44,6 +45,7 @@ public class ImageData {
 			imageMap.put(PUNISHMENT, punishmentImg.getSubimage(0, 32, 32, 32));
 			imageMap.put(ENEMY, enemyImg1.getSubimage(0, 32, 32, 32));
 			imageMap.put(EXIT, exitImg.getSubimage(0, 0, 32, 32));
+			imageMap.put(EXIT_OPEN, exitImg.getSubimage(0, 64, 32, 32));
 			imageMap.put(BONUSREWARD, bonusrewardImg.getSubimage(0, 32, 32, 32));
 //			imageMap.put(PUNISHMENT, EnemyImag1.getSubimage(0, 32, 32, 32));
 			
