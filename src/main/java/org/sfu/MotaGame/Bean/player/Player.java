@@ -6,19 +6,32 @@ import java.awt.Rectangle;
 
 import org.sfu.MotaGame.Bean.ImageData;
 
+
 public class Player extends Rectangle{
 
-	//private int x, y;
-	private ImageData imgData = new ImageData();
 	public boolean moveUp, moveDown, moveLeft, moveRight;
 	private int velX = 2; 
 	private int velY = 2;
+
+	//Animate the player
+	private playerAnimation up, down, left, right;
 	
 	public Player(int x, int y) {
 		setBounds(x, y, 32, 32);
+		
+		up = new playerAnimation(ImageData.heroUp, 124);
+		down = new playerAnimation(ImageData.heroDown, 124);
+		left = new playerAnimation(ImageData.heroLeft, 124);
+		right = new playerAnimation(ImageData.heroRight, 124);
+
 	}
 	
 	public void tick() {
+		up.animate();
+		down.animate();
+		left.animate();
+		right.animate();
+		
 		velX = 2;
 		velY = 2;
 		if(moveUp)
@@ -31,17 +44,22 @@ public class Player extends Rectangle{
 			x += velX;
 	}
 	
-	/*
-	 * This method draws the player
-	 * 
-	 * @param g This parameter allows us to use graphics.
-	 * @return Nothing.
-	 */
 	public void render(Graphics g) {
-		g.setColor(Color.green);
-		g.fillRect(x, y, width, height);
-	}
-	
+		
+			if(velY < 0) {
+				g.drawImage(up.getFrame(), x, y, width, height, null);
+			}
+			else if(velY > 0) {
+				g.drawImage(down.getFrame(), x, y, width, height, null);
+			}
+			else if(velX < 0) {
+				g.drawImage(left.getFrame(), x, y, width, height, null);
+			}
+			else {
+				g.drawImage(right.getFrame(), x, y, width, height, null);
+			}
+		
+	}	
 	
 	public double getX() {
 		return x;
@@ -84,6 +102,7 @@ public class Player extends Rectangle{
 	public Rectangle getBoundsLeft() {
 		return new Rectangle((int) x, (int) y + 4, 5, height - 8);
 	}
+	
 	
 	
 }
