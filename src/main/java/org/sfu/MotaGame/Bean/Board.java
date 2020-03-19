@@ -52,7 +52,11 @@ public class Board{
 	  initBoard();
 	}
   
-  //initializes our gameboard
+  /*
+   * This method initializes our game board
+   * 
+   * @return Nothing.
+   */
   public void initBoard() {
 	// read map from file
 		  try {
@@ -108,6 +112,12 @@ public class Board{
 		  }
   }
   
+  /*
+   * This method renders our game's graphics
+   * 
+   * @param g This parameter lets us use graphics
+   * @return Nothing.
+   */
   public void render(Graphics g) {
 	  imgData = new ImageData();
 
@@ -148,14 +158,25 @@ public class Board{
 		
 		
   }
-  
+  /*
+   * This method draws the score for our game
+   * 
+   * @param g This parameter lets us use graphics
+   * @return Nothing.
+   */
   private void drawScore(Graphics g) {
 		Font font = new Font("Helvetica", Font.BOLD, 20);
 		g.setFont(font);
 		g.setColor(Color.yellow);
 		g.drawString("Score: " + score, width * height / 2 - 500, height - 10);
 	}
-	
+  
+  /*
+   * This method draws the key counter showing how many keys are remaining in our game
+   * 
+   * @param g This parameter lets us use graphics
+   * @return Nothing.
+   */
   private void drawKeyCounter(Graphics g) {
 		Font font = new Font("Helvetica", Font.BOLD, 20);
 		g.setFont(font);
