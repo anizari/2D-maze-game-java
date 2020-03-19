@@ -28,6 +28,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private int STATE = 0;
 	private int MENU_STATE = 1;
 	private int GAME_STATE = 2;
+	private int GAMEOVER_STATE = 3;
 
 	public Game() {	
 		setPreferredSize(new Dimension(width, height));
@@ -60,9 +61,26 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.fillRect(0, 0, width, height);
 		g.setFont(font);
 		g.setColor(Color.RED);
-		g.drawString("Game Over! Score: " + board.getScore(), board.getWidth()/2, board.getHeight()/2);	
+		g.drawString("Game Over!", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 	}
 	
+	//private void isGameOver();
+	
+		//removed Graphics g parameter
+		private boolean isGameOver() {
+//			Graphics2D g2 = (Graphics2D) g;
+			int score = board.getScore();
+			if(score <= 0) {
+				STATE = GAMEOVER_STATE;
+				//STATE = 
+//				drawGameOver(g);
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		
 	// Game loop using thread
 		public void run() {
 			int fps = 60;
@@ -74,6 +92,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			int ticks = 0;
 			
 			while(isRunning) {	
+				isGameOver();
 				requestFocus();
 				now = System.nanoTime();
 				delta += (now - lastTime) / timePerTick;
@@ -234,8 +253,9 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				board.render(g);
 				player.render(g);
 			}
-			
-			
+			else if(STATE == GAMEOVER_STATE) {
+				drawGameOver(g);
+			}
 			
 			
 			g.dispose();
