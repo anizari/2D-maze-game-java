@@ -56,6 +56,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the x coordinate 
 	 * 
+	 * @return x
 	 */
 	public double getX() {
 		return x;
@@ -64,6 +65,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the y coordinate 
 	 * 
+	 * @return y
 	 */
 	public double getY() {
 		return y;
@@ -104,6 +106,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the x coordinate of the distance
 	 * 
+	 * @return distX
 	 */
 	public double getDistX() {
 		return distX;
@@ -112,6 +115,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the y coordinate of the distance
 	 * 
+	 * @return distY
 	 */
 	public double getDistY() {
 		return distY;
@@ -136,6 +140,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the distance
 	 * 
+	 * @return distance
 	 */
 	public double getDistance() {
 		return distance;
@@ -152,6 +157,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the bounds of the rectangle Object
 	 * 
+	 * @return Rectangle object
 	 */
 	@Override
 	public Rectangle getBounds() {
@@ -160,7 +166,8 @@ public class Enemy extends Rectangle{
 
 	/**
 	 * Getter for the top bounds of the rectangle Object
-	 * 
+	 * 	 
+	 * * @return Rectangle object
 	 */
 	public Rectangle getBoundsTop() {
 		return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y, (int) width / 2, (int) height / 2);
@@ -169,6 +176,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the bottom bounds of the rectangle Object
 	 * 
+	 * @return Rectangle object
 	 */
 	public Rectangle getBoundsBottom() {
 		return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y + (height / 2), (int) width / 2, (int) height / 2);
@@ -177,6 +185,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the right bounds of the rectangle Object
 	 * 
+	 * @return Rectangle object
 	 */
 	public Rectangle getBoundsRight() {
 		return new Rectangle((int) x + width - 5, (int) y + 4, (int) 5, (int) height - 8);
@@ -185,6 +194,7 @@ public class Enemy extends Rectangle{
 	/**
 	 * Getter for the left bounds of the rectangle Object
 	 * 
+	 * @return Rectangle object
 	 */
 	public Rectangle getBoundsLeft() {
 		return new Rectangle((int) x, (int) y + 4, 5, height - 8);
