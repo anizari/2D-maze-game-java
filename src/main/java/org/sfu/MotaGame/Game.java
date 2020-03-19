@@ -236,6 +236,21 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					player.setVelX(0);
 				}
 			}
+			for(int i = 0; i < board.enemies.size(); i++) {
+				Enemy tmp = board.enemies.get(i);
+				if (player.getBoundsTop().intersects(tmp.getBounds())) {
+					STATE = GAMEOVER_STATE;
+				}
+				if (player.getBoundsBottom().intersects(tmp.getBounds())) {
+					STATE = GAMEOVER_STATE;
+				}
+				if (player.getBoundsLeft().intersects(tmp.getBounds())) {
+					STATE = GAMEOVER_STATE;
+				}
+				if (player.getBoundsRight().intersects(tmp.getBounds())) {
+					STATE = GAMEOVER_STATE;
+				}
+			}
 			if (player.getBoundsTop().intersects(board.exit.getBounds())) {
 				if(board.getKeyCounter() == 0) {
 					STATE = WIN_STATE;

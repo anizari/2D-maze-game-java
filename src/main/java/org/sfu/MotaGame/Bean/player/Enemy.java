@@ -16,6 +16,7 @@ public class Enemy extends Rectangle{
 	private double velY;
 	
 	public Enemy(int x, int y) {
+		setBounds(x, y, 32, 32);
 		this.x = x;
 		this.y = y;
 	}
