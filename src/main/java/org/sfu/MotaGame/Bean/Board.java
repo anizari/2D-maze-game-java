@@ -1,5 +1,4 @@
 
-
 package org.sfu.MotaGame.Bean;
 
 import java.awt.Color;
@@ -55,6 +54,7 @@ public class Board{
   private dir playerFacing;
   
   long startTime;
+  long time;
 //  long startTime = System.currentTimeMillis()/1000;
 //  long endTime = System.currentTimeMillis()/1000 - startTime;
   
@@ -223,8 +223,16 @@ public class Board{
   	  Font font = new Font("Helvetica", Font.BOLD, 20);
   	  g2.setFont(font);
   	  g2.setColor(Color.green);
-  	  long time = (System.currentTimeMillis() - this.startTime) / 1000;
+  	  time = (System.currentTimeMillis() - this.startTime) / 1000;
   	  g2.drawString("Time: " + time, this.getWidth()*this.getWidth()/2 + 100, this.getHeight() - 10);
+  }
+  
+  public long getTime() {
+	return time;
+  }
+
+  public void setTime(long time) {
+	this.time = time;
   }
 
   /**
