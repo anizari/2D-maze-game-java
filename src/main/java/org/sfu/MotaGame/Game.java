@@ -75,14 +75,6 @@ g2.setFont(font);
 g2.setColor(Color.RED);
 g2.drawString("Game Over! Score: " + board.getScore(), board.getWidth()/2, board.getHeight()/2);	
 }
-
-/*
-private void drawGameOver(Graphics2D g2) {
-	g2.setColor(Color.RED);
-    g2.fillRect(0, 0, getHeight(), getWidth());
-	g2.drawString("GAME OVER!", 1040 / 2 - ("GAME OVER!").length() - 26, 1063 / 2);
-}
-*/
 	
 	// Game loop using thread
 		public void run() {
