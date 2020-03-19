@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-/*
+/**
  * <h1>Image Data</h1>
  * This class gets all of our sprites for the game and places them on the map
  * 
@@ -29,7 +29,7 @@ public class ImageData {
 	private static final int BONUSREWARD = 4;
 	public static BufferedImage[] heroUp, heroDown, heroLeft, heroRight;
 	public static BufferedImage hero;
-	/*
+	/**
 	 * This method contains all of the data for our images, 
 	 * it gets the sprites and puts them on the map
 	 * 
@@ -95,7 +95,8 @@ public class ImageData {
 		}
 	}
 	
-	/*This method
+	/**
+	 * This method
 	 * 
 	 * 
 	 * @param i This parameter
@@ -109,13 +110,4 @@ public class ImageData {
 		return imageMap.get(i);
 	}
 	
-	/*This method gets the direction of the player
-	 * 
-	 * 
-	 * @param direction This parameter represents the player's direction
-	 * @return 
-	 */
-	public BufferedImage getHeroImg(dir direction) {
-		return heroImageMap.get(direction);
-	}
 }
