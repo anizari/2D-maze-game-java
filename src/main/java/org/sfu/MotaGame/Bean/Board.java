@@ -20,7 +20,6 @@ enum dir {UP, DOWN, LEFT, RIGHT}
 public class Board{
   private int height;
   private int width;
-  private int[][] gameBoard;
   private ImageData imgData;
 
   private int px;
@@ -35,6 +34,8 @@ public class Board{
   public ArrayList<Enemy> enemies;
   public ArrayList<Bonus> bonus;
   public Exit exit;
+  
+  public int[][] gameBoard;
   
   
   //Testing score
@@ -147,9 +148,9 @@ public class Board{
 			enemies.get(i).render(g);
 		}
 		
-		/*for(int i = 0; i < bonus.size(); i++) {
+		for(int i = 0; i < bonus.size(); i++) {
 			bonus.get(i).render(g);
-		}*/
+		}
 		
 		if(keyCounter > 0) {
 			exit.renderClosed(g);

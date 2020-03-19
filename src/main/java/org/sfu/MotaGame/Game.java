@@ -30,6 +30,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private int GAME_STATE = 2;
 	private int GAMEOVER_STATE = 3;
 	private int WIN_STATE = 4;
+	
+	private int bonusX;
+	private int bonusY;
+	private boolean bonusFound;
+	private int tickCount = 0;
 
 	/*
 	 * This method initializes the game
@@ -210,6 +215,24 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				player.tick();
 				
 				collision();
+				tickCount++;
+				if(tickCount % 300 == 0) {
+					double tmpX = Math.random()*32;
+					double tmpY = Math.random()*32;
+					bonusX = (int) tmpX;
+					bonusY = (int) tmpY;
+					while(board.gameBoard[bonusY][bonusX] != 0) {
+						tmpX = Math.random()*32;
+						tmpY = Math.random()*32;
+						bonusX = (int) tmpX;
+						bonusY = (int) tmpY;
+					}
+					board.gameBoard[bonusY][bonusX] = 4;
+					board.bonus.add(new Bonus(bonusX*32, bonusY*32));
+					if(board.bonus.size() > 1) {
+						board.bonus.remove(0);
+					}
+				}
 			}
 		}
 		
@@ -285,6 +308,28 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					board.keys.remove(i);
 					board.setScore(board.getScore() + 100);
 					board.setKeyCounter(board.getKeyCounter() - 1);
+					break;
+				}	
+			}
+			for(int i = 0; i < board.bonus.size(); i++) {
+				if (player.getBoundsTop().intersects(board.bonus.get(i).getBounds())) {
+					board.bonus.remove(i);
+					board.setScore(board.getScore() + 200);
+					break;
+				}
+				if (player.getBoundsBottom().intersects(board.bonus.get(i).getBounds())) {
+					board.bonus.remove(i);
+					board.setScore(board.getScore() + 200);
+					break;
+				}
+				if (player.getBoundsLeft().intersects(board.bonus.get(i).getBounds())) {
+					board.bonus.remove(i);
+					board.setScore(board.getScore() + 200);
+					break;
+				}
+				if (player.getBoundsRight().intersects(board.bonus.get(i).getBounds())) {
+					board.bonus.remove(i);
+					board.setScore(board.getScore() + 200);
 					break;
 				}	
 			}
