@@ -52,7 +52,7 @@ public class Board{
 	  initBoard();
 	}
   
-  /*
+  /**
    * This method initializes our game board
    * 
    * @return Nothing.
@@ -117,7 +117,7 @@ public class Board{
 	  startTime = System.currentTimeMillis();
   }
 
-  /*
+  /**
    * This method renders our game's graphics
    * 
    * @param g This parameter lets us use graphics
@@ -164,7 +164,7 @@ public class Board{
 		
 		
   }
-  /*
+  /**
    * This method draws the score for our game
    * 
    * @param g This parameter lets us use graphics
@@ -177,7 +177,7 @@ public class Board{
 		g.drawString("Score: " + score, width * height / 2 - 500, height - 10);
 	}
   
-  /*
+  /**
    * This method draws the key counter showing how many keys are remaining in our game
    * 
    * @param g This parameter lets us use graphics
@@ -189,7 +189,13 @@ public class Board{
 		g.setColor(Color.yellow);
 		g.drawString("Key Fragments: " + keyCounter, width * height / 2 - 300, height - 10);
   }
-
+  
+  /**
+   * This method draws the timer
+   * 
+   * @param g This parameter lets us use graphics
+   * @return Nothing.
+   */
   private void drawTimer(Graphics g2) {
   	  Font font = new Font("Helvetica", Font.BOLD, 20);
   	  g2.setFont(font);
@@ -215,35 +221,25 @@ public class Board{
     return py;
   }
   
-  //Testing score
   public int getScore() {
 	  return score;
   }
   
-//  public long getEstimatedTime() {
-//	return estimatedTime;
-//}
-//
-//public void setEstimatedTime(long estimatedTime) {
-//	this.estimatedTime = estimatedTime;
-//}
-
-
-public int getKeyCounter() {
-	return keyCounter;
-}
-
-public void setKeyCounter(int keyCounter) {
-	this.keyCounter = keyCounter;
-}
-
-public void setScore(int score) {
-	this.score = score;
-}
-
-public dir getDirection() {
+  public int getKeyCounter() {
+	  return keyCounter;
+  }
+	
+  public void setKeyCounter(int keyCounter) {
+	  this.keyCounter = keyCounter;
+  }
+	
+  public void setScore(int score) {
+	  this.score = score;
+  }
+	
+  public dir getDirection() {
 	  return this.playerFacing;
-}
+  }
 
 }
 
