@@ -33,6 +33,7 @@ public class Board{
   public ArrayList<Wall> walls;
   public ArrayList<Punishment> punishments;
   public ArrayList<Enemy> enemies;
+  public Exit exit;
   
   
   //Testing score
@@ -89,6 +90,9 @@ public class Board{
 			    	  else if (gameBoard[y][x] == 8) {
 			    		  punishments.add(new Punishment(x*32, y*32));
 			    	  }
+			    	  else if (gameBoard[y][x] == 2) {
+			    		  exit = new Exit(x*32, y*32);
+			    	  }
 			      }
 			  }
 		      //int startX = (int) p.getX();
@@ -123,6 +127,12 @@ public class Board{
 		
 		for(int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).render(g);
+		}
+		
+		if(keyCounter > 0) {
+			exit.renderClosed(g);
+		}else {
+			exit.renderOpen(g);
 		}
 		
 		drawScore(g);
