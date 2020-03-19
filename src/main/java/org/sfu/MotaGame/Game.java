@@ -14,6 +14,17 @@ import org.sfu.MotaGame.Bean.*;
 import org.sfu.MotaGame.Bean.player.Enemy;
 import org.sfu.MotaGame.Bean.player.Player;
 
+/**
+ * <h1>Game</h1>
+ * This class deals with creating a new board and player, as well as
+ * various game states, running, starting, stopping, updating the game, 
+ * checking if the game is over, collisions, checking if keys are pressed,
+ * and drawing various screens such as the starting menu or game over screen
+ * 
+ * @author Christopher Kassner, Alim Nizari, Thomas Chiu, John Ye
+ * @version 1.0
+ * @since 2020-03-18
+ */
 public class Game extends Canvas implements Runnable, KeyListener{
 	private int width = 1024, height = 1024;
 	
@@ -36,7 +47,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private boolean bonusFound;
 	private int tickCount = 0;
 
-	/*
+	/**
 	 * This method initializes the game
 	 * 
 	 * @return Nothing
@@ -55,7 +66,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
  
 	}
 	
-	/*
+	/**
 	 * This method draws the game's menu
 	 * 
 	 * @param g This parameter allows us to use the graphics
@@ -71,7 +82,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.drawString("Press space to start", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 	}
 	
-	/*
+	/**
 	 * This method draws the game over screen if the player loses the game
 	 * 
 	 * @param g This parameter allows us to use the graphics	 
@@ -87,7 +98,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.drawString("Game Over!", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 	}
 
-	/*
+	/**
 	 * This method draws the win screen if the player wins the game
 	 * 
 	 * @param g This parameter allows us to use the graphics	 
@@ -103,7 +114,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.drawString("You win!", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 	}
 	
-	/*
+	/**
 	 * This method checks if the game should finish, either through a loss or a win
 	 * 
 	 * @param g This parameter allows us to use the graphics
@@ -162,7 +173,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			stop();
 		}
 		
-		/*
+		/**
 		 * This method starts the game
 		 * 
 		 * @return Nothing.
@@ -177,7 +188,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			thread.start();
 		}
 		
-		/*
+		/**
 		 * This method stops the game
 		 * 
 		 * @return Nothing.
@@ -196,7 +207,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 		}
 		
-		/*
+		/**
 		 * This method updates the game each frame
 		 * 
 		 * @return Nothing.
@@ -234,7 +245,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 		}
 		
-		/*
+		/**
 		 * This method checks for interactions between game objects
 		 * 
 		 * @return Nothing.
@@ -357,7 +368,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 		}
 		
-		/*
+		/**
 		 * This method renders the graphical component of the game
 		 * 
 		 * 
@@ -395,13 +406,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		}
 
 		
-		/*
+		/**
 		 * This method checks when a key is pressed
 		 * 
 		 * @param e This parameter checks for key events
 		 * @return Nothing.
 		 */
-
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
 			
@@ -426,13 +436,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		}
 
 		
-		/*
+		/**
 		 * This method checks when a key is released
 		 * 
 		 * @param e This parameter checks for key events
 		 * @return Nothing.
 		 */
-
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
 			if(e.getKeyCode() == KeyEvent.VK_W)
@@ -446,5 +455,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		}
 
 }
+
 
 
