@@ -37,15 +37,15 @@ public class Game extends Canvas implements Runnable, KeyListener{
  
 	}
 
-private void drawGameOver(Graphics2D g2) {
-Font font = new Font("Helvetica", Font.BOLD, 20);
-//g2.setFont(font);
-g2.setColor(Color.BLACK);
-g2.fillRect(0, 0, getHeight(), getWidth());
-g2.setFont(font);
-g2.setColor(Color.RED);
-g2.drawString("Game Over! Score: " + board.getScore(), board.getWidth()/2, board.getHeight()/2);	
-}
+	private void drawGameOver(Graphics2D g2) {
+		Font font = new Font("Helvetica", Font.BOLD, 20);
+		//g2.setFont(font);
+		g2.setColor(Color.BLACK);
+		g2.fillRect(0, 0, getHeight(), getWidth());
+		g2.setFont(font);
+		g2.setColor(Color.RED);
+		g2.drawString("Game Over! Score: " + board.getScore(), board.getWidth()/2, board.getHeight()/2);	
+	}
 	
 	// Game loop using thread
 		public void run() {
