@@ -11,6 +11,6 @@ public class Bonus extends Rectangle{
 	}
 	
 	public void render(Graphics g) {
-		
+		g.drawImage(imgData.get(4), x, y, 32, 32, null);
 	}
 }
