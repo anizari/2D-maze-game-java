@@ -2,6 +2,8 @@
 
 package org.sfu.MotaGame.Bean;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -127,8 +129,25 @@ public class Board{
 			enemies.get(i).render(g);
 		}
 		
+		drawScore(g);
+		drawKeyCounter(g);
+		
 		
   }
+  
+  private void drawScore(Graphics g) {
+		Font font = new Font("Helvetica", Font.BOLD, 20);
+		g.setFont(font);
+		g.setColor(Color.yellow);
+		g.drawString("Score: " + score, width * height / 2 - 500, height - 10);
+	}
+	
+  private void drawKeyCounter(Graphics g) {
+		Font font = new Font("Helvetica", Font.BOLD, 20);
+		g.setFont(font);
+		g.setColor(Color.yellow);
+		g.drawString("Key Fragments: " + keyCounter, width * height / 2 - 300, height - 10);
+	}
   
   public int getHeight(){
     return height;
