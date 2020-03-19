@@ -136,7 +136,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 		}
 		
-		/*
+		/**
 		 * This method is the main loop for the game
 		 * 
 		 * @return Nothing.
