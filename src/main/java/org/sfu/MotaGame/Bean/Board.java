@@ -56,10 +56,11 @@ public class Board{
   public void initBoard() {
 	// read map from file
 		  try {
-			  walls = new ArrayList<>();
-			  keys = new ArrayList<>();
-			  enemies = new ArrayList<>();
-			  punishments = new ArrayList<>();
+			  walls = new ArrayList<Wall>();
+			  keys = new ArrayList<Key>();
+			  enemies = new ArrayList<Enemy>();
+			  punishments = new ArrayList<Punishment>();
+			  bonus = new ArrayList<Bonus>();
 			  Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/sprite/world1.txt"));
 			  this.height = scanner.nextInt();
 			  this.width = scanner.nextInt();

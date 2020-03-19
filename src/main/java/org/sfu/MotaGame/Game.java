@@ -277,12 +277,10 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			b.show();
 		}
 
-		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
 		}
 
-		@Override
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
 			
@@ -303,7 +301,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			
 		}
 
-		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
 			if(e.getKeyCode() == KeyEvent.VK_W)
