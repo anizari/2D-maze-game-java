@@ -33,6 +33,7 @@ public class Board{
   public ArrayList<Wall> walls;
   public ArrayList<Punishment> punishments;
   public ArrayList<Enemy> enemies;
+  public ArrayList<Bonus> bonus;
   public Exit exit;
   
   
@@ -93,6 +94,9 @@ public class Board{
 			    	  else if (gameBoard[y][x] == 2) {
 			    		  exit = new Exit(x*32, y*32);
 			    	  }
+			    	  else if (gameBoard[y][x] == 4) {
+			    		  bonus.add(new Bonus(x*32, y*32));
+			    	  }
 			      }
 			  }
 		      //int startX = (int) p.getX();
@@ -127,6 +131,10 @@ public class Board{
 		
 		for(int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).render(g);
+		}
+		
+		for(int i = 0; i < bonus.size(); i++) {
+			bonus.get(i).render(g);
 		}
 		
 		if(keyCounter > 0) {
