@@ -46,7 +46,7 @@ public class ImageData {
 			BufferedImage punishmentImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/trap.png"));
 			BufferedImage enemyImg1 = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/enemy02.png"));
 			BufferedImage exitImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/door.png"));
-			BufferedImage bonusrewardImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/item2.png"));
+			BufferedImage bonusrewardImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/item1.png"));
 			BufferedImage heroImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/hero.png"));
 			
 			imageMap.put(FLOOR, floorImg);
@@ -56,7 +56,7 @@ public class ImageData {
 			imageMap.put(ENEMY, enemyImg1.getSubimage(0, 32, 32, 32));
 			imageMap.put(EXIT, exitImg.getSubimage(0, 0, 32, 32));
 			imageMap.put(EXIT_OPEN, exitImg.getSubimage(0, 64, 32, 32));
-			imageMap.put(BONUSREWARD, bonusrewardImg.getSubimage(0, 32, 32, 32));
+			imageMap.put(BONUSREWARD, bonusrewardImg.getSubimage(32, 32, 32, 32));
 			
 			hero = heroImg.getSubimage(0, 0, 32, 32);
 			
