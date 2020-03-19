@@ -8,11 +8,12 @@ import org.sfu.MotaGame.Bean.ImageData;
 public class Enemy extends Rectangle{
 
 	private int x, y;
-	float distX;
-	float distY;
+	private double distX;
+	private double distY;
+	private double distance;
 	private ImageData imgData = new ImageData();
-	private int velX = 1;
-	private int velY = 1;
+	private double velX;
+	private double velY;
 	
 	public Enemy(int x, int y) {
 		this.x = x;
@@ -41,12 +42,36 @@ public class Enemy extends Rectangle{
 		this.y = y;
 	}
 	
-	public void setVelX(int x) {
+	public void setVelX(double x) {
 		this.velX = x;
 	}
 	
-	public void setVelY(int y) {
+	public void setVelY(double y) {
 		this.velY = y;
+	}
+	
+	public double getDistX() {
+		return distX;
+	}
+	
+	public double getDistY() {
+		return distY;
+	}
+	
+	public void setDistX(double x) {
+		this.distX = x;
+	}
+	
+	public void setDistY(double y) {
+		this.distY = y;
+	}
+	
+	public double getDistance() {
+		return distance;
+	}
+	
+	public void setDistance(double d) {
+		this.distance = d;
 	}
 	
 }

@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import org.sfu.MotaGame.Bean.*;
+import org.sfu.MotaGame.Bean.player.Enemy;
 import org.sfu.MotaGame.Bean.player.Player;
 
 public class Game extends Canvas implements Runnable, KeyListener{
@@ -166,7 +167,17 @@ private void drawGameOver(Graphics2D g2) {
 		}
 		
 		private void tick() {
+			for(int i = 0; i < board.enemies.size(); i++) {
+				Enemy tmp = board.enemies.get(i);
+				tmp.setDistX(tmp.getX() - player.getX() - tmp.getWidth());
+				tmp.setDistY(tmp.getY() - player.getY() - tmp.getHeight());
+				tmp.setDistance(Math.sqrt((tmp.getX() - player.getX()) * (tmp.getX() - player.getX()) + (tmp.getY() - player.getY()) * (tmp.getY() - player.getY())));
+				tmp.setVelX((-1 / tmp.getDistance()) * tmp.getDistX());
+				tmp.setVelY((-1 / tmp.getDistance()) * tmp.getDistY());
+				tmp.tick();
+			}
 			player.tick();
+			
 			collision();
 		}
 		
