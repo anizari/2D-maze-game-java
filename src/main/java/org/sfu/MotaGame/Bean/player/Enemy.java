@@ -7,7 +7,7 @@ import org.sfu.MotaGame.Bean.ImageData;
 
 public class Enemy extends Rectangle{
 
-	private int x, y;
+	private double x, y;
 	private double distX;
 	private double distY;
 	private double distance;
@@ -32,7 +32,7 @@ public class Enemy extends Rectangle{
 	 * @return Nothing.
 	 */
 	public void render(Graphics g) {
-		g.drawImage(imgData.get(3), x, y, 32, 32, null);
+		g.drawImage(imgData.get(3), (int)(Math.round(x)), (int)(Math.round(y)), 32, 32, null);
 	}
 	
 	public double getX() {
