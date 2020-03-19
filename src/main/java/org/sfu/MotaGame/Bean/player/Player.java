@@ -6,7 +6,15 @@ import java.awt.Rectangle;
 
 import org.sfu.MotaGame.Bean.ImageData;
 
-
+/**
+ * <h1>Player/h1>
+ * This class renders the player and contains all of the relevant
+ * variables and constructors 
+ *  
+ * @author Christopher Kassner, Alim Nizari, Thomas Chiu, Yuzhuo Ye
+ * @version 1.0
+ * @since 2020-03-18
+ */
 public class Player extends Rectangle{
 
 	public boolean moveUp, moveDown, moveLeft, moveRight;
@@ -95,7 +103,7 @@ public class Player extends Rectangle{
 	}
 	
 	/**
-	 * This method gets theyx value
+	 * This method gets the y value
 	 * 
 	 * @return y
 	 */
