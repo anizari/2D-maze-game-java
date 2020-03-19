@@ -58,7 +58,7 @@ public class ImageData {
 			imageMap.put(EXIT_OPEN, exitImg.getSubimage(0, 64, 32, 32));
 			imageMap.put(BONUSREWARD, bonusrewardImg.getSubimage(32, 32, 32, 32));
 			
-			hero = heroImg.getSubimage(0, 0, 32, 32);
+			hero = heroImg.getSubimage(0, 32, 32, 32);
 			
 			heroUp = new BufferedImage[4];
 			heroUp[0] = heroImg.getSubimage(0, 0, 32, 32);
