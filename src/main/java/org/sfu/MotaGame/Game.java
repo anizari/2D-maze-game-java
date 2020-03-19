@@ -33,7 +33,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	
 	private int bonusX;
 	private int bonusY;
-	private boolean bonusFound;
 	private int tickCount = 0;
 
 	/*
