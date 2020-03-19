@@ -8,7 +8,7 @@ import javax.swing.*;
  * It then adds the frame to our game and starts the game.
  * 
  * 
- * @author Christopher Kassner, Alim Nizari, Thomas Chiu, John Ye
+ * @author Christopher Kassner, Alim Nizari, Thomas Chiu, Yuzhuo Ye
  * @version 1.0
  * @since 2020-03-18
  */

@@ -21,7 +21,7 @@ import org.sfu.MotaGame.Bean.player.Player;
  * checking if the game is over, collisions, checking if keys are pressed,
  * and drawing various screens such as the starting menu or game over screen
  * 
- * @author Christopher Kassner, Alim Nizari, Thomas Chiu, John Ye
+ * @author Christopher Kassner, Alim Nizari, Thomas Chiu, Yuzhuo Ye
  * @version 1.0
  * @since 2020-03-18
  */
@@ -455,6 +455,4 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		}
 
 }
-
-
 
