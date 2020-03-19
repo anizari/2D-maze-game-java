@@ -27,7 +27,6 @@ public class Board{
   private int py;
   
   private Player p;
-  private Enemy[] e;
   
   //ArrayLists for game objects
   public ArrayList<Key> keys;
@@ -67,9 +66,6 @@ public class Board{
 			  this.px = scanner.nextInt();
 			  this.p = new Player(px, py);
 			  this.playerFacing = dir.DOWN;
-			  
-			  this.e = new Enemy[scanner.nextInt()];
-			  int eCounter = 0;
 			  //this.score = score;
 			  
 			  this.gameBoard = new int[height][width];
@@ -95,9 +91,9 @@ public class Board{
 			    	  }
 			      }
 			  }
-		      int startX = (int) p.getX();
-		      int startY = (int) p.getY();
-		      gameBoard[startX][startY] = 1;
+		      //int startX = (int) p.getX();
+		      //int startY = (int) p.getY();
+		      //gameBoard[startX][startY] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
 			  e.printStackTrace();
