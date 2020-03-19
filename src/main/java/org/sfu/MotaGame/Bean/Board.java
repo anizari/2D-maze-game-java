@@ -133,9 +133,9 @@ public class Board{
 			enemies.get(i).render(g);
 		}
 		
-		for(int i = 0; i < bonus.size(); i++) {
+		/*for(int i = 0; i < bonus.size(); i++) {
 			bonus.get(i).render(g);
-		}
+		}*/
 		
 		if(keyCounter > 0) {
 			exit.renderClosed(g);
