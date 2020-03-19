@@ -60,11 +60,11 @@ public class Board{
   
   
   /**
-	 * This method initializes a board object by calling
-	 * the initBoard function
-	 * 
-	 * @return Nothing.
-	 */
+   * This method initializes a board object by calling
+   * the initBoard function
+   * 
+   * @return Nothing.
+   */
   public Board(){
 	  initBoard();
 	}
@@ -131,10 +131,10 @@ public class Board{
   }
   
   /**
-	 * This method starts the timer for our game
-	 * 
-	 * @return Nothing.
-	 */
+   * This method starts the timer for our game
+   * 
+   * @return Nothing.
+   */
 
   public void startTimer() {
 	  startTime = System.currentTimeMillis();
@@ -228,91 +228,91 @@ public class Board{
   }
 
   /**
-	 * This method gets the height of our board
-	 * 
-	 * @return height
-	 */
+   * This method gets the height of our board
+   * 
+   * @return height
+   */
   public int getHeight(){
     return height;
   }
   
   /**
-	 * This method gets the width of our board
-	 * 
-	 * @return width
-	 */
+   * This method gets the width of our board
+   * 
+   * @return width
+   */
   public int getWidth(){
     return width;
   }
   
   /**
-	 * This method gets the 2D integer array
-	 * 
-	 * @return gameBoard
-	 */
+   * This method gets the 2D integer array
+   * 
+   * @return gameBoard
+   */
   public int[][] getBoard(){
     return gameBoard;
   }
   
   /**
-	 * This method gets the x coordinate of our player
-	 * 
-	 * @return px
-	 */
+   * This method gets the x coordinate of our player
+   * 
+   * @return px
+   */
   public int getPx(){
     return px;
   }
   
   /**
-	 * This method gets the y coordinate of our player
-	 * 
-	 * @return py
-	 */
+   * This method gets the y coordinate of our player
+   * 
+   * @return py
+   */
   public int getPy(){
     return py;
   }
   
   /**
-	 * This method gets the score
-	 * 
-	 * @return score
-	 */
+   * This method gets the score
+   * 
+   * @return score
+   */
   public int getScore() {
 	  return score;
   }
   
   /**
-	 * This method gets the amount of keys in our board
-	 * 
-	 * @return keyCounter
-	 */
+   * This method gets the amount of keys in our board
+   * 
+   * @return keyCounter
+   */
   public int getKeyCounter() {
 	  return keyCounter;
   }
 	
   /**
-	 * This method sets the amount of keys in our board
-	 * 
-	 * @return Nothing
-	 */
+   * This method sets the amount of keys in our board
+   * 
+   * @return Nothing
+   */
   public void setKeyCounter(int keyCounter) {
 	  this.keyCounter = keyCounter;
   }
 	
   /**
-	 * This method sets the score in our board
-	 * 
-	 * @return Nothing
-	 */
+   * This method sets the score in our board
+   * 
+   * @return Nothing
+   */
   public void setScore(int score) {
 	  this.score = score;
   }
 	
   /**
-	 * This method gets the direction our player is facing
-	 * 
-	 * @return playerFacing
-	 */
+   * This method gets the direction our player is facing
+   * 
+   * @return playerFacing
+   */
   public dir getDirection() {
 	  return this.playerFacing;
   }
