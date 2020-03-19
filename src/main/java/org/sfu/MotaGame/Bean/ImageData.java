@@ -27,8 +27,8 @@ public class ImageData {
 	private static final int EXIT = 2;
 	private static final int EXIT_OPEN = 5;
 	private static final int BONUSREWARD = 4;
-	private static BufferedImage[] heroUp, heroDown, heroLeft, heroRight;
-	
+	public static BufferedImage[] heroUp, heroDown, heroLeft, heroRight;
+	public static BufferedImage hero;
 	/*
 	 * This method contains all of the data for our images, 
 	 * it gets the sprites and puts them on the map
@@ -57,6 +57,8 @@ public class ImageData {
 			imageMap.put(EXIT, exitImg.getSubimage(0, 0, 32, 32));
 			imageMap.put(EXIT_OPEN, exitImg.getSubimage(0, 64, 32, 32));
 			imageMap.put(BONUSREWARD, bonusrewardImg.getSubimage(0, 32, 32, 32));
+			
+			hero = heroImg.getSubimage(0, 0, 32, 32);
 			
 			heroUp = new BufferedImage[4];
 			heroUp[0] = heroImg.getSubimage(0, 0, 32, 32);
