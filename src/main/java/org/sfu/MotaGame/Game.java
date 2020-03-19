@@ -229,6 +229,9 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					}
 					board.gameBoard[bonusY][bonusX] = 4;
 					board.bonus.add(new Bonus(bonusX*32, bonusY*32));
+					if(board.bonus.size() > 1) {
+						board.bonus.remove(0);
+					}
 				}
 			}
 		}
