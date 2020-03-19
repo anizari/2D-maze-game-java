@@ -31,6 +31,8 @@ public class Board{
   private ArrayList<Key> keys;
   private ArrayList<Wall> walls;
   private ArrayList<Punishment> punishments;
+  private ArrayList<Enemy> enemies;
+  
   
   //Testing score
   private int score = 100;
@@ -53,6 +55,7 @@ public class Board{
 		  try {
 			  walls = new ArrayList<>();
 			  keys = new ArrayList<>();
+			  enemies = new ArrayList<>();
 			  punishments = new ArrayList<>();
 			  Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/sprite/world1.txt"));
 			  this.height = scanner.nextInt();
@@ -71,6 +74,7 @@ public class Board{
 			  for (int y = 0; y < height; y++ ){
 			      for (int x = 0; x < width; x++ ){
 			    	  gameBoard[y][x] = scanner.nextInt();
+			    	  
 			    	  if (gameBoard[y][x] == 9) {
 			    		  walls.add(new Wall(x*32, y*32));
 			    	  }
@@ -79,9 +83,12 @@ public class Board{
 			    		  this.keyCounter++;
 			    		  keys.add(new Key(x*32, y*32));
 			    	  }
+			    	  //counts enemies
 			    	  else if (gameBoard[y][x] == 3) {
-			    		  e[eCounter++] = new Enemy(x, y);
-			    	  }else if (gameBoard[y][x] == 8) {
+			    		  enemies.add(new Enemy(x*32, y*32));
+			    	  }
+			    	  //counts punishments
+			    	  else if (gameBoard[y][x] == 8) {
 			    		  punishments.add(new Punishment(x*32, y*32));
 			    	  }
 			      }
@@ -114,6 +121,10 @@ public class Board{
 		
 		for(int i = 0; i < punishments.size(); i++) {
 			punishments.get(i).render(g);
+		}
+		
+		for(int i = 0; i < enemies.size(); i++) {
+			enemies.get(i).render(g);
 		}
 		
 		

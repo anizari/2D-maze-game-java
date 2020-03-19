@@ -9,7 +9,7 @@ import org.sfu.MotaGame.Bean.ImageData;
 public class Player extends Rectangle{
 
 	//private int x, y;
-	private ImageData imgData;
+	private ImageData imgData = new ImageData();
 	public boolean moveUp, moveDown, moveLeft, moveRight;
 	private int speed = 2;
 	
