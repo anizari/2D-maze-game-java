@@ -31,6 +31,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private int GAMEOVER_STATE = 3;
 	private int WIN_STATE = 4;
 
+	/*
+	 * This method initializes the game
+	 * 
+	 * @return Nothing
+	 */
 	public Game() {	
 		setPreferredSize(new Dimension(width, height));
 		setMinimumSize(new Dimension(width, height));
@@ -45,6 +50,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
  
 	}
 	
+	/*
+	 * This method draws the game's menu
+	 * 
+	 * @param g This parameter allows us to use the graphics
+	 * @return Nothing
+	 */
 	private void drawMenu(Graphics g) {
 		Font font = new Font("Helvetica", Font.BOLD, 40);
 		//g2.setFont(font);
@@ -54,7 +65,13 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.setColor(Color.WHITE);
 		g.drawString("Press space to start", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 	}
-
+	
+	/*
+	 * This method draws the game over screen if the player loses the game
+	 * 
+	 * @param g This parameter allows us to use the graphics	 
+	 * @return Nothing
+	 */
 	private void drawGameOver(Graphics g) {
 		Font font = new Font("Helvetica", Font.BOLD, 40);
 		//g2.setFont(font);
@@ -65,6 +82,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.drawString("Game Over!", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 	}
 
+	/*
+	 * This method draws the win screen if the player wins the game
+	 * 
+	 * @param g This parameter allows us to use the graphics	 
+	 * @return Nothing
+	 */
 	private void drawWin(Graphics g) {
 		Font font = new Font("Helvetica", Font.BOLD, 40);
 		//g2.setFont(font);
@@ -75,16 +98,20 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.drawString("You win!", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 	}
 	
-	//private void isGameOver();
-	
+	/*
+	 * This method checks if the game should finish, either through a loss or a win
+	 * 
+	 * @param g This parameter allows us to use the graphics
+	 * @return true This returns true if the player has won or lost the game
+	 * @return false This returns false if the player has neither won nor lost 
+	 */
 		private boolean isGameOver() {
-//			Graphics2D g2 = (Graphics2D) g;
 			int score = board.getScore();
-			int keyCounter = board.getKeyCounter();
+//			int keyCounter = board.getKeyCounter();
 			if(STATE == WIN_STATE) {
 				return true;
 			}
-			if(score <= 0) {
+			if(score < 0) {
 				STATE = GAMEOVER_STATE;
 				return true;
 			}
@@ -93,7 +120,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 		}
 		
-	// Game loop using thread
+		/*
+		 * This method is the main loop for the game
+		 * 
+		 * @return Nothing.
+		 */
 		public void run() {
 			int fps = 60;
 			double timePerTick = 1000000000 / fps;
@@ -126,6 +157,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			stop();
 		}
 		
+		/*
+		 * This method starts the game
+		 * 
+		 * @return Nothing.
+		 */
 		public synchronized void start() {
 			if(isRunning) {
 				return;
@@ -136,6 +172,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			thread.start();
 		}
 		
+		/*
+		 * This method stops the game
+		 * 
+		 * @return Nothing.
+		 */
 		public synchronized void stop() {
 			if(!isRunning) {
 				return;
@@ -150,6 +191,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 		}
 		
+		/*
+		 * This method updates the game each frame
+		 * 
+		 * @return Nothing.
+		 */
 		private void tick() {
 			for(int i = 0; i < board.enemies.size(); i++) {
 				Enemy tmp = board.enemies.get(i);
@@ -165,6 +211,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			collision();
 		}
 		
+		/*
+		 * This method checks for interactions between game objects
+		 * 
+		 * @return Nothing.
+		 */
 		private void collision() {
 			for(int i = 0; i < board.walls.size(); i++) {
 				Wall tmp = board.walls.get(i);
@@ -194,7 +245,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					player.setVelY(0);
 				}
 			}
-			
 			for(int i = 0; i < board.keys.size(); i++) {
 				if (player.getBoundsTop().intersects(board.keys.get(i).getBounds())) {
 					board.keys.remove(i);
@@ -221,7 +271,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					break;
 				}	
 			}
-			
 			for(int i = 0; i < board.punishments.size(); i++) {
 				if (player.getBoundsTop().intersects(board.punishments.get(i).getBounds())) {
 					board.punishments.remove(i);
@@ -243,13 +292,15 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					board.setScore(board.getScore() - 100);
 					break;
 				}
-				
-				
 			}
-			
 		}
 		
-		
+		/*
+		 * This method renders the graphical component of the game
+		 * 
+		 * 
+		 * @return Nothing.
+		 */
 		private void render() {
 			BufferStrategy b = getBufferStrategy();
 			if(b == null) {
@@ -281,6 +332,14 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			// TODO Auto-generated method stub
 		}
 
+		
+		/*
+		 * This method checks when a key is pressed
+		 * 
+		 * @param e This parameter checks for key events
+		 * @return Nothing.
+		 */
+
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
 			
@@ -300,6 +359,14 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 			
 		}
+
+		
+		/*
+		 * This method checks when a key is released
+		 * 
+		 * @param e This parameter checks for key events
+		 * @return Nothing.
+		 */
 
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
