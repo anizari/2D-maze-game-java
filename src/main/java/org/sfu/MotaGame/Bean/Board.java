@@ -30,10 +30,10 @@ public class Board{
   private Enemy[] e;
   
   //ArrayLists for game objects
-  private ArrayList<Key> keys;
-  private ArrayList<Wall> walls;
-  private ArrayList<Punishment> punishments;
-  private ArrayList<Enemy> enemies;
+  public ArrayList<Key> keys;
+  public ArrayList<Wall> walls;
+  public ArrayList<Punishment> punishments;
+  public ArrayList<Enemy> enemies;
   
   
   //Testing score
