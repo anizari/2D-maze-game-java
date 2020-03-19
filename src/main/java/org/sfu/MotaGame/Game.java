@@ -81,12 +81,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 //			Graphics2D g2 = (Graphics2D) g;
 			int score = board.getScore();
 			int keyCounter = board.getKeyCounter();
-			if(score <= 0) {
-				STATE = GAMEOVER_STATE;
+			if(STATE == WIN_STATE) {
 				return true;
 			}
-			else if(keyCounter == 0) {
-				STATE = WIN_STATE;
+			if(score <= 0) {
+				STATE = GAMEOVER_STATE;
 				return true;
 			}
 			else {
@@ -186,9 +185,14 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					player.setVelX(0);
 				}
 			}
-			if (player.getBoundsTop().intersects(board.exit.getBounds()) && board.getKeyCounter() != 0) {
-				player.setY(board.exit.getY() + board.exit.getHeight());
-				player.setVelY(0);
+			if (player.getBoundsTop().intersects(board.exit.getBounds())) {
+				if(board.getKeyCounter() == 0) {
+					STATE = WIN_STATE;
+				}
+				else {
+					player.setY(board.exit.getY() + board.exit.getHeight());
+					player.setVelY(0);
+				}
 			}
 			
 			for(int i = 0; i < board.keys.size(); i++) {
