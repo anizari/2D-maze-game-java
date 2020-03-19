@@ -30,6 +30,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private int GAME_STATE = 2;
 	private int GAMEOVER_STATE = 3;
 	private int WIN_STATE = 4;
+	
+	private int bonusX;
+	private int bonusY;
+	private boolean bonusFound;
+	private int tickCount = 0;
 
 	/*
 	 * This method initializes the game
@@ -210,6 +215,21 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				player.tick();
 				
 				collision();
+				tickCount++;
+				if(tickCount % 300 == 0) {
+					double tmpX = Math.random()*32;
+					double tmpY = Math.random()*32;
+					bonusX = (int) tmpX;
+					bonusY = (int) tmpY;
+					while(board.gameBoard[bonusY][bonusX] != 0) {
+						tmpX = Math.random()*32;
+						tmpY = Math.random()*32;
+						bonusX = (int) tmpX;
+						bonusY = (int) tmpY;
+					}
+					board.gameBoard[bonusY][bonusX] = 4;
+					board.bonus.add(new Bonus(bonusX*32, bonusY*32));
+				}
 			}
 		}
 		
