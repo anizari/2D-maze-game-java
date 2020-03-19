@@ -83,29 +83,6 @@ private void drawGameOver(Graphics2D g2) {
 	g2.drawString("GAME OVER!", 1040 / 2 - ("GAME OVER!").length() - 26, 1063 / 2);
 }
 */
-
-/*
-	private void drawScore(Graphics2D g2) {
-		Font font = new Font("Helvetica", Font.BOLD, 20);
-		g2.setFont(font);
-		g2.setColor(Color.yellow);
-		g2.drawString("Score: " + board.getScore(), board.getWidth()*board.getWidth()/2 - 500, board.getHeight() - 10);
-	}
-	
-	private void drawKeyCounter(Graphics2D g2) {
-		Font font = new Font("Helvetica", Font.BOLD, 20);
-		g2.setFont(font);
-		g2.setColor(Color.yellow);
-		g2.drawString("Key Fragments: " + board.getKeyCounter(), board.getWidth()*board.getWidth()/2 - 300, board.getHeight() - 10);
-	}
-
-	private void drawTimer(Graphics2D g2) {
-		Font font = new Font("Helvetica", Font.BOLD, 20);
-		g2.setFont(font);
-		g2.setColor(Color.green);
-		g2.drawString("Time: " + board.getEstimatedTime()/1000000, board.getWidth()*board.getWidth()/2 + 100, board.getHeight() - 10);
-	}
-	*/
 	
 	// Game loop using thread
 		public void run() {
