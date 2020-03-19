@@ -113,6 +113,9 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		g.setColor(Color.GREEN);
 		g.drawString("You win!", board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2);
 		g.setColor(Color.YELLOW);
+		g.drawString("Time Finished: " + board.getTime(), board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2 + 100);
+		g.setColor(Color.YELLOW);
+		g.drawString("Score: " + board.getScore(), board.getWidth()*board.getHeight()/2 - 160, board.getWidth()*board.getHeight()/2 + 200);
 	}
 	
 	/**
