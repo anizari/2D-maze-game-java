@@ -36,35 +36,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	    player = new Player(board.getPx()*board.getWidth(), board.getPy()*board.getHeight());
  
 	}
-	
-	/*@Override
-	public void paintComponent(Graphics g){
-		
-		Graphics2D g2 = (Graphics2D) g;
-				
-		
-		int height = board.getHeight();
-		int width = board.getWidth();
-		int[][] gameBoard = board.getBoard();
-
-		for(int i = 0; i < height; i++){
-			for (int j = 0; j < width; j++){
-				g2.drawImage(imgData.get(gameBoard[i][j]), 32*j, 32*i, 32, 32, null);
-			}
-		}
-		
-		// draw hero
-		g2.drawImage(imgData.getHeroImg(board.getDirection()), 32*board.getPx(), 32*board.getPy(), 32, 32, null);
-		
-		// draw score
-		drawScore(g2);
-		
-		// draw key counter
-		drawKeyCounter(g2);
-		
-		// draw timer
-		drawTimer(g2);
-	}*/
 
 private void drawGameOver(Graphics2D g2) {
 Font font = new Font("Helvetica", Font.BOLD, 20);
