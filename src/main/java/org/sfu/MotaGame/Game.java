@@ -226,8 +226,34 @@ private void drawGameOver(Graphics2D g2) {
 					board.setScore(board.getScore() + 100);
 					board.setKeyCounter(board.getKeyCounter() - 1);
 					break;
-				}
+				}	
 			}
+			
+			for(int i = 0; i < board.punishments.size(); i++) {
+				if (player.getBoundsTop().intersects(board.punishments.get(i).getBounds())) {
+					board.punishments.remove(i);
+					board.setScore(board.getScore() - 100);
+					break;
+				}
+				if (player.getBoundsBottom().intersects(board.punishments.get(i).getBounds())) {
+					board.punishments.remove(i);
+					board.setScore(board.getScore() - 100);
+					break;
+				}
+				if (player.getBoundsLeft().intersects(board.punishments.get(i).getBounds())) {
+					board.punishments.remove(i);
+					board.setScore(board.getScore() - 100);
+					break;
+				}
+				if (player.getBoundsRight().intersects(board.punishments.get(i).getBounds())) {
+					board.punishments.remove(i);
+					board.setScore(board.getScore() - 100);
+					break;
+				}
+				
+				
+			}
+			
 		}
 		
 		
