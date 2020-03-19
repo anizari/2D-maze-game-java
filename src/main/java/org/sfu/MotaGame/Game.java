@@ -32,8 +32,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private int WIN_STATE = 4;
 
 	/*
-	 * This method sets the original state of the game to the menu,
-	 * then creates a new board and a new player
+	 * This method initializes the game
 	 * 
 	 * @return Nothing
 	 */
@@ -100,7 +99,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	}
 	
 	/*
-	 * This method checks if the player has lost the game or not
+	 * This method checks if the game should finish, either through a loss or a win
 	 * 
 	 * @param g This parameter allows us to use the graphics
 	 * @return true This returns true if the player has won or lost the game
@@ -213,7 +212,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		}
 		
 		/*
-		 * This method checks for collisions
+		 * This method checks for interactions between game objects
 		 * 
 		 * @return Nothing.
 		 */
@@ -297,7 +296,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		}
 		
 		/*
-		 * This method renders the game
+		 * This method renders the graphical component of the game
 		 * 
 		 * 
 		 * @return Nothing.
