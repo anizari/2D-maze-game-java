@@ -13,6 +13,7 @@ import javax.swing.*;
 import org.sfu.MotaGame.Bean.*;
 import org.sfu.MotaGame.Bean.player.Enemy;
 import org.sfu.MotaGame.Bean.player.Player;
+import java.util.Random;
 
 /**
  * <h1>Game</h1>
@@ -46,6 +47,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	private int bonusY;
 	private boolean bonusFound;
 	private int tickCount = 0;
+	private Random rd = new Random();
 
 	/**
 	 * This method initializes the game
@@ -223,9 +225,13 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					tmp.setDistX(tmp.getX() - player.getX() - tmp.getWidth());
 					tmp.setDistY(tmp.getY() - player.getY() - tmp.getHeight());
 					tmp.setDistance(Math.sqrt((tmp.getX() - player.getX()) * (tmp.getX() - player.getX()) + (tmp.getY() - player.getY()) * (tmp.getY() - player.getY())));
-					tmp.setVelX((-1 / tmp.getDistance()) * tmp.getDistX());
-					tmp.setVelY((-1 / tmp.getDistance()) * tmp.getDistY());
-
+					if (tmp.getDistance() > 320) {
+						tmp.setVelY((rd.nextFloat() - 0.5) * 10);
+						tmp.setVelX((rd.nextFloat() - 0.5) * 10);
+					} else {
+						tmp.setVelX((-1.2 / tmp.getDistance()) * tmp.getDistX());
+						tmp.setVelY((-1.2 / tmp.getDistance()) * tmp.getDistY());
+					}
 					tmp.tick();
 				}
 				player.tick();
