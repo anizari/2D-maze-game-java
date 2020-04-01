@@ -1,9 +1,10 @@
+
+
 package org.sfu.MotaGame.Bean;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
 
 import static org.junit.Assert.assertEquals;
 import java.awt.Color;
@@ -24,29 +25,25 @@ public class BoardTest{
 //	Graphics g;
 	//Graphics gMock = Mockito.mock(Graphics.class);
 	
-	Board b;
+	//Board b;
+	private static final Board b = new Board();
 	
-	@Before
-	public void testBoard() {
-		b = new Board();
-	}
+//	@Before
+	//public void testBoard() {
+		//b = new Board();
+	//}
 	
 	@Test
 	public void testGetBoardWidth() {
+		b.getWidth();
 		assertEquals(32, b.getWidth());
 	}
 	
 	@Test
 	public void testGetBoardHeight() {
+		b.getHeight();
 		assertEquals(32, b.getHeight());
 	}
 	
-
-	/*
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}*/
-
 	
 }
