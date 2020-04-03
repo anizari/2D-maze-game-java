@@ -15,7 +15,6 @@ import org.sfu.MotaGame.Bean.ImageData;
  * @since 2020-03-18
  */
 public class Enemy extends Rectangle{
-
 	private double x, y;
 	private double distX;
 	private double distY;
@@ -199,6 +198,4 @@ public class Enemy extends Rectangle{
 	public Rectangle getBoundsLeft() {
 		return new Rectangle((int) x, (int) y + 4, 5, height - 8);
 	}
-
-	
 }

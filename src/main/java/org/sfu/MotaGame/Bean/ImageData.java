@@ -82,19 +82,12 @@ public class ImageData {
 			heroLeft[1] = heroImg.getSubimage(32, 64, 32, 32);
 			heroLeft[2] = heroImg.getSubimage(64, 64, 32, 32);
 			heroLeft[3] = heroImg.getSubimage(96, 64, 32, 32);
-			
+
 			heroRight = new BufferedImage[4];
 			heroRight[0] = heroImg.getSubimage(0, 96, 32, 32);
 			heroRight[1] = heroImg.getSubimage(32, 96, 32, 32);
 			heroRight[2] = heroImg.getSubimage(64, 96, 32, 32);
 			heroRight[3] = heroImg.getSubimage(96, 96, 32, 32);
-			
-			/*BufferedImage heroImg = ImageIO.read(new File(System.getProperty("user.dir") + "/sprite/hero.png"));
-			heroImageMap.put(dir.UP, heroImg.getSubimage(0, 0, 32, 32));
-			heroImageMap.put(dir.DOWN, heroImg.getSubimage(0, 32, 32, 32));
-			heroImageMap.put(dir.LEFT, heroImg.getSubimage(0, 64, 32, 32));
-			heroImageMap.put(dir.RIGHT, heroImg.getSubimage(0, 96, 32, 32));*/
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -112,15 +105,6 @@ public class ImageData {
 			return imageMap.get(FLOOR);
 		}
 		return imageMap.get(i);
-	}
-	
-	/**This method gets the direction of the player
-	 * 
-	 * @param direction This parameter represents the player's direction
-	 * @return heroImageMap.get(direction) This returns the player's direction
-	 */
-	public BufferedImage getHeroImg(dir direction) {
-		return heroImageMap.get(direction);
 	}
 }
 

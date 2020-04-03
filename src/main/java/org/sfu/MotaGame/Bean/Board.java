@@ -55,9 +55,6 @@ public class Board{
   
   long startTime;
   long time;
-//  long startTime = System.currentTimeMillis()/1000;
-//  long endTime = System.currentTimeMillis()/1000 - startTime;
-  
   
   /**
    * This method initializes a board object by calling
@@ -121,9 +118,6 @@ public class Board{
 			    	  }
 			      }
 			  }
-		      //int startX = (int) p.getX();
-		      //int startY = (int) p.getY();
-		      //gameBoard[startX][startY] = 1;
 		      scanner.close();
 		  } catch (Exception e) {
 			  e.printStackTrace();
@@ -314,15 +308,6 @@ public class Board{
    */
   public void setScore(int score) {
 	  this.score = score;
-  }
-	
-  /**
-   * This method gets the direction our player is facing
-   * 
-   * @return playerFacing
-   */
-  public dir getDirection() {
-	  return this.playerFacing;
   }
 
 }
