@@ -282,20 +282,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					player.setVelX(0);
 				}
 			}
+
 			for(int i = 0; i < board.enemies.size(); i++) {
 				Enemy e = board.enemies.get(i);
 
 				// enemy player collision
-				if (player.getBoundsTop().intersects(e.getBounds())) {
-					STATE = GAMEOVER_STATE;
-				}
-				if (player.getBoundsBottom().intersects(e.getBounds())) {
-					STATE = GAMEOVER_STATE;
-				}
-				if (player.getBoundsLeft().intersects(e.getBounds())) {
-					STATE = GAMEOVER_STATE;
-				}
-				if (player.getBoundsRight().intersects(e.getBounds())) {
+				if (player.checkCollision(e)) {
 					STATE = GAMEOVER_STATE;
 				}
 
@@ -321,7 +313,8 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					}
 				}
 			}
-			if (player.getBoundsTop().intersects(board.exit.getBounds())) {
+
+			if (player.checkCollision(board.exit)) {
 				if(board.getKeyCounter() == 0) {
 					STATE = WIN_STATE;
 				}
@@ -330,93 +323,26 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					player.setVelY(0);
 				}
 			}
+
 			for(int i = 0; i < board.keys.size(); i++) {
-				if (player.getBoundsTop().intersects(board.keys.get(i).getBounds())) {
+				if (player.checkCollision(board.keys.get(i))) {
 					board.keys.remove(i);
 					board.setScore(board.getScore() + 100);
 					board.setKeyCounter(board.getKeyCounter() - 1);
 					break;
 				}
-				if (player.getBoundsBottom().intersects(board.keys.get(i).getBounds())) {
-					board.keys.remove(i);
-					board.setScore(board.getScore() + 100);
-					board.setKeyCounter(board.getKeyCounter() - 1);
-					break;
-				}
-				if (player.getBoundsLeft().intersects(board.keys.get(i).getBounds())) {
-					board.keys.remove(i);
-					board.setScore(board.getScore() + 100);
-					board.setKeyCounter(board.getKeyCounter() - 1);
-					break;
-				}
-				if (player.getBoundsRight().intersects(board.keys.get(i).getBounds())) {
-					board.keys.remove(i);
-					board.setScore(board.getScore() + 100);
-					board.setKeyCounter(board.getKeyCounter() - 1);
-					break;
-				}	
 			}
+
 			for(int i = 0; i < board.bonus.size(); i++) {
-				if (player.getBoundsTop().intersects(board.bonus.get(i).getBounds())) {
+				if (player.checkCollision(board.bonus.get(i))) {
 					board.bonus.remove(i);
 					board.setScore(board.getScore() + 200);
 					break;
 				}
-				if (player.getBoundsBottom().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-				if (player.getBoundsLeft().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-				if (player.getBoundsRight().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}	
 			}
-			for(int i = 0; i < board.bonus.size(); i++) {
-				if (player.getBoundsTop().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-				if (player.getBoundsBottom().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-				if (player.getBoundsLeft().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-				if (player.getBoundsRight().intersects(board.bonus.get(i).getBounds())) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}	
-			}
+
 			for(int i = 0; i < board.punishments.size(); i++) {
-				if (player.getBoundsTop().intersects(board.punishments.get(i).getBounds())) {
-					board.punishments.remove(i);
-					board.setScore(board.getScore() - 100);
-					break;
-				}
-				if (player.getBoundsBottom().intersects(board.punishments.get(i).getBounds())) {
-					board.punishments.remove(i);
-					board.setScore(board.getScore() - 100);
-					break;
-				}
-				if (player.getBoundsLeft().intersects(board.punishments.get(i).getBounds())) {
-					board.punishments.remove(i);
-					board.setScore(board.getScore() - 100);
-					break;
-				}
-				if (player.getBoundsRight().intersects(board.punishments.get(i).getBounds())) {
+				if (player.checkCollision(board.punishments.get(i))) {
 					board.punishments.remove(i);
 					board.setScore(board.getScore() - 100);
 					break;

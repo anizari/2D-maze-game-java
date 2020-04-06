@@ -66,7 +66,14 @@ public class Player extends Rectangle{
 		if(moveRight)
 			x += velX;
 	}
-	
+
+	public boolean checkCollision(Rectangle boardEntity) {
+		return this.getBoundsTop().intersects(boardEntity.getBounds()) ||
+				this.getBoundsBottom().intersects(boardEntity.getBounds()) ||
+				this.getBoundsLeft().intersects(boardEntity.getBounds()) ||
+				this.getBoundsRight().intersects(boardEntity.getBounds());
+	}
+
 	/**
 	 * This method renders the player graphics
 	 * including animations

@@ -4,12 +4,11 @@ package org.sfu.MotaGame.Bean;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.awt.Rectangle;
 import org.sfu.MotaGame.Bean.player.Enemy;
 import org.sfu.MotaGame.Bean.player.Player;
 
@@ -33,9 +32,7 @@ public class Board{
 
   private int px;
   private int py;
-  
-  private Player p;
-  
+
   //ArrayLists for game objects
   public ArrayList<Key> keys;
   public ArrayList<Wall> walls;
@@ -51,8 +48,7 @@ public class Board{
   private int score = 100;
   //counts the number of key fragments left
   private int keyCounter = 0;
-  private dir playerFacing;
-  
+
   long startTime;
   long time;
   
@@ -85,10 +81,7 @@ public class Board{
 			  
 			  this.py = scanner.nextInt();
 			  this.px = scanner.nextInt();
-			  this.p = new Player(px, py);
-			  this.playerFacing = dir.DOWN;
-			  //this.score = score;
-			  
+
 			  this.gameBoard = new int[height][width];
 			  for (int y = 0; y < height; y++ ){
 			      for (int x = 0; x < width; x++ ){
@@ -123,8 +116,8 @@ public class Board{
 			  e.printStackTrace();
 		  }
   }
-  
-  /**
+
+	/**
    * This method starts the timer for our game
    * 
    * @return Nothing.
@@ -133,6 +126,8 @@ public class Board{
   public void startTimer() {
 	  startTime = System.currentTimeMillis();
   }
+
+
 
   /**
    * This method renders our game's graphics
@@ -223,10 +218,6 @@ public class Board{
   
   public long getTime() {
 	return time;
-  }
-
-  public void setTime(long time) {
-	this.time = time;
   }
 
   /**
