@@ -42,6 +42,13 @@ public class Enemy extends Rectangle{
 		y += velY;
 	}
 	
+	public boolean checkCollision(Rectangle boardEntity) {
+		return this.getBoundsTop().intersects(boardEntity.getBounds()) ||
+				this.getBoundsBottom().intersects(boardEntity.getBounds()) ||
+				this.getBoundsLeft().intersects(boardEntity.getBounds()) ||
+				this.getBoundsRight().intersects(boardEntity.getBounds());
+	}
+	
 	/**
 	 * This method draws the enemies
 	 * 
