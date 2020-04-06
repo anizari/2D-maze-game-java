@@ -314,24 +314,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				}
 			}
 
-			if (player.checkCollision(board.exit)) {
-				if(board.getKeyCounter() == 0) {
-					STATE = WIN_STATE;
-				}
-				else {
-					player.setY(board.exit.getY() + board.exit.getHeight());
-					player.setVelY(0);
-				}
+			if (board.checkExit(player)) {
+				GAME_STATE = WIN_STATE;
 			}
 
-			for(int i = 0; i < board.keys.size(); i++) {
-				if (player.checkCollision(board.keys.get(i))) {
-					board.keys.remove(i);
-					board.setScore(board.getScore() + 100);
-					board.setKeyCounter(board.getKeyCounter() - 1);
-					break;
-				}
-			}
+			board.checkKeys(player);
 
 			for(int i = 0; i < board.bonus.size(); i++) {
 				if (player.checkCollision(board.bonus.get(i))) {

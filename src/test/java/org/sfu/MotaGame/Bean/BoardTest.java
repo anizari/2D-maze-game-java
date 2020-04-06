@@ -2,19 +2,9 @@
 
 package org.sfu.MotaGame.Bean;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
-//import static org.junit.Assert.assertEquals;
-//import java.awt.Color;
-//import java.awt.Graphics;
-//
-//import org.junit.Before;
-//import org.sfu.MotaGame.Bean.Board;
-//import org.sfu.MotaGame.Bean.player.Player;
-
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoardTest{
 	//private static final Graphics Graphics2D = null;
@@ -33,7 +23,7 @@ public class BoardTest{
 		//b = new Board();
 	//}
 
-//	@Test
+	@Test
 	public void testGetBoardWidth() {
 		b.getWidth();
 		assertEquals(32, b.getWidth());

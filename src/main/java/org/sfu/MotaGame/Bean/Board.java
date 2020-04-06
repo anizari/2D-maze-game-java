@@ -118,6 +118,36 @@ public class Board{
   }
 
 	/**
+	 *
+	 * @param player
+	 * @return true if player winds the game
+	 */
+  public boolean checkExit(Player player) {
+	  if (player.checkCollision(this.exit)) {
+		  if(this.getKeyCounter() == 0) {
+		  	  return true;
+		  }
+		  else {
+			  player.setY(this.exit.getY() + this.exit.getHeight());
+			  player.setVelY(0);
+		  }
+	  }
+
+	  return false;
+  }
+
+  public void checkKeys(Player player) {
+	  for(int i = 0; i < this.keys.size(); i++) {
+		  if (player.checkCollision(this.keys.get(i))) {
+			  this.keys.remove(i);
+			  this.setScore(this.getScore() + 100);
+			  this.setKeyCounter(this.getKeyCounter() - 1);
+			  break;
+		  }
+	  }
+  }
+
+	/**
    * This method starts the timer for our game
    * 
    * @return Nothing.
@@ -126,8 +156,6 @@ public class Board{
   public void startTimer() {
 	  startTime = System.currentTimeMillis();
   }
-
-
 
   /**
    * This method renders our game's graphics
@@ -205,7 +233,7 @@ public class Board{
   /**
    * This method draws the timer
    * 
-   * @param g This parameter lets us use graphics
+   * @param g2 This parameter lets us use graphics
    * @return Nothing.
    */
   private void drawTimer(Graphics g2) {
