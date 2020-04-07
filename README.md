@@ -16,5 +16,5 @@ Open command line and use the command <code>mvn compile</code> to compile all of
 ##Running and Testing
 There are two ways to launch the game.
 <p>1) Open command line and use the command <code>mvn test</code> to test the game</p>
-<p>2) Running Main.java inside your IDE</p>
+<p>2) Going to Main.java in your IDE and clicking the Run button, or pressing Ctrl+F11</p>
 
