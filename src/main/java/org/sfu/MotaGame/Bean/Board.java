@@ -145,6 +145,16 @@ public class Board{
 		  }
 	  }
   }
+  
+  public void checkBonus(Player player) {
+	  for(int i = 0; i < this.bonus.size(); i++) {
+			if (player.checkCollision(this.bonus.get(i))) {
+				this.bonus.remove(i);
+				this.setScore(this.getScore() + 200);
+				break;
+			}
+		}
+  }
 
   public void checkKeys(Player player) {
 	  for(int i = 0; i < this.keys.size(); i++) {
