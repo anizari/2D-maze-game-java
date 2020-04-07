@@ -285,15 +285,6 @@ public class Board{
   }
   
   /**
-   * This method gets the 2D integer array
-   * 
-   * @return gameBoard
-   */
-  public int[][] getBoard(){
-    return gameBoard;
-  }
-  
-  /**
    * This method gets the x coordinate of our player
    * 
    * @return px
