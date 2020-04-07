@@ -23,7 +23,10 @@ public class PunishmentTest {
 		
 		player.setX(100);
 		player.setY(100);
+		b.checkPunishments(player);
 		Assertions.assertEquals(0, b.getScore());
+		
+		
 	}
 	
 }

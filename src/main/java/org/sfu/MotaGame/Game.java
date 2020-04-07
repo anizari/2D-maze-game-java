@@ -320,13 +320,8 @@ public class Game extends Canvas implements Runnable, KeyListener{
 
 			board.checkKeys(player);
 
-			for(int i = 0; i < board.bonus.size(); i++) {
-				if (player.checkCollision(board.bonus.get(i))) {
-					board.bonus.remove(i);
-					board.setScore(board.getScore() + 200);
-					break;
-				}
-			}
+			board.checkBonus(player);
+			
 			board.checkPunishments(player);
 			
 		}
