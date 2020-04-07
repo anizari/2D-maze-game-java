@@ -49,32 +49,20 @@ public class GameTest{
 		Board b = new Board();
 		Game gm = new Game();
 	}*/
-	
-	@Test
-	public void GameOverTest() {
-		assertFalse(gm.isGameOver());
-	}
 	//	player = new Player(board.getPx()*board.getWidth(), board.getPy()*board.getHeight());
 	
-	/*@Test
+	@Test
 	public void shouldGameBeOver() {
-		Game gm = new Game();
-		int score = b.getScore();
-		int keyCounter = b.getKeyCounter();
-		Player p2 = new Player(b.getPx()*b.getWidth(), b.getPy()*b.getHeight());
-		//New game should not be over
 		assertFalse(gm.isGameOver());
-		//While score > 0 and there are key fragments left
-		if(score > 0 && keyCounter != 0) {
-			assertFalse(gm.isGameOver());
-		}
-		//If score is less than 0, the game ends
-		if(score < 0) {
-			assertTrue(gm.isGameOver());
-		}
-//		if(score > 0 && keyCounter == 0 && p2 == gb[32][16]) {	
-	//	}
-	}*/
+		gm.setState(MENU_STATE);
+		assertFalse(gm.isGameOver());
+		gm.setState(GAME_STATE);
+		assertFalse(gm.isGameOver());
+		gm.setState(GAMEOVER_STATE);
+		assertTrue(gm.isGameOver());
+		gm.setState(WIN_STATE);
+		assertTrue(gm.isGameOver());
+	}
 
 	
 	/*@Test

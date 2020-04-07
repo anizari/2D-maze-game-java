@@ -128,11 +128,10 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	 */
 		public boolean isGameOver() {
 			int score = board.getScore();
-			if(STATE == WIN_STATE) {
-				return true;
-			}
 			if(score < 0) {
 				STATE = GAMEOVER_STATE;
+			}
+			if(STATE == WIN_STATE || STATE == GAMEOVER_STATE) {
 				return true;
 			}
 			else {
@@ -315,7 +314,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 
 			if (board.checkExit(player)) {
-				GAME_STATE = WIN_STATE;
+				STATE = WIN_STATE;
 			}
 
 			board.checkKeys(player);
@@ -415,6 +414,10 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				player.moveLeft = false;
 			if(e.getKeyCode() == KeyEvent.VK_D)
 				player.moveRight = false;
+		}
+		
+		public void setState(int state) {
+			STATE = state;
 		}
 
 }
