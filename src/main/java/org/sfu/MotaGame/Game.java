@@ -126,7 +126,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	 * @return true This returns true if the player has won or lost the game
 	 * @return false This returns false if the player has neither won nor lost 
 	 */
-		private boolean isGameOver() {
+		public boolean isGameOver() {
 			int score = board.getScore();
 			if(STATE == WIN_STATE) {
 				return true;

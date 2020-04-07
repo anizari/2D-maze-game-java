@@ -1,7 +1,8 @@
 package org.sfu.MotaGame;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Component;
 
@@ -12,12 +13,12 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
 import org.hamcrest.Matcher;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.Before;
+//import org.junit.Test;
 import org.sfu.MotaGame.Bean.Board;
 import org.sfu.MotaGame.Bean.player.Player;
 
-import junit.framework.Assert;
+//import junit.framework.Assert;
 
 public class GameTest{
 	private static final Graphics Graphics2D = null;
@@ -31,7 +32,7 @@ public class GameTest{
 	private static final int GAMEOVER_STATE = 3;
 	private static final int WIN_STATE = 4;
 
-	private static final Board b = new Board();
+	//private static final Board b = new Board();
 	private static final Player p = new Player(100, 100);
 	private static final Game gm = new Game();
 	private static final int height = 32;
@@ -42,15 +43,20 @@ public class GameTest{
 //	private static final boolean isRunning = false;
 	public boolean moveUp, moveDown, moveLeft, moveRight;
 	
-	/*
-	@Before
+	
+	/*@Before
 	public void setup() {
 		Board b = new Board();
 		Game gm = new Game();
 	}*/
-	//	player = new Player(board.getPx()*board.getWidth(), board.getPy()*board.getHeight());
 	
 	@Test
+	public void GameOverTest() {
+		assertFalse(gm.isGameOver());
+	}
+	//	player = new Player(board.getPx()*board.getWidth(), board.getPy()*board.getHeight());
+	
+	/*@Test
 	public void shouldGameBeOver() {
 		Game gm = new Game();
 		int score = b.getScore();
@@ -68,16 +74,16 @@ public class GameTest{
 		}
 //		if(score > 0 && keyCounter == 0 && p2 == gb[32][16]) {	
 	//	}
-	}
+	}*/
 
 	
-	@Test
+	/*@Test
 	public void shouldStart() {
 		if(!isRunning) {
 			isRunning = true;
 			assertTrue(isRunning);
 		}
-	}
+	}*/
 
 
 
