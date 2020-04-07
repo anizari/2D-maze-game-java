@@ -205,4 +205,20 @@ public class Enemy extends Rectangle{
 	public Rectangle getBoundsLeft() {
 		return new Rectangle((int) x, (int) y + 4, 5, height - 8);
 	}
+
+	/**
+	 * Getter for the x coordinate of the velocity 
+	 * 
+	 */
+	public double getVelX() {
+		return velX;
+	}
+
+	/**
+	 * Getter for the x coordinate of the velocity 
+	 * 
+	 */
+	public double getVelY() {
+		return velY;
+	}
 }
