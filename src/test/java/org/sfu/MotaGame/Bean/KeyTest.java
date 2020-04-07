@@ -21,7 +21,6 @@ public class KeyTest {
         b.setScore(0);
         b.setKeyCounter(2);
 
-
         //get key
         Player player = new Player(100, 100);
         b.checkKeys(player);
