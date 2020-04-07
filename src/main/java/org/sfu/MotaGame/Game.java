@@ -414,6 +414,10 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		public void setState(int state) {
 			STATE = state;
 		}
+		
+		public Board getBoard() {
+			return board;
+		}
 
 }
 
