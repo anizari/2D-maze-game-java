@@ -106,9 +106,7 @@ public class Board{
 			    	  else if (gameBoard[y][x] == 2) {
 			    		  exit = new Exit(x*32, y*32);
 			    	  }
-			    	  else if (gameBoard[y][x] == 4) {
-			    		  bonus.add(new Bonus(x*32, y*32));
-			    	  }
+			    	  
 			      }
 			  }
 		      scanner.close();

@@ -17,6 +17,8 @@ public class BoardTest{
 
 	//Board b;
 	private static final Board b = new Board();
+	private static final int keys = 11;
+	private static final int bonus = 11;
 
 //	@Before
 	//public void testBoard() {
@@ -35,5 +37,13 @@ public class BoardTest{
 		assertEquals(32, b.getHeight());
 	}
 
+	@Test
+	public void testGetBoardKeys() {
+		assertEquals(11, b.getKeyCounter());
+	}
 
+	@Test
+	public void testGetBoardPunishments() {
+		assertEquals(11,);
+	}
 }
