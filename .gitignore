@@ -13,3 +13,5 @@ target/
 .settings
 out
 *.class
+.classpath
+.project
