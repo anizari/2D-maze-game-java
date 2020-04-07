@@ -21,11 +21,15 @@ public class PunishmentTest {
 		
 		b.setScore(100);
 		
+		//Moves into punishment
 		player.setX(100);
 		player.setY(100);
 		b.checkPunishments(player);
 		Assertions.assertEquals(0, b.getScore());
 		
+		//No move
+		b.checkPunishments(player);
+		Assertions.assertEquals(0, b.getScore());
 		
 	}
 	
