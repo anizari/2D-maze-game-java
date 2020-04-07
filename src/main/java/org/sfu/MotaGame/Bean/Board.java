@@ -75,7 +75,7 @@ public class Board{
 			  enemies = new ArrayList<Enemy>();
 			  punishments = new ArrayList<Punishment>();
 			  bonus = new ArrayList<Bonus>();
-			  Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/sprite/world1.txt"));
+			  Scanner scanner = new Scanner(new File(System.getProperty("user.dir")+"/src/main/resources/world1.txt"));
 			  this.height = scanner.nextInt();
 			  this.width = scanner.nextInt();
 			  
