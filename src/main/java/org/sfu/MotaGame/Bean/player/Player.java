@@ -154,6 +154,14 @@ public class Player extends Rectangle{
 		this.velY = y;
 	}
 	
+	public int getVelX() {
+		return this.velX;
+	}
+	
+	public int getVelY() {
+		return this.velY;
+	}
+	
 	@Override
 	/**
 	 * This method gets the bounds of a rectangle
