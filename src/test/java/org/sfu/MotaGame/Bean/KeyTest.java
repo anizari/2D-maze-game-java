@@ -1,5 +1,7 @@
 package org.sfu.MotaGame.Bean;
 
+import org.sfu.MotaGame.Bean.Board;
+import org.sfu.MotaGame.Bean.Key;
 import org.sfu.MotaGame.Bean.player.Player;
 
 import org.junit.jupiter.api.Test;
