@@ -5,9 +5,11 @@ Chris/
 #Ignore the following types of files
 *.md
 .DS_Store
-/target/
+target/
 .idea/
 *.iml
 *.iws
 *.metadata
 .settings
+out
+*.class
