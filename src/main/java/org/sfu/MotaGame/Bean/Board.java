@@ -135,6 +135,16 @@ public class Board{
 
 	  return false;
   }
+  
+  public void checkPunishments(Player player) {
+	  for(int i = 0; i < this.punishments.size(); i++) {
+		  if (player.checkCollision(this.punishments.get(i))) {
+			  this.punishments.remove(i);
+			  this.setScore(this.getScore() - 100);
+			  break;
+		  }
+	  }
+  }
 
   public void checkKeys(Player player) {
 	  for(int i = 0; i < this.keys.size(); i++) {
