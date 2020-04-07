@@ -260,7 +260,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		 * 
 		 * @return Nothing.
 		 */
-		private void collision() {
+		public void collision() {
 			for(int i = 0; i < board.walls.size(); i++) {
 				Wall tmp = board.walls.get(i);
 				if (player.getBoundsTop().intersects(tmp.getBounds())) {
@@ -416,6 +416,10 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		
 		public Board getBoard() {
 			return board;
+		}
+		
+		public Player getPlayer() {
+			return player;
 		}
 
 }

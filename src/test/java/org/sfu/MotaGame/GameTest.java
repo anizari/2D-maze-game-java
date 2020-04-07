@@ -16,6 +16,7 @@ import org.hamcrest.Matcher;
 //import org.junit.Before;
 //import org.junit.Test;
 import org.sfu.MotaGame.Bean.Board;
+import org.sfu.MotaGame.Bean.player.Enemy;
 import org.sfu.MotaGame.Bean.player.Player;
 
 //import junit.framework.Assert;
@@ -33,7 +34,7 @@ public class GameTest{
 	private static final int WIN_STATE = 4;
 
 	//private static final Board b = new Board();
-	private static final Player p = new Player(100, 100);
+	//private static final Player p = new Player(100, 100);
 	private static final Game gm = new Game();
 	private static final int height = 32;
 	private static final int width = 32;
@@ -52,7 +53,7 @@ public class GameTest{
 	//	player = new Player(board.getPx()*board.getWidth(), board.getPy()*board.getHeight());
 	
 	@Test
-	public void shouldGameBeOver() {
+	public void testGameOver() {
 		assertFalse(gm.isGameOver());
 		gm.setState(MENU_STATE);
 		assertFalse(gm.isGameOver());
@@ -66,6 +67,16 @@ public class GameTest{
 		gm.setState(GAME_STATE);
 		Board b = gm.getBoard();
 		b.setScore(-100);
+		assertTrue(gm.isGameOver());
+		
+		Player p = gm.getPlayer();
+		b.setScore(1000);
+		gm.setState(GAME_STATE);
+		assertFalse(gm.isGameOver());
+		Enemy e = b.enemies.get(0);
+		e.setX(p.getX());
+		e.setY(p.getY());
+		gm.collision();
 		assertTrue(gm.isGameOver());
 	}
 
