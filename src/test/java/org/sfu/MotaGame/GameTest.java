@@ -62,6 +62,11 @@ public class GameTest{
 		assertTrue(gm.isGameOver());
 		gm.setState(WIN_STATE);
 		assertTrue(gm.isGameOver());
+		
+		gm.setState(GAME_STATE);
+		Board b = gm.getBoard();
+		b.setScore(-100);
+		assertTrue(gm.isGameOver());
 	}
 
 	
