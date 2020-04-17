@@ -1,10 +1,7 @@
 package org.sfu.MotaGame.Bean;
 
-import org.sfu.MotaGame.Bean.Board;
-import org.sfu.MotaGame.Bean.Key;
 import org.sfu.MotaGame.Bean.player.Player;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
@@ -12,7 +9,7 @@ import java.util.ArrayList;
 public class KeyTest {
 
     @Test
-    public void testCheckKeys() {
+    public void TestCheckKeys() {
         Board b = new Board();
 
         b.keys = new ArrayList<Key>();

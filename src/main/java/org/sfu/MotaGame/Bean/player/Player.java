@@ -1,213 +1,199 @@
 package org.sfu.MotaGame.Bean.player;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 
 import org.sfu.MotaGame.Bean.ImageData;
 
 /**
- * <h1>Player/h1>
+ * Player
  * This class renders the player and contains all of the relevant
- * variables and constructors 
- *  
+ * variables and constructors
+ *
  * @author Christopher Kassner, Alim Nizari, Thomas Chiu, Yuzhuo Ye
  * @version 1.0
  * @since 2020-03-18
  */
-public class Player extends Rectangle{
+public class Player extends Rectangle {
 
-	public boolean moveUp, moveDown, moveLeft, moveRight;
-	private int velX = 2; 
-	private int velY = 2;
+    public boolean moveUp, moveDown, moveLeft, moveRight;
+    private int velX = 2;
+    private int velY = 2;
 
-	//Animate the player
-	private playerAnimation up, down, left, right;
-	
-	/**
-	 * This method initialized the player coordinates
-	 * and size of the player object. The values for the player
-	 * animations are also initialized.
-	 * 
-	 *
-	 * @param x This is the x-coord of the player object
-	 * @param y This is the y-coord of the player object
-	 * @return Nothing.
-	 */
-	public Player(int x, int y) {
-		setBounds(x, y, 32, 32);
-		
-		up = new playerAnimation(ImageData.heroUp, 124);
-		down = new playerAnimation(ImageData.heroDown, 124);
-		left = new playerAnimation(ImageData.heroLeft, 124);
-		right = new playerAnimation(ImageData.heroRight, 124);
+    //Animate the player
+    private playerAnimation up, down, left, right;
+    private ImageData imgData = new ImageData();
 
-	}
-	
-	/**
-	 * This method updates the player at every tick
-	 * 
-	 * @return Nothing.
-	 */
-	public void tick() {
-		up.animate();
-		down.animate();
-		left.animate();
-		right.animate();
-		
-		velX = 2;
-		velY = 2;
-		if(moveUp)
-			y -= velY;
-		if(moveDown)
-			y += velY;
-		if(moveLeft)
-			x -= velX;
-		if(moveRight)
-			x += velX;
-	}
+    /**
+     * This method initialized the player coordinates
+     * and size of the player object. The values for the player
+     * animations are also initialized.
+     *
+     * @param x This is the x-coord of the player object
+     * @param y This is the y-coord of the player object
+     */
+    public Player(int x, int y) {
+        setBounds(x, y, 32, 32);
 
-	public boolean checkCollision(Rectangle boardEntity) {
-		return this.getBoundsTop().intersects(boardEntity.getBounds()) ||
-				this.getBoundsBottom().intersects(boardEntity.getBounds()) ||
-				this.getBoundsLeft().intersects(boardEntity.getBounds()) ||
-				this.getBoundsRight().intersects(boardEntity.getBounds());
-	}
+        up = new playerAnimation(imgData.getHeroUp(), 124);
+        down = new playerAnimation(imgData.getHeroDown(), 124);
+        left = new playerAnimation(imgData.getHeroLeft(), 124);
+        right = new playerAnimation(imgData.getHeroRight(), 124);
+    }
 
-	/**
-	 * This method renders the player graphics
-	 * including animations
-	 * 
-	 * @param g 
-	 * @return Nothing.
-	 */
-	public void render(Graphics g) {
-		
-		if(moveUp) {
-			g.drawImage(up.getFrame(), x, y, width, height, null);
-		}
-		else if(moveDown) {
-			g.drawImage(down.getFrame(), x, y, width, height, null);
-		}
-		else if(moveLeft) {
-			g.drawImage(left.getFrame(), x, y, width, height, null);
-		}
-		else if(moveRight) {
-			g.drawImage(right.getFrame(), x, y, width, height, null);
-		}else {
-			g.drawImage(ImageData.hero, x, y, width, height, null);
-		}
-	
-}	
-	
-	/**
-	 * This method gets the x value
-	 * 
-	 * @return x.
-	 */
-	public double getX() {
-		return x;
-	}
-	
-	/**
-	 * This method gets the y value
-	 * 
-	 * @return y
-	 */
-	public double getY() {
-		return y;
-	}
-	
-	/**
-	 * This method sets the x value
-	 * 
-	 * @return Nothing
-	 */
-	public void setX(double x) {
-		this.x = (int) x;
-	}
-	
-	/**
-	 * This method sets the y value
-	 * 
-	 * @return Nothing
-	 */
-	public void setY(double y) {
-		this.y = (int) y;
-	}
-	
-	/**
-	 * This method sets the velX value
-	 * 
-	 * @return Nothing
-	 */
-	public void setVelX(int x) {
-		this.velX = x;
-	}
-	
-	/**
-	 * This method sets the velY value
-	 * 
-	 * @return Nothing
-	 */
-	public void setVelY(int y) {
-		this.velY = y;
-	}
-	
-	public int getVelX() {
-		return this.velX;
-	}
-	
-	public int getVelY() {
-		return this.velY;
-	}
-	
-	@Override
-	/**
-	 * This method gets the bounds of a rectangle
-	 * 
-	 * @return Rectangle object
-	 */
-	public Rectangle getBounds() {
-		return new Rectangle((int) x, (int) y, width, height);
-	}
-	
-	/**
-	 * This method gets the top bounds of a rectangle
-	 * 
-	 * @return Rectangle object
-	 */
-	public Rectangle getBoundsTop() {
-		return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y, (int) width / 2, (int) height / 2);
-	}
-	
-	/**
-	 * This method gets the bottom bounds of a rectangle
-	 * 
-	 * @return Rectangle object
-	 */
-	public Rectangle getBoundsBottom() {
-		return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y + (height / 2), (int) width / 2, (int) height / 2);
-	}
-	
-	/**
-	 * This method gets the right bounds of a rectangle
-	 * 
-	 * @return Rectangle object
-	 */
-	public Rectangle getBoundsRight() {
-		return new Rectangle((int) x + width - 5, (int) y + 4, (int) 5, (int) height - 8);
-	}
-	
-	/**
-	 * This method gets the left bounds of a rectangle
-	 * 
-	 * @return Rectangle object
-	 */
-	public Rectangle getBoundsLeft() {
-		return new Rectangle((int) x, (int) y + 4, 5, height - 8);
-	}
-	
-	
-	
+    /**
+     * This method updates the player at every tick
+     *
+     */
+    public void tick() {
+        up.animate();
+        down.animate();
+        left.animate();
+        right.animate();
+
+        velX = 2;
+        velY = 2;
+        if (moveUp)
+            y -= velY;
+        if (moveDown)
+            y += velY;
+        if (moveLeft)
+            x -= velX;
+        if (moveRight)
+            x += velX;
+    }
+
+    public boolean checkCollision(Rectangle boardEntity) {
+        return this.getBoundsTop().intersects(boardEntity.getBounds()) ||
+                this.getBoundsBottom().intersects(boardEntity.getBounds()) ||
+                this.getBoundsLeft().intersects(boardEntity.getBounds()) ||
+                this.getBoundsRight().intersects(boardEntity.getBounds());
+    }
+
+    /**
+     * This method renders the player graphics
+     * including animations
+     *
+     * @param g
+     */
+    public void render(Graphics g) {
+
+        if (moveUp) {
+            g.drawImage(up.getFrame(), x, y, width, height, null);
+        } else if (moveDown) {
+            g.drawImage(down.getFrame(), x, y, width, height, null);
+        } else if (moveLeft) {
+            g.drawImage(left.getFrame(), x, y, width, height, null);
+        } else if (moveRight) {
+            g.drawImage(right.getFrame(), x, y, width, height, null);
+        } else {
+            g.drawImage(imgData.getHero(), x, y, width, height, null);
+        }
+
+    }
+
+    /**
+     * This method gets the x value
+     *
+     * @return x.
+     */
+    public double getX() {
+        return x;
+    }
+
+    /**
+     * This method gets the y value
+     *
+     * @return y
+     */
+    public double getY() {
+        return y;
+    }
+
+    /**
+     * This method sets the x value
+     *
+     */
+    public void setX(double x) {
+        this.x = (int) x;
+    }
+
+    /**
+     * This method sets the y value
+     *
+     */
+    public void setY(double y) {
+        this.y = (int) y;
+    }
+
+    /**
+     * This method sets the velX value
+     *
+     */
+    public void setVelX(int x) {
+        this.velX = x;
+    }
+
+    /**
+     * This method sets the velY value
+     *
+     */
+    public void setVelY(int y) {
+        this.velY = y;
+    }
+
+    public int getVelX() {
+        return this.velX;
+    }
+
+    public int getVelY() {
+        return this.velY;
+    }
+
+    @Override
+    /**
+     * This method gets the bounds of a rectangle
+     *
+     * @return Rectangle object
+     */
+    public Rectangle getBounds() {
+        return new Rectangle((int) x, (int) y, width, height);
+    }
+
+    /**
+     * This method gets the top bounds of a rectangle
+     *
+     * @return Rectangle object
+     */
+    public Rectangle getBoundsTop() {
+        return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y, (int) width / 2, (int) height / 2);
+    }
+
+    /**
+     * This method gets the bottom bounds of a rectangle
+     *
+     * @return Rectangle object
+     */
+    public Rectangle getBoundsBottom() {
+        return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y + (height / 2), (int) width / 2, (int) height / 2);
+    }
+
+    /**
+     * This method gets the right bounds of a rectangle
+     *
+     * @return Rectangle object
+     */
+    public Rectangle getBoundsRight() {
+        return new Rectangle((int) x + width - 5, (int) y + 4, (int) 5, (int) height - 8);
+    }
+
+    /**
+     * This method gets the left bounds of a rectangle
+     *
+     * @return Rectangle object
+     */
+    public Rectangle getBoundsLeft() {
+        return new Rectangle((int) x, (int) y + 4, 5, height - 8);
+    }
+
+
 }
