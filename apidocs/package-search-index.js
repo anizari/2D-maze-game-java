@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.sfu.MotaGame"},{"l":"org.sfu.MotaGame.Bean"},{"l":"org.sfu.MotaGame.Bean.player"}]
