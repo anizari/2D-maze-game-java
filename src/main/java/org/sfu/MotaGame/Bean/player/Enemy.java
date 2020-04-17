@@ -26,6 +26,8 @@ public class Enemy extends Rectangle {
 
     /**
      * Constructor for the Enemy class
+     * @param x Setter for x coordinate of enemy
+     * @param y Setter for y coordinate of enemy
      */
     public Enemy(int x, int y) {
         setBounds(x, y, 32, 32);
@@ -76,28 +78,28 @@ public class Enemy extends Rectangle {
     }
 
     /**
-     * Setter for the x coordinate
+     * @param x Setter for the x coordinate
      */
     public void setX(double x) {
         this.x = x;
     }
 
     /**
-     * Setter for the y coordinate
+     * @param y Setter for the y coordinate
      */
     public void setY(double y) {
         this.y = y;
     }
 
     /**
-     * Setter for the x coordinate of the velocity
+     * @param x Setter for the x coordinate of the velocity
      */
     public void setVelX(double x) {
         this.velX = x;
     }
 
     /**
-     * Setter for the y coordinate of the velocity
+     * @param y Setter for the y coordinate of the velocity
      */
     public void setVelY(double y) {
         this.velY = y;
@@ -122,14 +124,14 @@ public class Enemy extends Rectangle {
     }
 
     /**
-     * Setter for the x coordinate of the distance
+     * @param x Setter for the x coordinate of the distance
      */
     public void setDistX(double x) {
         this.distX = x;
     }
 
     /**
-     * Setter for the y coordinate of the distance
+     * @param y Setter for the y coordinate of the distance
      */
     public void setDistY(double y) {
         this.distY = y;
@@ -145,7 +147,7 @@ public class Enemy extends Rectangle {
     }
 
     /**
-     * Setter for the distance
+     * @param d Setter for the distance
      */
     public void setDistance(double d) {
         this.distance = d;
@@ -164,7 +166,7 @@ public class Enemy extends Rectangle {
     /**
      * Getter for the top bounds of the rectangle Object
      * <p>
-     * * @return Rectangle object
+     * @return Rectangle object
      */
     public Rectangle getBoundsTop() {
         return new Rectangle((int) x + (width / 2) - ((width / 2) / 2), (int) y, (int) width / 2, (int) height / 2);
@@ -199,6 +201,8 @@ public class Enemy extends Rectangle {
 
     /**
      * Getter for the x coordinate of the velocity
+     *
+     * @return velX value
      */
     public double getVelX() {
         return velX;
@@ -206,6 +210,8 @@ public class Enemy extends Rectangle {
 
     /**
      * Getter for the x coordinate of the velocity
+     *
+     * @return velY value
      */
     public double getVelY() {
         return velY;

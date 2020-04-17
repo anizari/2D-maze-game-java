@@ -73,7 +73,7 @@ public class Player extends Rectangle {
      * This method renders the player graphics
      * including animations
      *
-     * @param g
+     * @param g This parameter allows us to use graphics.
      */
     public void render(Graphics g) {
 
@@ -111,7 +111,7 @@ public class Player extends Rectangle {
 
     /**
      * This method sets the x value
-     *
+     * @param x setter for x value
      */
     public void setX(double x) {
         this.x = (int) x;
@@ -119,7 +119,7 @@ public class Player extends Rectangle {
 
     /**
      * This method sets the y value
-     *
+     * @param y setter for y value
      */
     public void setY(double y) {
         this.y = (int) y;
@@ -127,7 +127,7 @@ public class Player extends Rectangle {
 
     /**
      * This method sets the velX value
-     *
+     * @param x setter for velX value
      */
     public void setVelX(int x) {
         this.velX = x;
@@ -135,7 +135,7 @@ public class Player extends Rectangle {
 
     /**
      * This method sets the velY value
-     *
+     * @param y setter for velY value
      */
     public void setVelY(int y) {
         this.velY = y;

@@ -114,7 +114,7 @@ public class Board {
     }
 
     /**
-     * @param player
+     * @param player This parameter allow us to use player
      * @return true if player winds the game
      */
     public boolean checkExit(Player player) {
@@ -315,7 +315,7 @@ public class Board {
     /**
      * This method sets the amount of keys in our board
      *
-     * @param keyCounter 
+     * @param keyCounter This parameter represents the number of keyCounter which is set
      */
     public void setKeyCounter(int keyCounter) {
         this.keyCounter = keyCounter;
@@ -324,6 +324,7 @@ public class Board {
     /**
      * This method sets the score in our board
      *
+     * @param score This parameter represents the the number of score
      */
     public void setScore(int score) {
         this.score = score;

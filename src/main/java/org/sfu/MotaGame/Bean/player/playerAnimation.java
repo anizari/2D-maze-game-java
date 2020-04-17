@@ -47,6 +47,8 @@ public class playerAnimation {
 
     /**
      * Getter for player animation
+     *
+     * @return buffered image
      */
     public BufferedImage getFrame() {
         return frames[currentFrame];
